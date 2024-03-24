@@ -8,27 +8,19 @@
     "net8.0-windows7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\user\\.nuget\\packages\\": {},
-    "C:\\Users\\user\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder": {},
-    "E:\\visual studio\\NuGetPackages": {}
+    "C:\\Users\\sicia\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "E:\\studia\\osk\\OSK_proj_1\\OSK_proj_1\\OSK_proj_1.csproj",
+      "projectUniqueName": "C:\\Users\\sicia\\Source\\Repos\\szymeqic\\OSK_laby_projekty\\OSK_proj_1\\OSK_proj_1.csproj",
       "projectName": "OSK_proj_1",
-      "projectPath": "E:\\studia\\osk\\OSK_proj_1\\OSK_proj_1\\OSK_proj_1.csproj",
-      "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-      "outputPath": "E:\\studia\\osk\\OSK_proj_1\\OSK_proj_1\\obj\\",
+      "projectPath": "C:\\Users\\sicia\\Source\\Repos\\szymeqic\\OSK_laby_projekty\\OSK_proj_1\\OSK_proj_1.csproj",
+      "packagesPath": "C:\\Users\\sicia\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\sicia\\Source\\Repos\\szymeqic\\OSK_laby_projekty\\OSK_proj_1\\obj\\",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Users\\user\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder",
-        "E:\\visual studio\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Users\\user\\AppData\\Roaming\\NuGet\\config\\Godot.Offline.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+        "C:\\Users\\sicia\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

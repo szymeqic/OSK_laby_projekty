@@ -16,5 +16,10 @@ namespace OSK_proj_1
         {
             this.Close();
         }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            this.button2.Text = "Dzia³a";
+        }
     }
 }

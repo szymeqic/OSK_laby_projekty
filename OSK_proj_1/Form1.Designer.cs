@@ -4,6 +4,9 @@
     {
         /// <summary>
         ///  Required designer variable.
+
+        private int[] stan_kafli;
+
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
@@ -76,6 +79,7 @@
             pictureBox41 = new PictureBox();
             pictureBox42 = new PictureBox();
             label1 = new Label();
+            label2 = new Label();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -217,7 +221,7 @@
             pictureBox5.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox5.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox5.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox5.Location = new Point(162, 371); 
+            pictureBox5.Location = new Point(162, 371);
             pictureBox5.Name = "pictureBox5";
             pictureBox5.Size = new Size(60, 60);
             pictureBox5.TabIndex = 7;
@@ -229,7 +233,7 @@
             pictureBox6.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox6.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox6.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox6.Location = new Point(96, 371); 
+            pictureBox6.Location = new Point(96, 371);
             pictureBox6.Name = "pictureBox6";
             pictureBox6.Size = new Size(60, 60);
             pictureBox6.TabIndex = 8;
@@ -241,7 +245,7 @@
             pictureBox7.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox7.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox7.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox7.Location = new Point(30, 371); 
+            pictureBox7.Location = new Point(30, 371);
             pictureBox7.Name = "pictureBox7";
             pictureBox7.Size = new Size(60, 60);
             pictureBox7.TabIndex = 9;
@@ -677,11 +681,21 @@
             label1.TabIndex = 45;
             label1.Text = "label1";
             // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(624, 129);
+            label2.Name = "label2";
+            label2.Size = new Size(38, 15);
+            label2.TabIndex = 46;
+            label2.Text = "label2";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label2);
             Controls.Add(label1);
             Controls.Add(pictureBox36);
             Controls.Add(pictureBox37);
@@ -830,5 +844,6 @@
         private PictureBox pictureBox41;
         private PictureBox pictureBox42;
         private Label label1;
+        private Label label2;
     }
 }

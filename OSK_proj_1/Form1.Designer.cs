@@ -6,6 +6,7 @@
         ///  Required designer variable.
 
         private int[] stan_kafli;
+        private int akt_gracz;
 
         /// </summary>
         private System.ComponentModel.IContainer components = null;

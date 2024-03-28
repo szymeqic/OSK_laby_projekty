@@ -17,7 +17,11 @@ namespace OSK_proj_1
             for (int i = 0;i<42;i++)          
                 this.stan_kafli[i] = 0;
 
-            this.akt_gracz = 1;
+            this.zmien_gracza(1);
+            this.button2.Text = "Reset";
+            this.button1.Text = "Zamknij";
+            this.label3.Text = "Nikt nie wygra³";
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -25,13 +29,27 @@ namespace OSK_proj_1
             this.Close();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        public void reset(object sender, EventArgs e)
         {
-            this.button2.Text = "Dzia³a";
+            for (int i = 0; i < 42; i++)
+            {
+                this.stan_kafli[i] = 0;
+                num_na_zdj(i).BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
+                zmien_gracza(1);
+                
+            }
+            this.label3.Text = "Nikt nie wygra³";
         }
 
+        private void zmien_gracza(int gracz)
 
-        private PictureBox pict_z_num(int num)
+        {
+            this.akt_gracz = gracz;
+            this.label2.Text = "Aktualny gracz: " + Convert.ToString(this.akt_gracz);
+
+        }
+
+        private PictureBox num_na_zdj(int num)
         {
             switch(num)
             {
@@ -184,20 +202,30 @@ namespace OSK_proj_1
  
 
                 if (this.akt_gracz == 1) {
-                    pict_z_num(7 * wiersz + kol).BackgroundImage = Properties.Resources.cat_weed;
+                    num_na_zdj(7 * wiersz + kol).BackgroundImage = Properties.Resources.cat_weed;
                     this.akt_gracz = 2;
                     this.stan_kafli[7 * wiersz + kol] = 1;
+                    if (wygrana() != 0)
+                    {
+                        this.label3.Text = "Zwyciê¿y³ gracz 1";
+                    }
+                    zmien_gracza(2);
                 }
 
                 else if (this.akt_gracz == 2)
                 {
-                    pict_z_num(7 * wiersz + kol).BackgroundImage = Properties.Resources.hot_dog;
+                    num_na_zdj(7 * wiersz + kol).BackgroundImage = Properties.Resources.hot_dog;
                     this.stan_kafli[7 * wiersz + kol] = 2;
-                    this.akt_gracz = 1;
+                    if (wygrana() != 0)
+                    {
+                        this.label3.Text = "Zwyciê¿y³ gracz 2";
+                    }
+                    zmien_gracza(1);
+                    
                 }
-              
+
             }
-         
+            return;
         }
 
         private bool Czy_mozna_polozyc(PictureBox kafel) {
@@ -214,8 +242,59 @@ namespace OSK_proj_1
         private int zdj_na_num(PictureBox zdj) {
 
             string temp = zdj.Name[10..];
-            this.label2.Text = temp;
             return Convert.ToInt32(temp);
+        }
+
+        private int wygrana()
+        {
+
+            //Warunek w poziomie
+            for (int wiersz = 0; wiersz < 5; wiersz++)
+            {
+               
+                for (int i = 7*wiersz; i < 7*wiersz + 4; i++)
+                {
+                    if (this.stan_kafli[i] == this.stan_kafli[i + 1] && this.stan_kafli[i + 1] == this.stan_kafli[i + 2]
+                        && this.stan_kafli[+2] == this.stan_kafli[i + 3] && this.stan_kafli[i] != 0)
+                    {
+                        return this.stan_kafli[i];
+                    }
+                }
+            }
+                
+            // Warunek w pionie
+            for(int kol = 0; kol < 7; kol++)
+            {
+                for(int i = 0; i < 7*3; i+=7)
+                {
+                    if (this.stan_kafli[kol+i] == this.stan_kafli[kol + i + 7] && this.stan_kafli[kol + i + 7] == this.stan_kafli[kol + i + 14]
+                        && this.stan_kafli[kol+i+14] == this.stan_kafli[kol + i + 21] && this.stan_kafli[kol + i] != 0)
+                    {
+                        return this.stan_kafli[kol + i];
+                    }
+                }
+            }
+
+            // Warunek po skosie
+
+            for (int i = 0; i < 4; i++)                           
+                for (int j = 0; j < 7 * 3; j += 7)
+                {
+                    //prawe skosy
+
+                    if (this.stan_kafli[i + j] == this.stan_kafli[i + 1 + j + 7] && this.stan_kafli[i + 1 + j + 7] == this.stan_kafli[i + 2 + j + 14]
+                        && this.stan_kafli[i + 2 + j + 14] == this.stan_kafli[i + 3 + j + 21] && this.stan_kafli[i + j] != 0)
+                        return this.stan_kafli[i + j];
+
+                    //lewe skosy
+
+                    if (this.stan_kafli[6-i + j] == this.stan_kafli[6-i - 1 + j + 7] && this.stan_kafli[6-i - 1 + j + 7] == this.stan_kafli[6-i - 2 + j + 14]
+                        && this.stan_kafli[6-i - 2 + j + 14] == this.stan_kafli[6-i - 3 + j + 21] && this.stan_kafli[6-i + j] != 0)
+                        return this.stan_kafli[i + j];
+                }
+
+
+            return 0;
         }
     }
 }

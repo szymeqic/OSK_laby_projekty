@@ -1,4 +1,5 @@
 using OSK_proj_1.Properties;
+using System.Drawing.Text;
 using System.Text;
 
 namespace OSK_proj_1
@@ -14,13 +15,24 @@ namespace OSK_proj_1
         {
             //init
             this.stan_kafli = new int[42];
-            for (int i = 0;i<42;i++)          
+            for (int i = 0; i < 42; i++)
                 this.stan_kafli[i] = 0;
 
             this.zmien_gracza(1);
             this.button2.Text = "Reset";
             this.button1.Text = "Zamknij";
             this.label3.Text = "Nikt nie wygra³";
+
+            this.interwal = 10;
+            this.interwal = 1000 / this.interwal;
+
+            this.czas_1 = this.czas_2 = 60 * interwal; // 100 - bo co 10 milisekund sprawdzamy czas
+            this.label4.Text = "Gracz 1:" + Convert.ToString(this.czas_1/interwal) + " sekund";
+            this.label5.Text = "Gracz 2:" + Convert.ToString(this.czas_2/interwal) + " sekund";
+
+            this.token_1 = Properties.Resources.cat_weed;
+            this.token_2 = Properties.Resources.hot_dog;
+            this.token_tlo = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
 
         }
 
@@ -34,11 +46,13 @@ namespace OSK_proj_1
             for (int i = 0; i < 42; i++)
             {
                 this.stan_kafli[i] = 0;
-                num_na_zdj(i).BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
+                num_na_zdj(i).BackgroundImage = this.token_tlo;
                 zmien_gracza(1);
-                
+
             }
             this.label3.Text = "Nikt nie wygra³";
+
+            this.czas_1 = this.czas_2 = 60*this.interwal;
         }
 
         private void zmien_gracza(int gracz)
@@ -51,7 +65,7 @@ namespace OSK_proj_1
 
         private PictureBox num_na_zdj(int num)
         {
-            switch(num)
+            switch (num)
             {
                 case 0:
                     return this.pictureBox1;
@@ -187,24 +201,22 @@ namespace OSK_proj_1
         private void pictureBox_Click(object sender, EventArgs e)
         {
             //funkcja gugu
-            PictureBox kafelek = (PictureBox) sender;
+            PictureBox kafelek = (PictureBox)sender;
             string tekst = kafelek.Name;
             this.label1.Text = tekst;
 
             if (Czy_mozna_polozyc(kafelek))
             {
-                int kol = (zdj_na_num(kafelek) - 1) % 7;
+                int num = zdj_na_num(kafelek); // indeks w tablicy zdj kliknietego
+                num %= 7;
+                while (this.stan_kafli[num] != 0)
+                    num += 7;
 
-                int wiersz = 0;
-
-                while (this.stan_kafli[7*wiersz + kol] != 0)               
-                    wiersz++;            
- 
-
-                if (this.akt_gracz == 1) {
-                    num_na_zdj(7 * wiersz + kol).BackgroundImage = Properties.Resources.cat_weed;
+                if (this.akt_gracz == 1)
+                {
+                    num_na_zdj(num).BackgroundImage = this.token_1;
                     this.akt_gracz = 2;
-                    this.stan_kafli[7 * wiersz + kol] = 1;
+                    this.stan_kafli[num] = 1;
                     if (wygrana() != 0)
                     {
                         this.label3.Text = "Zwyciê¿y³ gracz 1";
@@ -214,23 +226,24 @@ namespace OSK_proj_1
 
                 else if (this.akt_gracz == 2)
                 {
-                    num_na_zdj(7 * wiersz + kol).BackgroundImage = Properties.Resources.hot_dog;
-                    this.stan_kafli[7 * wiersz + kol] = 2;
+                    num_na_zdj(num).BackgroundImage = this.token_2;
+                    this.stan_kafli[num] = 2;
                     if (wygrana() != 0)
                     {
                         this.label3.Text = "Zwyciê¿y³ gracz 2";
                     }
                     zmien_gracza(1);
-                    
+
                 }
 
             }
             return;
         }
 
-        private bool Czy_mozna_polozyc(PictureBox kafel) {
+        private bool Czy_mozna_polozyc(PictureBox kafel)
+        {
 
-            int kol = (zdj_na_num(kafel)-1) %7;
+            int kol = (zdj_na_num(kafel)) % 7;
             if (this.stan_kafli[35 + kol] == 0) // pusty najwy¿szy kafelek
             {
                 return true;
@@ -239,10 +252,11 @@ namespace OSK_proj_1
             else return false;
         }
 
-        private int zdj_na_num(PictureBox zdj) {
+        private int zdj_na_num(PictureBox zdj)
+        {
 
             string temp = zdj.Name[10..];
-            return Convert.ToInt32(temp);
+            return Convert.ToInt32(temp) - 1;
         }
 
         private int wygrana()
@@ -251,8 +265,8 @@ namespace OSK_proj_1
             //Warunek w poziomie
             for (int wiersz = 0; wiersz < 5; wiersz++)
             {
-               
-                for (int i = 7*wiersz; i < 7*wiersz + 4; i++)
+
+                for (int i = 7 * wiersz; i < 7 * wiersz + 4; i++)
                 {
                     if (this.stan_kafli[i] == this.stan_kafli[i + 1] && this.stan_kafli[i + 1] == this.stan_kafli[i + 2]
                         && this.stan_kafli[+2] == this.stan_kafli[i + 3] && this.stan_kafli[i] != 0)
@@ -261,14 +275,14 @@ namespace OSK_proj_1
                     }
                 }
             }
-                
+
             // Warunek w pionie
-            for(int kol = 0; kol < 7; kol++)
+            for (int kol = 0; kol < 7; kol++)
             {
-                for(int i = 0; i < 7*3; i+=7)
+                for (int i = 0; i < 7 * 3; i += 7)
                 {
-                    if (this.stan_kafli[kol+i] == this.stan_kafli[kol + i + 7] && this.stan_kafli[kol + i + 7] == this.stan_kafli[kol + i + 14]
-                        && this.stan_kafli[kol+i+14] == this.stan_kafli[kol + i + 21] && this.stan_kafli[kol + i] != 0)
+                    if (this.stan_kafli[kol + i] == this.stan_kafli[kol + i + 7] && this.stan_kafli[kol + i + 7] == this.stan_kafli[kol + i + 14]
+                        && this.stan_kafli[kol + i + 14] == this.stan_kafli[kol + i + 21] && this.stan_kafli[kol + i] != 0)
                     {
                         return this.stan_kafli[kol + i];
                     }
@@ -277,7 +291,7 @@ namespace OSK_proj_1
 
             // Warunek po skosie
 
-            for (int i = 0; i < 4; i++)                           
+            for (int i = 0; i < 4; i++)
                 for (int j = 0; j < 7 * 3; j += 7)
                 {
                     //prawe skosy
@@ -288,13 +302,73 @@ namespace OSK_proj_1
 
                     //lewe skosy
 
-                    if (this.stan_kafli[6-i + j] == this.stan_kafli[6-i - 1 + j + 7] && this.stan_kafli[6-i - 1 + j + 7] == this.stan_kafli[6-i - 2 + j + 14]
-                        && this.stan_kafli[6-i - 2 + j + 14] == this.stan_kafli[6-i - 3 + j + 21] && this.stan_kafli[6-i + j] != 0)
+                    if (this.stan_kafli[6 - i + j] == this.stan_kafli[6 - i - 1 + j + 7] && this.stan_kafli[6 - i - 1 + j + 7] == this.stan_kafli[6 - i - 2 + j + 14]
+                        && this.stan_kafli[6 - i - 2 + j + 14] == this.stan_kafli[6 - i - 3 + j + 21] && this.stan_kafli[6 - i + j] != 0)
                         return this.stan_kafli[i + j];
                 }
 
 
             return 0;
+        }
+
+        private void pictureBox_MouseHover(object sender, EventArgs e)
+        {
+
+            PictureBox kafelek = (PictureBox)sender;
+            //hover
+            if (!Czy_mozna_polozyc(kafelek))
+                return;
+
+            int num = zdj_na_num(kafelek);
+            num %= 7;
+            while (this.stan_kafli[num] != 0)
+                num += 7;
+
+            kafelek = num_na_zdj(num);
+
+            if (this.akt_gracz == 1)
+                kafelek.BackgroundImage = this.token_1;
+
+
+            else if (this.akt_gracz == 2)
+                kafelek.BackgroundImage = this.token_2;
+
+            return;
+        }
+        private void pictureBox_MouseLeave(object sender, EventArgs e)
+        {
+
+            //hover
+            for (int i = 0; i < 42; i++)
+            {
+                if (this.stan_kafli[i] == 0 && num_na_zdj(i).BackgroundImage != this.token_tlo)
+                    num_na_zdj(i).BackgroundImage = this.token_tlo;
+            }
+            return;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            //timer gracza 1
+            if (this.akt_gracz != 1)
+                return;
+
+            this.czas_1--;
+            this.label4.Text = "Gracz 1:  " + Convert.ToString(this.czas_1/interwal) + " sekund";
+            if (this.czas_1 == 0)
+                this.label3.Text = "Niedoczas gracza 1 - wygra³ gracz 2!";
+
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            if (this.akt_gracz != 2)
+                return;
+
+            this.czas_2--;
+            this.label5.Text = "Gracz 2:  " + Convert.ToString(this.czas_2/interwal) + " sekund";
+            if (this.czas_2 == 0)
+                this.label3.Text = "Niedoczas gracza 2 - wygra³ gracz 1!";
         }
     }
 }

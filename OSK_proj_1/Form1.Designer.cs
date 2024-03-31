@@ -1,4 +1,7 @@
-﻿namespace OSK_proj_1
+﻿using System.Numerics;
+using System.Reflection.Metadata;
+
+namespace OSK_proj_1
 {
     partial class Form1
     {
@@ -7,6 +10,10 @@
 
         private int[] stan_kafli;
         private int akt_gracz;
+        Image token_1, token_2, token_tlo;
+        private  int czas_1, czas_2;
+        private int interwal;
+        
 
         /// </summary>
         private System.ComponentModel.IContainer components = null;
@@ -32,6 +39,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             button1 = new Button();
             menuStrip1 = new MenuStrip();
             gugiToolStripMenuItem = new ToolStripMenuItem();
@@ -82,6 +90,10 @@
             label1 = new Label();
             label2 = new Label();
             label3 = new Label();
+            timer1 = new System.Windows.Forms.Timer(components);
+            timer2 = new System.Windows.Forms.Timer(components);
+            label4 = new Label();
+            label5 = new Label();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -181,6 +193,8 @@
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox_Click;
+            pictureBox1.MouseLeave += pictureBox_MouseLeave;
+            pictureBox1.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox2
             // 
@@ -193,6 +207,8 @@
             pictureBox2.TabIndex = 4;
             pictureBox2.TabStop = false;
             pictureBox2.Click += pictureBox_Click;
+            pictureBox2.MouseLeave += pictureBox_MouseLeave;
+            pictureBox2.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox3
             // 
@@ -205,6 +221,8 @@
             pictureBox3.TabIndex = 5;
             pictureBox3.TabStop = false;
             pictureBox3.Click += pictureBox_Click;
+            pictureBox3.MouseLeave += pictureBox_MouseLeave;
+            pictureBox3.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox4
             // 
@@ -217,6 +235,8 @@
             pictureBox4.TabIndex = 6;
             pictureBox4.TabStop = false;
             pictureBox4.Click += pictureBox_Click;
+            pictureBox4.MouseLeave += pictureBox_MouseLeave;
+            pictureBox4.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox5
             // 
@@ -229,6 +249,8 @@
             pictureBox5.TabIndex = 7;
             pictureBox5.TabStop = false;
             pictureBox5.Click += pictureBox_Click;
+            pictureBox5.MouseLeave += pictureBox_MouseLeave;
+            pictureBox5.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox6
             // 
@@ -241,6 +263,8 @@
             pictureBox6.TabIndex = 8;
             pictureBox6.TabStop = false;
             pictureBox6.Click += pictureBox_Click;
+            pictureBox6.MouseLeave += pictureBox_MouseLeave;
+            pictureBox6.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox7
             // 
@@ -253,6 +277,8 @@
             pictureBox7.TabIndex = 9;
             pictureBox7.TabStop = false;
             pictureBox7.Click += pictureBox_Click;
+            pictureBox7.MouseLeave += pictureBox_MouseLeave;
+            pictureBox7.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox8
             // 
@@ -265,6 +291,8 @@
             pictureBox8.TabIndex = 16;
             pictureBox8.TabStop = false;
             pictureBox8.Click += pictureBox_Click;
+            pictureBox8.MouseLeave += pictureBox_MouseLeave;
+            pictureBox8.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox9
             // 
@@ -277,6 +305,8 @@
             pictureBox9.TabIndex = 15;
             pictureBox9.TabStop = false;
             pictureBox9.Click += pictureBox_Click;
+            pictureBox9.MouseLeave += pictureBox_MouseLeave;
+            pictureBox9.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox10
             // 
@@ -289,6 +319,8 @@
             pictureBox10.TabIndex = 14;
             pictureBox10.TabStop = false;
             pictureBox10.Click += pictureBox_Click;
+            pictureBox10.MouseLeave += pictureBox_MouseLeave;
+            pictureBox10.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox11
             // 
@@ -301,6 +333,8 @@
             pictureBox11.TabIndex = 13;
             pictureBox11.TabStop = false;
             pictureBox11.Click += pictureBox_Click;
+            pictureBox11.MouseLeave += pictureBox_MouseLeave;
+            pictureBox11.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox12
             // 
@@ -313,6 +347,8 @@
             pictureBox12.TabIndex = 12;
             pictureBox12.TabStop = false;
             pictureBox12.Click += pictureBox_Click;
+            pictureBox12.MouseLeave += pictureBox_MouseLeave;
+            pictureBox12.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox13
             // 
@@ -325,6 +361,8 @@
             pictureBox13.TabIndex = 11;
             pictureBox13.TabStop = false;
             pictureBox13.Click += pictureBox_Click;
+            pictureBox13.MouseLeave += pictureBox_MouseLeave;
+            pictureBox13.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox14
             // 
@@ -337,6 +375,8 @@
             pictureBox14.TabIndex = 10;
             pictureBox14.TabStop = false;
             pictureBox14.Click += pictureBox_Click;
+            pictureBox14.MouseLeave += pictureBox_MouseLeave;
+            pictureBox14.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox15
             // 
@@ -349,6 +389,8 @@
             pictureBox15.TabIndex = 23;
             pictureBox15.TabStop = false;
             pictureBox15.Click += pictureBox_Click;
+            pictureBox15.MouseLeave += pictureBox_MouseLeave;
+            pictureBox15.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox16
             // 
@@ -361,6 +403,8 @@
             pictureBox16.TabIndex = 22;
             pictureBox16.TabStop = false;
             pictureBox16.Click += pictureBox_Click;
+            pictureBox16.MouseLeave += pictureBox_MouseLeave;
+            pictureBox16.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox17
             // 
@@ -373,6 +417,8 @@
             pictureBox17.TabIndex = 21;
             pictureBox17.TabStop = false;
             pictureBox17.Click += pictureBox_Click;
+            pictureBox17.MouseLeave += pictureBox_MouseLeave;
+            pictureBox17.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox18
             // 
@@ -385,6 +431,8 @@
             pictureBox18.TabIndex = 20;
             pictureBox18.TabStop = false;
             pictureBox18.Click += pictureBox_Click;
+            pictureBox18.MouseLeave += pictureBox_MouseLeave;
+            pictureBox18.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox19
             // 
@@ -397,6 +445,8 @@
             pictureBox19.TabIndex = 19;
             pictureBox19.TabStop = false;
             pictureBox19.Click += pictureBox_Click;
+            pictureBox19.MouseLeave += pictureBox_MouseLeave;
+            pictureBox19.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox20
             // 
@@ -409,6 +459,8 @@
             pictureBox20.TabIndex = 18;
             pictureBox20.TabStop = false;
             pictureBox20.Click += pictureBox_Click;
+            pictureBox20.MouseLeave += pictureBox_MouseLeave;
+            pictureBox20.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox21
             // 
@@ -421,6 +473,8 @@
             pictureBox21.TabIndex = 17;
             pictureBox21.TabStop = false;
             pictureBox21.Click += pictureBox_Click;
+            pictureBox21.MouseLeave += pictureBox_MouseLeave;
+            pictureBox21.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox22
             // 
@@ -433,6 +487,8 @@
             pictureBox22.TabIndex = 30;
             pictureBox22.TabStop = false;
             pictureBox22.Click += pictureBox_Click;
+            pictureBox22.MouseLeave += pictureBox_MouseLeave;
+            pictureBox22.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox23
             // 
@@ -445,6 +501,8 @@
             pictureBox23.TabIndex = 29;
             pictureBox23.TabStop = false;
             pictureBox23.Click += pictureBox_Click;
+            pictureBox23.MouseLeave += pictureBox_MouseLeave;
+            pictureBox23.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox24
             // 
@@ -457,6 +515,8 @@
             pictureBox24.TabIndex = 28;
             pictureBox24.TabStop = false;
             pictureBox24.Click += pictureBox_Click;
+            pictureBox24.MouseLeave += pictureBox_MouseLeave;
+            pictureBox24.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox25
             // 
@@ -469,6 +529,8 @@
             pictureBox25.TabIndex = 27;
             pictureBox25.TabStop = false;
             pictureBox25.Click += pictureBox_Click;
+            pictureBox25.MouseLeave += pictureBox_MouseLeave;
+            pictureBox25.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox26
             // 
@@ -481,6 +543,8 @@
             pictureBox26.TabIndex = 26;
             pictureBox26.TabStop = false;
             pictureBox26.Click += pictureBox_Click;
+            pictureBox26.MouseLeave += pictureBox_MouseLeave;
+            pictureBox26.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox27
             // 
@@ -493,6 +557,8 @@
             pictureBox27.TabIndex = 25;
             pictureBox27.TabStop = false;
             pictureBox27.Click += pictureBox_Click;
+            pictureBox27.MouseLeave += pictureBox_MouseLeave;
+            pictureBox27.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox28
             // 
@@ -505,6 +571,8 @@
             pictureBox28.TabIndex = 24;
             pictureBox28.TabStop = false;
             pictureBox28.Click += pictureBox_Click;
+            pictureBox28.MouseLeave += pictureBox_MouseLeave;
+            pictureBox28.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox29
             // 
@@ -517,6 +585,8 @@
             pictureBox29.TabIndex = 37;
             pictureBox29.TabStop = false;
             pictureBox29.Click += pictureBox_Click;
+            pictureBox29.MouseLeave += pictureBox_MouseLeave;
+            pictureBox29.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox30
             // 
@@ -529,6 +599,8 @@
             pictureBox30.TabIndex = 36;
             pictureBox30.TabStop = false;
             pictureBox30.Click += pictureBox_Click;
+            pictureBox30.MouseLeave += pictureBox_MouseLeave;
+            pictureBox30.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox31
             // 
@@ -541,6 +613,8 @@
             pictureBox31.TabIndex = 35;
             pictureBox31.TabStop = false;
             pictureBox31.Click += pictureBox_Click;
+            pictureBox31.MouseLeave += pictureBox_MouseLeave;
+            pictureBox31.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox32
             // 
@@ -553,6 +627,8 @@
             pictureBox32.TabIndex = 34;
             pictureBox32.TabStop = false;
             pictureBox32.Click += pictureBox_Click;
+            pictureBox32.MouseLeave += pictureBox_MouseLeave;
+            pictureBox32.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox33
             // 
@@ -565,6 +641,8 @@
             pictureBox33.TabIndex = 33;
             pictureBox33.TabStop = false;
             pictureBox33.Click += pictureBox_Click;
+            pictureBox33.MouseLeave += pictureBox_MouseLeave;
+            pictureBox33.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox34
             // 
@@ -577,6 +655,8 @@
             pictureBox34.TabIndex = 32;
             pictureBox34.TabStop = false;
             pictureBox34.Click += pictureBox_Click;
+            pictureBox34.MouseLeave += pictureBox_MouseLeave;
+            pictureBox34.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox35
             // 
@@ -589,6 +669,8 @@
             pictureBox35.TabIndex = 31;
             pictureBox35.TabStop = false;
             pictureBox35.Click += pictureBox_Click;
+            pictureBox35.MouseLeave += pictureBox_MouseLeave;
+            pictureBox35.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox36
             // 
@@ -601,6 +683,8 @@
             pictureBox36.TabIndex = 44;
             pictureBox36.TabStop = false;
             pictureBox36.Click += pictureBox_Click;
+            pictureBox36.MouseLeave += pictureBox_MouseLeave;
+            pictureBox36.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox37
             // 
@@ -613,6 +697,8 @@
             pictureBox37.TabIndex = 43;
             pictureBox37.TabStop = false;
             pictureBox37.Click += pictureBox_Click;
+            pictureBox37.MouseLeave += pictureBox_MouseLeave;
+            pictureBox37.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox38
             // 
@@ -625,6 +711,8 @@
             pictureBox38.TabIndex = 42;
             pictureBox38.TabStop = false;
             pictureBox38.Click += pictureBox_Click;
+            pictureBox38.MouseLeave += pictureBox_MouseLeave;
+            pictureBox38.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox39
             // 
@@ -637,6 +725,8 @@
             pictureBox39.TabIndex = 41;
             pictureBox39.TabStop = false;
             pictureBox39.Click += pictureBox_Click;
+            pictureBox39.MouseLeave += pictureBox_MouseLeave;
+            pictureBox39.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox40
             // 
@@ -649,6 +739,8 @@
             pictureBox40.TabIndex = 40;
             pictureBox40.TabStop = false;
             pictureBox40.Click += pictureBox_Click;
+            pictureBox40.MouseLeave += pictureBox_MouseLeave;
+            pictureBox40.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox41
             // 
@@ -661,6 +753,8 @@
             pictureBox41.TabIndex = 39;
             pictureBox41.TabStop = false;
             pictureBox41.Click += pictureBox_Click;
+            pictureBox41.MouseLeave += pictureBox_MouseLeave;
+            pictureBox41.MouseHover += pictureBox_MouseHover;
             // 
             // pictureBox42
             // 
@@ -673,6 +767,8 @@
             pictureBox42.TabIndex = 38;
             pictureBox42.TabStop = false;
             pictureBox42.Click += pictureBox_Click;
+            pictureBox42.MouseLeave += pictureBox_MouseLeave;
+            pictureBox42.MouseHover += pictureBox_MouseHover;
             // 
             // label1
             // 
@@ -701,11 +797,43 @@
             label3.TabIndex = 47;
             label3.Text = "label3";
             // 
+            // timer1
+            // 
+            timer1.Enabled = true;
+            timer1.Interval = 10;
+            timer1.Tick += timer1_Tick;
+            // 
+            // timer2
+            // 
+            timer2.Enabled = true;
+            timer2.Interval = 10;
+            timer2.Tick += timer2_Tick;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(689, 256);
+            label4.Name = "label4";
+            label4.Size = new Size(38, 15);
+            label4.TabIndex = 48;
+            label4.Text = "label4";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(689, 296);
+            label5.Name = "label5";
+            label5.Size = new Size(38, 15);
+            label5.TabIndex = 49;
+            label5.Text = "label5";
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label5);
+            Controls.Add(label4);
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -858,5 +986,9 @@
         private Label label1;
         private Label label2;
         private Label label3;
+        private System.Windows.Forms.Timer timer1;
+        private System.Windows.Forms.Timer timer2;
+        private Label label4;
+        private Label label5;
     }
 }

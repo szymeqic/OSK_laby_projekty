@@ -27,8 +27,8 @@ namespace OSK_proj_1
             this.interwal = 1000 / this.interwal;
 
             this.czas_1 = this.czas_2 = 60 * interwal; // 100 - bo co 10 milisekund sprawdzamy czas
-            this.label4.Text = "Gracz 1:" + Convert.ToString(this.czas_1/interwal) + " sekund";
-            this.label5.Text = "Gracz 2:" + Convert.ToString(this.czas_2/interwal) + " sekund";
+            this.label4.Text = "Gracz 1:" + Convert.ToString(this.czas_1 / interwal) + " sekund";
+            this.label5.Text = "Gracz 2:" + Convert.ToString(this.czas_2 / interwal) + " sekund";
 
             this.token_1 = Properties.Resources.cat_weed;
             this.token_2 = Properties.Resources.hot_dog;
@@ -52,7 +52,7 @@ namespace OSK_proj_1
             }
             this.label3.Text = "Nikt nie wygra³";
 
-            this.czas_1 = this.czas_2 = 60*this.interwal;
+            this.czas_1 = this.czas_2 = 60 * this.interwal;
         }
 
         private void zmien_gracza(int gracz)
@@ -354,7 +354,7 @@ namespace OSK_proj_1
                 return;
 
             this.czas_1--;
-            this.label4.Text = "Gracz 1:  " + Convert.ToString(this.czas_1/interwal) + " sekund";
+            this.label4.Text = "Gracz 1:  " + Convert.ToString(this.czas_1 / interwal) + " sekund";
             if (this.czas_1 == 0)
                 this.label3.Text = "Niedoczas gracza 1 - wygra³ gracz 2!";
 
@@ -366,9 +366,19 @@ namespace OSK_proj_1
                 return;
 
             this.czas_2--;
-            this.label5.Text = "Gracz 2:  " + Convert.ToString(this.czas_2/interwal) + " sekund";
+            this.label5.Text = "Gracz 2:  " + Convert.ToString(this.czas_2 / interwal) + " sekund";
             if (this.czas_2 == 0)
                 this.label3.Text = "Niedoczas gracza 2 - wygra³ gracz 1!";
+        }
+
+        private void gugiToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void kkToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.token_1 = Properties.Resources.solid_justynian.jpg;
         }
     }
 }

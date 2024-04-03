@@ -163,14 +163,16 @@ namespace OSK_proj_1
             // 
             gugiToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { kkToolStripMenuItem });
             gugiToolStripMenuItem.Name = "gugiToolStripMenuItem";
-            gugiToolStripMenuItem.Size = new Size(43, 20);
-            gugiToolStripMenuItem.Text = "gugi";
+            gugiToolStripMenuItem.Size = new Size(88, 20);
+            gugiToolStripMenuItem.Text = "Wybór skórki";
+            gugiToolStripMenuItem.Click += gugiToolStripMenuItem_Click;
             // 
             // kkToolStripMenuItem
             // 
             kkToolStripMenuItem.Name = "kkToolStripMenuItem";
-            kkToolStripMenuItem.Size = new Size(86, 22);
-            kkToolStripMenuItem.Text = "kk";
+            kkToolStripMenuItem.Size = new Size(180, 22);
+            kkToolStripMenuItem.Text = "Skórka I";
+            kkToolStripMenuItem.Click += kkToolStripMenuItem_Click;
             // 
             // button2
             // 

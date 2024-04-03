@@ -124,7 +124,25 @@
   <data name="cat-weed" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\cat-weed.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="Denar-Boleslawa" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\Denar-Boleslawa.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="hot_dog" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\hot_dog.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="nefretete" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\nefretete.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="roze_heliogabala" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\roze_heliogabala.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="rzym" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\rzym.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="sarmatia" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\sarmatia.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="solid_justynian" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\solid_justynian.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
 </root>

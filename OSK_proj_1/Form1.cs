@@ -33,6 +33,7 @@ namespace OSK_proj_1
             this.token_1 = Properties.Resources.cat_weed;
             this.token_2 = Properties.Resources.hot_dog;
             this.token_tlo = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
+            this.BackgroundImage = this.tlo = Properties.Resources.sarmatia;
 
         }
 
@@ -371,14 +372,42 @@ namespace OSK_proj_1
                 this.label3.Text = "Niedoczas gracza 2 - wygra³ gracz 1!";
         }
 
-        private void gugiToolStripMenuItem_Click(object sender, EventArgs e)
+        private void aktualizuj_plansze()
         {
+            this.BackgroundImage = this.tlo;
+            
+            for (int i =0; i<42; i++)
+            {
+                switch (this.stan_kafli[i])
+                {
+                    case 0:
+                        num_na_zdj(i).BackgroundImage = this.token_tlo;
+                        break;
 
+                    case 1:
+                        num_na_zdj(i).BackgroundImage = this.token_1;
+                        break;
+
+                    case 2:
+                        num_na_zdj(i).BackgroundImage = this.token_2;
+                        break;
+
+                    default:
+                        break;
+
+                }
+            }
+            return;
         }
 
         private void kkToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.token_1 = Properties.Resources.solid_justynian.jpg;
+            this.token_1 = Properties.Resources.solid_justynian;
+            this.token_2 = Properties.Resources.Denar_Boleslawa;
+            this.tlo = Properties.Resources.roze_heliogabala;
+            this.token_tlo = Properties.Resources.nefretete;
+
+            aktualizuj_plansze();
         }
     }
 }

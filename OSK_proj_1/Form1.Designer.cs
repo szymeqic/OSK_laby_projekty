@@ -10,7 +10,7 @@ namespace OSK_proj_1
 
         private int[] stan_kafli;
         private int akt_gracz;
-        Image token_1, token_2, token_tlo;
+        Image token_1, token_2, token_tlo,tlo;
         private  int czas_1, czas_2;
         private int interwal;
         
@@ -165,7 +165,6 @@ namespace OSK_proj_1
             gugiToolStripMenuItem.Name = "gugiToolStripMenuItem";
             gugiToolStripMenuItem.Size = new Size(88, 20);
             gugiToolStripMenuItem.Text = "Wybór skórki";
-            gugiToolStripMenuItem.Click += gugiToolStripMenuItem_Click;
             // 
             // kkToolStripMenuItem
             // 

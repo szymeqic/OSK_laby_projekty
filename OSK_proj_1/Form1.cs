@@ -221,6 +221,8 @@ namespace OSK_proj_1
                     if (wygrana() != 0)
                     {
                         this.label3.Text = "Zwyciê¿y³ gracz 1";
+                        this.okno_wygrana = new Form2(1);
+                        this.okno_wygrana.ShowDialog();
                     }
                     zmien_gracza(2);
                 }
@@ -232,6 +234,8 @@ namespace OSK_proj_1
                     if (wygrana() != 0)
                     {
                         this.label3.Text = "Zwyciê¿y³ gracz 2";
+                        this.okno_wygrana = new Form2(2);
+                        this.okno_wygrana.ShowDialog();
                     }
                     zmien_gracza(1);
 

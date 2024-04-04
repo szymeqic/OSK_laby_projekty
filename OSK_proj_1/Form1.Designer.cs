@@ -13,6 +13,8 @@ namespace OSK_proj_1
         Image token_1, token_2, token_tlo,tlo;
         private  int czas_1, czas_2;
         private int interwal;
+
+        public Form2 okno_wygrana;
         
 
         /// </summary>

@@ -13,7 +13,7 @@ namespace OSK_proj_1
         Image token_1, token_2, token_tlo,tlo;
         private  int czas_1, czas_2;
         private int interwal;
-
+        public MessageBox okienko_wygrana;
         public Form2 okno_wygrana;
         
 
@@ -44,6 +44,9 @@ namespace OSK_proj_1
             components = new System.ComponentModel.Container();
             button1 = new Button();
             menuStrip1 = new MenuStrip();
+            graToolStripMenuItem = new ToolStripMenuItem();
+            resetToolStripMenuItem = new ToolStripMenuItem();
+            zakończToolStripMenuItem = new ToolStripMenuItem();
             gugiToolStripMenuItem = new ToolStripMenuItem();
             kkToolStripMenuItem = new ToolStripMenuItem();
             button2 = new Button();
@@ -96,6 +99,8 @@ namespace OSK_proj_1
             timer2 = new System.Windows.Forms.Timer(components);
             label4 = new Label();
             label5 = new Label();
+            progressBar1 = new ProgressBar();
+            progressBar2 = new ProgressBar();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -143,9 +148,10 @@ namespace OSK_proj_1
             // 
             // button1
             // 
-            button1.Location = new Point(597, 205);
+            button1.Location = new Point(1280, 870);
+            button1.Margin = new Padding(6);
             button1.Name = "button1";
-            button1.Size = new Size(75, 23);
+            button1.Size = new Size(169, 49);
             button1.TabIndex = 0;
             button1.Text = "button1";
             button1.UseVisualStyleBackColor = true;
@@ -154,32 +160,56 @@ namespace OSK_proj_1
             // menuStrip1
             // 
             menuStrip1.BackgroundImageLayout = ImageLayout.Stretch;
-            menuStrip1.Items.AddRange(new ToolStripItem[] { gugiToolStripMenuItem });
+            menuStrip1.ImageScalingSize = new Size(32, 32);
+            menuStrip1.Items.AddRange(new ToolStripItem[] { graToolStripMenuItem, gugiToolStripMenuItem });
             menuStrip1.Location = new Point(0, 0);
             menuStrip1.Name = "menuStrip1";
-            menuStrip1.Size = new Size(800, 24);
+            menuStrip1.Padding = new Padding(11, 4, 0, 4);
+            menuStrip1.Size = new Size(1486, 44);
             menuStrip1.TabIndex = 1;
             menuStrip1.Text = "menuStrip1";
+            // 
+            // graToolStripMenuItem
+            // 
+            graToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { resetToolStripMenuItem, zakończToolStripMenuItem });
+            graToolStripMenuItem.Name = "graToolStripMenuItem";
+            graToolStripMenuItem.Size = new Size(70, 36);
+            graToolStripMenuItem.Text = "Gra";
+            // 
+            // resetToolStripMenuItem
+            // 
+            resetToolStripMenuItem.Name = "resetToolStripMenuItem";
+            resetToolStripMenuItem.Size = new Size(235, 44);
+            resetToolStripMenuItem.Text = "Reset";
+            resetToolStripMenuItem.Click += reset;
+            // 
+            // zakończToolStripMenuItem
+            // 
+            zakończToolStripMenuItem.Name = "zakończToolStripMenuItem";
+            zakończToolStripMenuItem.Size = new Size(235, 44);
+            zakończToolStripMenuItem.Text = "Zakończ";
+            zakończToolStripMenuItem.Click += zakończToolStripMenuItem_Click;
             // 
             // gugiToolStripMenuItem
             // 
             gugiToolStripMenuItem.DropDownItems.AddRange(new ToolStripItem[] { kkToolStripMenuItem });
             gugiToolStripMenuItem.Name = "gugiToolStripMenuItem";
-            gugiToolStripMenuItem.Size = new Size(88, 20);
+            gugiToolStripMenuItem.Size = new Size(173, 36);
             gugiToolStripMenuItem.Text = "Wybór skórki";
             // 
             // kkToolStripMenuItem
             // 
             kkToolStripMenuItem.Name = "kkToolStripMenuItem";
-            kkToolStripMenuItem.Size = new Size(180, 22);
+            kkToolStripMenuItem.Size = new Size(231, 44);
             kkToolStripMenuItem.Text = "Skórka I";
             kkToolStripMenuItem.Click += kkToolStripMenuItem_Click;
             // 
             // button2
             // 
-            button2.Location = new Point(597, 248);
+            button2.Location = new Point(1009, 870);
+            button2.Margin = new Padding(6);
             button2.Name = "button2";
-            button2.Size = new Size(75, 23);
+            button2.Size = new Size(139, 49);
             button2.TabIndex = 2;
             button2.Text = "button2";
             button2.UseVisualStyleBackColor = true;
@@ -190,9 +220,10 @@ namespace OSK_proj_1
             pictureBox1.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox1.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox1.Location = new Point(426, 371);
+            pictureBox1.Location = new Point(791, 791);
+            pictureBox1.Margin = new Padding(6);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(60, 60);
+            pictureBox1.Size = new Size(111, 128);
             pictureBox1.TabIndex = 3;
             pictureBox1.TabStop = false;
             pictureBox1.Click += pictureBox_Click;
@@ -204,9 +235,10 @@ namespace OSK_proj_1
             pictureBox2.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox2.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox2.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox2.Location = new Point(360, 371);
+            pictureBox2.Location = new Point(669, 791);
+            pictureBox2.Margin = new Padding(6);
             pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(60, 60);
+            pictureBox2.Size = new Size(111, 128);
             pictureBox2.TabIndex = 4;
             pictureBox2.TabStop = false;
             pictureBox2.Click += pictureBox_Click;
@@ -218,9 +250,10 @@ namespace OSK_proj_1
             pictureBox3.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox3.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox3.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox3.Location = new Point(294, 371);
+            pictureBox3.Location = new Point(546, 791);
+            pictureBox3.Margin = new Padding(6);
             pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(60, 60);
+            pictureBox3.Size = new Size(111, 128);
             pictureBox3.TabIndex = 5;
             pictureBox3.TabStop = false;
             pictureBox3.Click += pictureBox_Click;
@@ -232,9 +265,10 @@ namespace OSK_proj_1
             pictureBox4.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox4.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox4.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox4.Location = new Point(228, 371);
+            pictureBox4.Location = new Point(423, 791);
+            pictureBox4.Margin = new Padding(6);
             pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(60, 60);
+            pictureBox4.Size = new Size(111, 128);
             pictureBox4.TabIndex = 6;
             pictureBox4.TabStop = false;
             pictureBox4.Click += pictureBox_Click;
@@ -246,9 +280,10 @@ namespace OSK_proj_1
             pictureBox5.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox5.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox5.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox5.Location = new Point(162, 371);
+            pictureBox5.Location = new Point(301, 791);
+            pictureBox5.Margin = new Padding(6);
             pictureBox5.Name = "pictureBox5";
-            pictureBox5.Size = new Size(60, 60);
+            pictureBox5.Size = new Size(111, 128);
             pictureBox5.TabIndex = 7;
             pictureBox5.TabStop = false;
             pictureBox5.Click += pictureBox_Click;
@@ -260,9 +295,10 @@ namespace OSK_proj_1
             pictureBox6.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox6.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox6.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox6.Location = new Point(96, 371);
+            pictureBox6.Location = new Point(178, 791);
+            pictureBox6.Margin = new Padding(6);
             pictureBox6.Name = "pictureBox6";
-            pictureBox6.Size = new Size(60, 60);
+            pictureBox6.Size = new Size(111, 128);
             pictureBox6.TabIndex = 8;
             pictureBox6.TabStop = false;
             pictureBox6.Click += pictureBox_Click;
@@ -274,9 +310,10 @@ namespace OSK_proj_1
             pictureBox7.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox7.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox7.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox7.Location = new Point(30, 371);
+            pictureBox7.Location = new Point(56, 791);
+            pictureBox7.Margin = new Padding(6);
             pictureBox7.Name = "pictureBox7";
-            pictureBox7.Size = new Size(60, 60);
+            pictureBox7.Size = new Size(111, 128);
             pictureBox7.TabIndex = 9;
             pictureBox7.TabStop = false;
             pictureBox7.Click += pictureBox_Click;
@@ -288,9 +325,10 @@ namespace OSK_proj_1
             pictureBox8.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox8.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox8.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox8.Location = new Point(426, 305);
+            pictureBox8.Location = new Point(791, 651);
+            pictureBox8.Margin = new Padding(6);
             pictureBox8.Name = "pictureBox8";
-            pictureBox8.Size = new Size(60, 60);
+            pictureBox8.Size = new Size(111, 128);
             pictureBox8.TabIndex = 16;
             pictureBox8.TabStop = false;
             pictureBox8.Click += pictureBox_Click;
@@ -302,9 +340,10 @@ namespace OSK_proj_1
             pictureBox9.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox9.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox9.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox9.Location = new Point(360, 305);
+            pictureBox9.Location = new Point(669, 651);
+            pictureBox9.Margin = new Padding(6);
             pictureBox9.Name = "pictureBox9";
-            pictureBox9.Size = new Size(60, 60);
+            pictureBox9.Size = new Size(111, 128);
             pictureBox9.TabIndex = 15;
             pictureBox9.TabStop = false;
             pictureBox9.Click += pictureBox_Click;
@@ -316,9 +355,10 @@ namespace OSK_proj_1
             pictureBox10.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox10.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox10.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox10.Location = new Point(294, 305);
+            pictureBox10.Location = new Point(546, 651);
+            pictureBox10.Margin = new Padding(6);
             pictureBox10.Name = "pictureBox10";
-            pictureBox10.Size = new Size(60, 60);
+            pictureBox10.Size = new Size(111, 128);
             pictureBox10.TabIndex = 14;
             pictureBox10.TabStop = false;
             pictureBox10.Click += pictureBox_Click;
@@ -330,9 +370,10 @@ namespace OSK_proj_1
             pictureBox11.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox11.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox11.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox11.Location = new Point(228, 305);
+            pictureBox11.Location = new Point(423, 651);
+            pictureBox11.Margin = new Padding(6);
             pictureBox11.Name = "pictureBox11";
-            pictureBox11.Size = new Size(60, 60);
+            pictureBox11.Size = new Size(111, 128);
             pictureBox11.TabIndex = 13;
             pictureBox11.TabStop = false;
             pictureBox11.Click += pictureBox_Click;
@@ -344,9 +385,10 @@ namespace OSK_proj_1
             pictureBox12.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox12.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox12.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox12.Location = new Point(162, 305);
+            pictureBox12.Location = new Point(301, 651);
+            pictureBox12.Margin = new Padding(6);
             pictureBox12.Name = "pictureBox12";
-            pictureBox12.Size = new Size(60, 60);
+            pictureBox12.Size = new Size(111, 128);
             pictureBox12.TabIndex = 12;
             pictureBox12.TabStop = false;
             pictureBox12.Click += pictureBox_Click;
@@ -358,9 +400,10 @@ namespace OSK_proj_1
             pictureBox13.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox13.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox13.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox13.Location = new Point(96, 305);
+            pictureBox13.Location = new Point(178, 651);
+            pictureBox13.Margin = new Padding(6);
             pictureBox13.Name = "pictureBox13";
-            pictureBox13.Size = new Size(60, 60);
+            pictureBox13.Size = new Size(111, 128);
             pictureBox13.TabIndex = 11;
             pictureBox13.TabStop = false;
             pictureBox13.Click += pictureBox_Click;
@@ -372,9 +415,10 @@ namespace OSK_proj_1
             pictureBox14.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox14.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox14.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox14.Location = new Point(30, 305);
+            pictureBox14.Location = new Point(56, 651);
+            pictureBox14.Margin = new Padding(6);
             pictureBox14.Name = "pictureBox14";
-            pictureBox14.Size = new Size(60, 60);
+            pictureBox14.Size = new Size(111, 128);
             pictureBox14.TabIndex = 10;
             pictureBox14.TabStop = false;
             pictureBox14.Click += pictureBox_Click;
@@ -386,9 +430,10 @@ namespace OSK_proj_1
             pictureBox15.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox15.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox15.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox15.Location = new Point(426, 234);
+            pictureBox15.Location = new Point(791, 499);
+            pictureBox15.Margin = new Padding(6);
             pictureBox15.Name = "pictureBox15";
-            pictureBox15.Size = new Size(60, 60);
+            pictureBox15.Size = new Size(111, 128);
             pictureBox15.TabIndex = 23;
             pictureBox15.TabStop = false;
             pictureBox15.Click += pictureBox_Click;
@@ -400,9 +445,10 @@ namespace OSK_proj_1
             pictureBox16.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox16.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox16.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox16.Location = new Point(360, 234);
+            pictureBox16.Location = new Point(669, 499);
+            pictureBox16.Margin = new Padding(6);
             pictureBox16.Name = "pictureBox16";
-            pictureBox16.Size = new Size(60, 60);
+            pictureBox16.Size = new Size(111, 128);
             pictureBox16.TabIndex = 22;
             pictureBox16.TabStop = false;
             pictureBox16.Click += pictureBox_Click;
@@ -414,9 +460,10 @@ namespace OSK_proj_1
             pictureBox17.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox17.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox17.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox17.Location = new Point(294, 234);
+            pictureBox17.Location = new Point(546, 499);
+            pictureBox17.Margin = new Padding(6);
             pictureBox17.Name = "pictureBox17";
-            pictureBox17.Size = new Size(60, 60);
+            pictureBox17.Size = new Size(111, 128);
             pictureBox17.TabIndex = 21;
             pictureBox17.TabStop = false;
             pictureBox17.Click += pictureBox_Click;
@@ -428,9 +475,10 @@ namespace OSK_proj_1
             pictureBox18.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox18.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox18.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox18.Location = new Point(228, 234);
+            pictureBox18.Location = new Point(423, 499);
+            pictureBox18.Margin = new Padding(6);
             pictureBox18.Name = "pictureBox18";
-            pictureBox18.Size = new Size(60, 60);
+            pictureBox18.Size = new Size(111, 128);
             pictureBox18.TabIndex = 20;
             pictureBox18.TabStop = false;
             pictureBox18.Click += pictureBox_Click;
@@ -442,9 +490,10 @@ namespace OSK_proj_1
             pictureBox19.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox19.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox19.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox19.Location = new Point(162, 234);
+            pictureBox19.Location = new Point(301, 499);
+            pictureBox19.Margin = new Padding(6);
             pictureBox19.Name = "pictureBox19";
-            pictureBox19.Size = new Size(60, 60);
+            pictureBox19.Size = new Size(111, 128);
             pictureBox19.TabIndex = 19;
             pictureBox19.TabStop = false;
             pictureBox19.Click += pictureBox_Click;
@@ -456,9 +505,10 @@ namespace OSK_proj_1
             pictureBox20.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox20.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox20.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox20.Location = new Point(96, 234);
+            pictureBox20.Location = new Point(178, 499);
+            pictureBox20.Margin = new Padding(6);
             pictureBox20.Name = "pictureBox20";
-            pictureBox20.Size = new Size(60, 60);
+            pictureBox20.Size = new Size(111, 128);
             pictureBox20.TabIndex = 18;
             pictureBox20.TabStop = false;
             pictureBox20.Click += pictureBox_Click;
@@ -470,9 +520,10 @@ namespace OSK_proj_1
             pictureBox21.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox21.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox21.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox21.Location = new Point(30, 234);
+            pictureBox21.Location = new Point(56, 499);
+            pictureBox21.Margin = new Padding(6);
             pictureBox21.Name = "pictureBox21";
-            pictureBox21.Size = new Size(60, 60);
+            pictureBox21.Size = new Size(111, 128);
             pictureBox21.TabIndex = 17;
             pictureBox21.TabStop = false;
             pictureBox21.Click += pictureBox_Click;
@@ -484,9 +535,10 @@ namespace OSK_proj_1
             pictureBox22.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox22.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox22.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox22.Location = new Point(426, 168);
+            pictureBox22.Location = new Point(791, 358);
+            pictureBox22.Margin = new Padding(6);
             pictureBox22.Name = "pictureBox22";
-            pictureBox22.Size = new Size(60, 60);
+            pictureBox22.Size = new Size(111, 128);
             pictureBox22.TabIndex = 30;
             pictureBox22.TabStop = false;
             pictureBox22.Click += pictureBox_Click;
@@ -498,9 +550,10 @@ namespace OSK_proj_1
             pictureBox23.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox23.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox23.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox23.Location = new Point(360, 168);
+            pictureBox23.Location = new Point(669, 358);
+            pictureBox23.Margin = new Padding(6);
             pictureBox23.Name = "pictureBox23";
-            pictureBox23.Size = new Size(60, 60);
+            pictureBox23.Size = new Size(111, 128);
             pictureBox23.TabIndex = 29;
             pictureBox23.TabStop = false;
             pictureBox23.Click += pictureBox_Click;
@@ -512,9 +565,10 @@ namespace OSK_proj_1
             pictureBox24.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox24.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox24.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox24.Location = new Point(294, 168);
+            pictureBox24.Location = new Point(546, 358);
+            pictureBox24.Margin = new Padding(6);
             pictureBox24.Name = "pictureBox24";
-            pictureBox24.Size = new Size(60, 60);
+            pictureBox24.Size = new Size(111, 128);
             pictureBox24.TabIndex = 28;
             pictureBox24.TabStop = false;
             pictureBox24.Click += pictureBox_Click;
@@ -526,9 +580,10 @@ namespace OSK_proj_1
             pictureBox25.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox25.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox25.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox25.Location = new Point(228, 168);
+            pictureBox25.Location = new Point(423, 358);
+            pictureBox25.Margin = new Padding(6);
             pictureBox25.Name = "pictureBox25";
-            pictureBox25.Size = new Size(60, 60);
+            pictureBox25.Size = new Size(111, 128);
             pictureBox25.TabIndex = 27;
             pictureBox25.TabStop = false;
             pictureBox25.Click += pictureBox_Click;
@@ -540,9 +595,10 @@ namespace OSK_proj_1
             pictureBox26.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox26.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox26.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox26.Location = new Point(162, 168);
+            pictureBox26.Location = new Point(301, 358);
+            pictureBox26.Margin = new Padding(6);
             pictureBox26.Name = "pictureBox26";
-            pictureBox26.Size = new Size(60, 60);
+            pictureBox26.Size = new Size(111, 128);
             pictureBox26.TabIndex = 26;
             pictureBox26.TabStop = false;
             pictureBox26.Click += pictureBox_Click;
@@ -554,9 +610,10 @@ namespace OSK_proj_1
             pictureBox27.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox27.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox27.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox27.Location = new Point(96, 168);
+            pictureBox27.Location = new Point(178, 358);
+            pictureBox27.Margin = new Padding(6);
             pictureBox27.Name = "pictureBox27";
-            pictureBox27.Size = new Size(60, 60);
+            pictureBox27.Size = new Size(111, 128);
             pictureBox27.TabIndex = 25;
             pictureBox27.TabStop = false;
             pictureBox27.Click += pictureBox_Click;
@@ -568,9 +625,10 @@ namespace OSK_proj_1
             pictureBox28.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox28.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox28.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox28.Location = new Point(30, 168);
+            pictureBox28.Location = new Point(56, 358);
+            pictureBox28.Margin = new Padding(6);
             pictureBox28.Name = "pictureBox28";
-            pictureBox28.Size = new Size(60, 60);
+            pictureBox28.Size = new Size(111, 128);
             pictureBox28.TabIndex = 24;
             pictureBox28.TabStop = false;
             pictureBox28.Click += pictureBox_Click;
@@ -582,9 +640,10 @@ namespace OSK_proj_1
             pictureBox29.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox29.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox29.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox29.Location = new Point(426, 102);
+            pictureBox29.Location = new Point(791, 218);
+            pictureBox29.Margin = new Padding(6);
             pictureBox29.Name = "pictureBox29";
-            pictureBox29.Size = new Size(60, 60);
+            pictureBox29.Size = new Size(111, 128);
             pictureBox29.TabIndex = 37;
             pictureBox29.TabStop = false;
             pictureBox29.Click += pictureBox_Click;
@@ -596,9 +655,10 @@ namespace OSK_proj_1
             pictureBox30.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox30.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox30.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox30.Location = new Point(360, 102);
+            pictureBox30.Location = new Point(669, 218);
+            pictureBox30.Margin = new Padding(6);
             pictureBox30.Name = "pictureBox30";
-            pictureBox30.Size = new Size(60, 60);
+            pictureBox30.Size = new Size(111, 128);
             pictureBox30.TabIndex = 36;
             pictureBox30.TabStop = false;
             pictureBox30.Click += pictureBox_Click;
@@ -610,9 +670,10 @@ namespace OSK_proj_1
             pictureBox31.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox31.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox31.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox31.Location = new Point(294, 102);
+            pictureBox31.Location = new Point(546, 218);
+            pictureBox31.Margin = new Padding(6);
             pictureBox31.Name = "pictureBox31";
-            pictureBox31.Size = new Size(60, 60);
+            pictureBox31.Size = new Size(111, 128);
             pictureBox31.TabIndex = 35;
             pictureBox31.TabStop = false;
             pictureBox31.Click += pictureBox_Click;
@@ -624,9 +685,10 @@ namespace OSK_proj_1
             pictureBox32.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox32.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox32.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox32.Location = new Point(228, 102);
+            pictureBox32.Location = new Point(423, 218);
+            pictureBox32.Margin = new Padding(6);
             pictureBox32.Name = "pictureBox32";
-            pictureBox32.Size = new Size(60, 60);
+            pictureBox32.Size = new Size(111, 128);
             pictureBox32.TabIndex = 34;
             pictureBox32.TabStop = false;
             pictureBox32.Click += pictureBox_Click;
@@ -638,9 +700,10 @@ namespace OSK_proj_1
             pictureBox33.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox33.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox33.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox33.Location = new Point(162, 102);
+            pictureBox33.Location = new Point(301, 218);
+            pictureBox33.Margin = new Padding(6);
             pictureBox33.Name = "pictureBox33";
-            pictureBox33.Size = new Size(60, 60);
+            pictureBox33.Size = new Size(111, 128);
             pictureBox33.TabIndex = 33;
             pictureBox33.TabStop = false;
             pictureBox33.Click += pictureBox_Click;
@@ -652,9 +715,10 @@ namespace OSK_proj_1
             pictureBox34.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox34.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox34.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox34.Location = new Point(96, 102);
+            pictureBox34.Location = new Point(178, 218);
+            pictureBox34.Margin = new Padding(6);
             pictureBox34.Name = "pictureBox34";
-            pictureBox34.Size = new Size(60, 60);
+            pictureBox34.Size = new Size(111, 128);
             pictureBox34.TabIndex = 32;
             pictureBox34.TabStop = false;
             pictureBox34.Click += pictureBox_Click;
@@ -666,9 +730,10 @@ namespace OSK_proj_1
             pictureBox35.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox35.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox35.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox35.Location = new Point(30, 102);
+            pictureBox35.Location = new Point(56, 218);
+            pictureBox35.Margin = new Padding(6);
             pictureBox35.Name = "pictureBox35";
-            pictureBox35.Size = new Size(60, 60);
+            pictureBox35.Size = new Size(111, 128);
             pictureBox35.TabIndex = 31;
             pictureBox35.TabStop = false;
             pictureBox35.Click += pictureBox_Click;
@@ -680,9 +745,10 @@ namespace OSK_proj_1
             pictureBox36.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox36.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox36.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox36.Location = new Point(426, 36);
+            pictureBox36.Location = new Point(791, 77);
+            pictureBox36.Margin = new Padding(6);
             pictureBox36.Name = "pictureBox36";
-            pictureBox36.Size = new Size(60, 60);
+            pictureBox36.Size = new Size(111, 128);
             pictureBox36.TabIndex = 44;
             pictureBox36.TabStop = false;
             pictureBox36.Click += pictureBox_Click;
@@ -694,9 +760,10 @@ namespace OSK_proj_1
             pictureBox37.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox37.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox37.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox37.Location = new Point(360, 36);
+            pictureBox37.Location = new Point(669, 77);
+            pictureBox37.Margin = new Padding(6);
             pictureBox37.Name = "pictureBox37";
-            pictureBox37.Size = new Size(60, 60);
+            pictureBox37.Size = new Size(111, 128);
             pictureBox37.TabIndex = 43;
             pictureBox37.TabStop = false;
             pictureBox37.Click += pictureBox_Click;
@@ -708,9 +775,10 @@ namespace OSK_proj_1
             pictureBox38.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox38.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox38.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox38.Location = new Point(294, 36);
+            pictureBox38.Location = new Point(546, 77);
+            pictureBox38.Margin = new Padding(6);
             pictureBox38.Name = "pictureBox38";
-            pictureBox38.Size = new Size(60, 60);
+            pictureBox38.Size = new Size(111, 128);
             pictureBox38.TabIndex = 42;
             pictureBox38.TabStop = false;
             pictureBox38.Click += pictureBox_Click;
@@ -722,9 +790,10 @@ namespace OSK_proj_1
             pictureBox39.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox39.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox39.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox39.Location = new Point(228, 36);
+            pictureBox39.Location = new Point(423, 77);
+            pictureBox39.Margin = new Padding(6);
             pictureBox39.Name = "pictureBox39";
-            pictureBox39.Size = new Size(60, 60);
+            pictureBox39.Size = new Size(111, 128);
             pictureBox39.TabIndex = 41;
             pictureBox39.TabStop = false;
             pictureBox39.Click += pictureBox_Click;
@@ -736,9 +805,10 @@ namespace OSK_proj_1
             pictureBox40.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox40.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox40.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox40.Location = new Point(162, 36);
+            pictureBox40.Location = new Point(301, 77);
+            pictureBox40.Margin = new Padding(6);
             pictureBox40.Name = "pictureBox40";
-            pictureBox40.Size = new Size(60, 60);
+            pictureBox40.Size = new Size(111, 128);
             pictureBox40.TabIndex = 40;
             pictureBox40.TabStop = false;
             pictureBox40.Click += pictureBox_Click;
@@ -750,9 +820,10 @@ namespace OSK_proj_1
             pictureBox41.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox41.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox41.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox41.Location = new Point(96, 36);
+            pictureBox41.Location = new Point(178, 77);
+            pictureBox41.Margin = new Padding(6);
             pictureBox41.Name = "pictureBox41";
-            pictureBox41.Size = new Size(60, 60);
+            pictureBox41.Size = new Size(111, 128);
             pictureBox41.TabIndex = 39;
             pictureBox41.TabStop = false;
             pictureBox41.Click += pictureBox_Click;
@@ -764,9 +835,10 @@ namespace OSK_proj_1
             pictureBox42.BackgroundImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             pictureBox42.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox42.InitialImage = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-            pictureBox42.Location = new Point(30, 36);
+            pictureBox42.Location = new Point(56, 77);
+            pictureBox42.Margin = new Padding(6);
             pictureBox42.Name = "pictureBox42";
-            pictureBox42.Size = new Size(60, 60);
+            pictureBox42.Size = new Size(111, 128);
             pictureBox42.TabIndex = 38;
             pictureBox42.TabStop = false;
             pictureBox42.Click += pictureBox_Click;
@@ -776,27 +848,30 @@ namespace OSK_proj_1
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(624, 81);
+            label1.Location = new Point(1159, 173);
+            label1.Margin = new Padding(6, 0, 6, 0);
             label1.Name = "label1";
-            label1.Size = new Size(38, 15);
+            label1.Size = new Size(78, 32);
             label1.TabIndex = 45;
             label1.Text = "label1";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(624, 129);
+            label2.Location = new Point(1159, 275);
+            label2.Margin = new Padding(6, 0, 6, 0);
             label2.Name = "label2";
-            label2.Size = new Size(38, 15);
+            label2.Size = new Size(78, 32);
             label2.TabIndex = 46;
             label2.Text = "label2";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(616, 349);
+            label3.Location = new Point(992, 663);
+            label3.Margin = new Padding(6, 0, 6, 0);
             label3.Name = "label3";
-            label3.Size = new Size(38, 15);
+            label3.Size = new Size(78, 32);
             label3.TabIndex = 47;
             label3.Text = "label3";
             // 
@@ -815,26 +890,45 @@ namespace OSK_proj_1
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(689, 256);
+            label4.Location = new Point(992, 382);
+            label4.Margin = new Padding(6, 0, 6, 0);
             label4.Name = "label4";
-            label4.Size = new Size(38, 15);
+            label4.Size = new Size(78, 32);
             label4.TabIndex = 48;
             label4.Text = "label4";
             // 
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(689, 296);
+            label5.Location = new Point(992, 489);
+            label5.Margin = new Padding(6, 0, 6, 0);
             label5.Name = "label5";
-            label5.Size = new Size(38, 15);
+            label5.Size = new Size(78, 32);
             label5.TabIndex = 49;
             label5.Text = "label5";
             // 
+            // progressBar1
+            // 
+            progressBar1.Location = new Point(992, 426);
+            progressBar1.Name = "progressBar1";
+            progressBar1.Size = new Size(434, 46);
+            progressBar1.TabIndex = 50;
+            progressBar1.Click += progressBar1_Click;
+            // 
+            // progressBar2
+            // 
+            progressBar2.Location = new Point(992, 536);
+            progressBar2.Name = "progressBar2";
+            progressBar2.Size = new Size(434, 46);
+            progressBar2.TabIndex = 51;
+            // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1486, 960);
+            Controls.Add(progressBar2);
+            Controls.Add(progressBar1);
             Controls.Add(label5);
             Controls.Add(label4);
             Controls.Add(label3);
@@ -886,6 +980,7 @@ namespace OSK_proj_1
             Controls.Add(button1);
             Controls.Add(menuStrip1);
             MainMenuStrip = menuStrip1;
+            Margin = new Padding(6);
             Name = "Form1";
             Text = "Form1";
             Load += Form1_Load;
@@ -993,5 +1088,10 @@ namespace OSK_proj_1
         private System.Windows.Forms.Timer timer2;
         private Label label4;
         private Label label5;
+        private ToolStripMenuItem graToolStripMenuItem;
+        private ToolStripMenuItem resetToolStripMenuItem;
+        private ToolStripMenuItem zakończToolStripMenuItem;
+        private ProgressBar progressBar1;
+        private ProgressBar progressBar2;
     }
 }

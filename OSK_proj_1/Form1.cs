@@ -35,6 +35,11 @@ namespace OSK_proj_1
             this.token_tlo = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
             this.BackgroundImage = this.tlo = Properties.Resources.sarmatia;
 
+            this.progressBar1.Maximum = this.czas_1;
+            this.progressBar1.Minimum = 0;
+
+            this.progressBar2.Maximum = this.czas_2;
+            this.progressBar2.Minimum = 0;
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -54,6 +59,9 @@ namespace OSK_proj_1
             this.label3.Text = "Nikt nie wygra³";
 
             this.czas_1 = this.czas_2 = 60 * this.interwal;
+            this.progressBar1.Value = 0;
+            this.progressBar2.Value = 0;
+            MessageBox.Show("Gra zosta³a zresetowana");
         }
 
         private void zmien_gracza(int gracz)
@@ -199,6 +207,12 @@ namespace OSK_proj_1
             }
         }
 
+        public void timers_stop()
+        {
+            this.timer1.Stop();  
+            this.timer2.Stop();
+        }
+
         private void pictureBox_Click(object sender, EventArgs e)
         {
             //funkcja gugu
@@ -223,6 +237,8 @@ namespace OSK_proj_1
                         this.label3.Text = "Zwyciê¿y³ gracz 1";
                         this.okno_wygrana = new Form2(1);
                         this.okno_wygrana.ShowDialog();
+                        MessageBox.Show("Zwyciê¿y³ gracz 1");
+                        timers_stop();
                     }
                     zmien_gracza(2);
                 }
@@ -236,6 +252,7 @@ namespace OSK_proj_1
                         this.label3.Text = "Zwyciê¿y³ gracz 2";
                         this.okno_wygrana = new Form2(2);
                         this.okno_wygrana.ShowDialog();
+                        this.timers_stop();
                     }
                     zmien_gracza(1);
 
@@ -351,7 +368,7 @@ namespace OSK_proj_1
             }
             return;
         }
-
+    
         private void timer1_Tick(object sender, EventArgs e)
         {
             //timer gracza 1
@@ -360,7 +377,9 @@ namespace OSK_proj_1
 
             this.czas_1--;
             this.label4.Text = "Gracz 1:  " + Convert.ToString(this.czas_1 / interwal) + " sekund";
+            this.progressBar1.Increment(1);
             if (this.czas_1 == 0)
+                timers_stop();
                 this.label3.Text = "Niedoczas gracza 1 - wygra³ gracz 2!";
 
         }
@@ -372,15 +391,17 @@ namespace OSK_proj_1
 
             this.czas_2--;
             this.label5.Text = "Gracz 2:  " + Convert.ToString(this.czas_2 / interwal) + " sekund";
+            this.progressBar2.Increment(1);
             if (this.czas_2 == 0)
                 this.label3.Text = "Niedoczas gracza 2 - wygra³ gracz 1!";
+                timers_stop();
         }
 
         private void aktualizuj_plansze()
         {
             this.BackgroundImage = this.tlo;
-            
-            for (int i =0; i<42; i++)
+
+            for (int i = 0; i < 42; i++)
             {
                 switch (this.stan_kafli[i])
                 {
@@ -412,6 +433,16 @@ namespace OSK_proj_1
             this.token_tlo = Properties.Resources.nefretete;
 
             aktualizuj_plansze();
+        }
+
+        private void zakoñczToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

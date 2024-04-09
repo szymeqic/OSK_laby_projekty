@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("OSK_proj_1")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+083a61be6123618f39724dff1294cd9227f7d70b")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+2828f27080ef6f8834c7d289f6c23924154d6cfd")]
 [assembly: System.Reflection.AssemblyProductAttribute("OSK_proj_1")]
 [assembly: System.Reflection.AssemblyTitleAttribute("OSK_proj_1")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

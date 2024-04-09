@@ -17,6 +17,7 @@ namespace OSK_proj_1
         public Form2 okno_wygrana;
 		public Start okno_start;
 		bool pauza = false;
+		bool koniec_gry = false;
         
 
         /// </summary>

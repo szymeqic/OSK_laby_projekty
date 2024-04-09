@@ -64,6 +64,7 @@ namespace OSK_proj_1
 			this.czas_1 = this.czas_2 = 60 * this.interwal;
 			this.progressBar1.Value = 0;
 			this.progressBar2.Value = 0;
+			this.koniec_gry = false;
 			MessageBox.Show("Gra zosta³a zresetowana");
 
 			this.label4.Text = "Gracz 1: " + Convert.ToString(this.czas_1 / interwal) + " sekund";
@@ -226,7 +227,7 @@ namespace OSK_proj_1
 
 		private void pictureBox_Click(object sender, EventArgs e)
 		{
-			if (!pauza)
+			if (!pauza && !koniec_gry)
 			{
 				//funkcja gugu
 				PictureBox kafelek = (PictureBox)sender;
@@ -250,6 +251,7 @@ namespace OSK_proj_1
 							this.label3.Text = "Zwyciê¿y³ gracz 1";
 							//this.okno_wygrana = new Form2(1);
 							//this.okno_wygrana.ShowDialog();
+							this.koniec_gry = true;
 							MessageBox.Show("Zwyciê¿y³ gracz 1");
 							timers_stop();
 						}
@@ -265,6 +267,7 @@ namespace OSK_proj_1
 							this.label3.Text = "Zwyciê¿y³ gracz 2";
 							//this.okno_wygrana = new Form2(2);
 							//this.okno_wygrana.ShowDialog();
+							this.koniec_gry = true;
 							MessageBox.Show("Zwyciê¿y³ gracz 2");
 							this.timers_stop();
 						}
@@ -398,6 +401,7 @@ namespace OSK_proj_1
 				timers_stop();
 				this.label3.Text = "Niedoczas gracza 1 - wygra³ gracz 2!";
 				MessageBox.Show("Niedoczas gracza 1 - wygra³ gracz 2!");
+				this.koniec_gry = true;
 			}
 			
 
@@ -415,6 +419,7 @@ namespace OSK_proj_1
 					this.label3.Text = "Niedoczas gracza 2 - wygra³ gracz 1!";
 					timers_stop();
 					MessageBox.Show("Niedoczas gracza 2 - wygra³ gracz 1!");
+					this.koniec_gry = true;
 				}
 			}
 		}

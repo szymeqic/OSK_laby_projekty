@@ -265,6 +265,7 @@ namespace OSK_proj_1
 							this.label3.Text = "Zwyciê¿y³ gracz 2";
 							//this.okno_wygrana = new Form2(2);
 							//this.okno_wygrana.ShowDialog();
+							MessageBox.Show("Zwyciê¿y³ gracz 2");
 							this.timers_stop();
 						}
 						zmien_gracza(1);

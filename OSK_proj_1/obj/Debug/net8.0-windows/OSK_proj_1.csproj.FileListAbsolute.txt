@@ -90,3 +90,4 @@ C:\Users\Win11\Source\Repos\szymeqic\OSK_laby_projekty\OSK_proj_1\obj\Debug\net8
 C:\Users\sicia\Source\Repos\szymeqic\OSK_laby_projekty\OSK_proj_1\obj\Debug\net8.0-windows\OSK_proj_1.Form2.resources
 C:\Users\sicia\Source\Repos\szymeqic\OSK_laby_projekty\OSK_proj_1\obj\Debug\net8.0-windows\OSK_proj_1.Properties.Resources.resources
 C:\Users\sicia\Source\Repos\szymeqic\OSK_laby_projekty\OSK_proj_1\obj\Debug\net8.0-windows\OSK_proj_1.Start.resources
+C:\Users\sicia\Source\Repos\szymeqic\OSK_laby_projekty\OSK_proj_1\obj\Debug\net8.0-windows\OSK_proj_1.Zasady.resources

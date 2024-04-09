@@ -21,7 +21,17 @@ namespace OSK_proj_1
 		{
 			this.okno_gra = new Form1();
 			this.okno_gra.ShowDialog();
-			//this.Close();
+		}
+
+		private void button2_Click(object sender, EventArgs e)
+		{
+			this.Close();
+		}
+
+		private void button3_Click(object sender, EventArgs e)
+		{
+			this.okno_zasady = new Zasady();
+			this.okno_zasady.ShowDialog();
 		}
 	}
 }

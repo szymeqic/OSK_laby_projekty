@@ -231,7 +231,7 @@ namespace OSK_proj_1
 				//funkcja gugu
 				PictureBox kafelek = (PictureBox)sender;
 				string tekst = kafelek.Name;
-				this.label1.Text = tekst;
+				//this.label1.Text = tekst;
 
 				if (Czy_mozna_polozyc(kafelek))
 				{

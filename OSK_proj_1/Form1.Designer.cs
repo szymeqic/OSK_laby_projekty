@@ -94,7 +94,6 @@ namespace OSK_proj_1
 			pictureBox40 = new PictureBox();
 			pictureBox41 = new PictureBox();
 			pictureBox42 = new PictureBox();
-			label1 = new Label();
 			label2 = new Label();
 			label3 = new Label();
 			timer1 = new System.Windows.Forms.Timer(components);
@@ -814,19 +813,10 @@ namespace OSK_proj_1
 			pictureBox42.MouseLeave += pictureBox_MouseLeave;
 			pictureBox42.MouseHover += pictureBox_MouseHover;
 			// 
-			// label1
-			// 
-			label1.AutoSize = true;
-			label1.Location = new Point(7, 21);
-			label1.Name = "label1";
-			label1.Size = new Size(38, 15);
-			label1.TabIndex = 45;
-			label1.Text = "label1";
-			// 
 			// label2
 			// 
 			label2.AutoSize = true;
-			label2.Location = new Point(7, 36);
+			label2.Location = new Point(6, 19);
 			label2.Name = "label2";
 			label2.Size = new Size(38, 15);
 			label2.TabIndex = 46;
@@ -892,7 +882,6 @@ namespace OSK_proj_1
 			// 
 			groupBox1.Controls.Add(label6);
 			groupBox1.Controls.Add(checkBox1);
-			groupBox1.Controls.Add(label1);
 			groupBox1.Controls.Add(label3);
 			groupBox1.Controls.Add(label2);
 			groupBox1.Controls.Add(button2);
@@ -1129,7 +1118,6 @@ namespace OSK_proj_1
         private PictureBox pictureBox40;
         private PictureBox pictureBox41;
         private PictureBox pictureBox42;
-        private Label label1;
         private Label label2;
         private Label label3;
         private System.Windows.Forms.Timer timer1;

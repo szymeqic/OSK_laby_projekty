@@ -65,8 +65,14 @@ namespace OSK_proj_1
 			this.progressBar1.Value = 0;
 			this.progressBar2.Value = 0;
 			MessageBox.Show("Gra zosta³a zresetowana");
-			this.timer1.Start();
-			this.timer2.Start();
+
+			this.label4.Text = "Gracz 1: " + Convert.ToString(this.czas_1 / interwal) + " sekund";
+			this.label5.Text = "Gracz 2: " + Convert.ToString(this.czas_2 / interwal) + " sekund";
+			if (!pauza)
+			{
+				this.timer1.Start();
+				this.timer2.Start();
+			}
 		}
 
 		private void zmien_gracza(int gracz)
@@ -387,8 +393,12 @@ namespace OSK_proj_1
 			this.label4.Text = "Gracz 1: " + Convert.ToString(this.czas_1 / interwal) + " sekund";
 			this.progressBar1.Increment(1);
 			if (this.czas_1 == 0)
+			{
 				timers_stop();
-			this.label3.Text = "Niedoczas gracza 1 - wygra³ gracz 2!";
+				this.label3.Text = "Niedoczas gracza 1 - wygra³ gracz 2!";
+				MessageBox.Show("Niedoczas gracza 1 - wygra³ gracz 2!");
+			}
+			
 
 		}
 
@@ -400,8 +410,11 @@ namespace OSK_proj_1
 				this.label5.Text = "Gracz 2: " + Convert.ToString(this.czas_2 / interwal) + " sekund";
 				this.progressBar2.Increment(1);
 				if (this.czas_2 == 0)
+				{
 					this.label3.Text = "Niedoczas gracza 2 - wygra³ gracz 1!";
-				timers_stop();
+					timers_stop();
+					MessageBox.Show("Niedoczas gracza 2 - wygra³ gracz 1!");
+				}
 			}
 		}
 

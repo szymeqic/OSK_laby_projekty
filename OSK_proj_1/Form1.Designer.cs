@@ -105,13 +105,13 @@ namespace OSK_proj_1
             progressBar1 = new ProgressBar();
             progressBar2 = new ProgressBar();
             groupBox1 = new GroupBox();
+            button3 = new Button();
             label6 = new Label();
             checkBox1 = new CheckBox();
             groupBox2 = new GroupBox();
             pictureBox43 = new PictureBox();
             groupBox3 = new GroupBox();
             pictureBox44 = new PictureBox();
-            button3 = new Button();
             menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
@@ -949,6 +949,16 @@ namespace OSK_proj_1
             groupBox1.Text = "Przebieg gry";
             groupBox1.Enter += groupBox1_Enter;
             // 
+            // button3
+            // 
+            button3.Location = new Point(396, 214);
+            button3.Name = "button3";
+            button3.Size = new Size(139, 46);
+            button3.TabIndex = 51;
+            button3.Text = "Start gry";
+            button3.UseVisualStyleBackColor = true;
+            button3.Click += button3_Click_1;
+            // 
             // label6
             // 
             label6.AutoSize = true;
@@ -1021,16 +1031,6 @@ namespace OSK_proj_1
             pictureBox44.TabIndex = 52;
             pictureBox44.TabStop = false;
             // 
-            // button3
-            // 
-            button3.Location = new Point(396, 214);
-            button3.Name = "button3";
-            button3.Size = new Size(139, 46);
-            button3.TabIndex = 51;
-            button3.Text = "Start gry";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += button3_Click_1;
-            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(13F, 32F);
@@ -1085,7 +1085,7 @@ namespace OSK_proj_1
             MainMenuStrip = menuStrip1;
             Margin = new Padding(6);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Czwórki";
             Load += Form1_Load;
             menuStrip1.ResumeLayout(false);
             menuStrip1.PerformLayout();

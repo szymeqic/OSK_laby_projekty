@@ -20,40 +20,42 @@
 			base.Dispose(disposing);
 		}
 
-		#region Windows Form Designer generated code
+        #region Windows Form Designer generated code
 
-		/// <summary>
-		/// Required method for Designer support - do not modify
-		/// the contents of this method with the code editor.
-		/// </summary>
-		private void InitializeComponent()
-		{
-			System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Zasady));
-			label1 = new Label();
-			SuspendLayout();
-			// 
-			// label1
-			// 
-			label1.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 238);
-			label1.Location = new Point(12, 41);
-			label1.Name = "label1";
-			label1.Size = new Size(298, 297);
-			label1.TabIndex = 0;
-			label1.Text = resources.GetString("label1.Text");
-			// 
-			// Zasady
-			// 
-			AutoScaleDimensions = new SizeF(7F, 15F);
-			AutoScaleMode = AutoScaleMode.Font;
-			ClientSize = new Size(322, 450);
-			Controls.Add(label1);
-			Name = "Zasady";
-			Text = "Form3";
-			ResumeLayout(false);
-		}
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Zasady));
+            label1 = new Label();
+            SuspendLayout();
+            // 
+            // label1
+            // 
+            label1.Font = new Font("Segoe UI Semibold", 14.25F, FontStyle.Bold, GraphicsUnit.Point, 238);
+            label1.Location = new Point(22, 87);
+            label1.Margin = new Padding(6, 0, 6, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(553, 634);
+            label1.TabIndex = 0;
+            label1.Text = resources.GetString("label1.Text");
+            // 
+            // Zasady
+            // 
+            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(598, 960);
+            Controls.Add(label1);
+            Margin = new Padding(6, 6, 6, 6);
+            Name = "Zasady";
+            Text = "Zasady";
+            ResumeLayout(false);
+        }
 
-		#endregion
+        #endregion
 
-		private Label label1;
+        private Label label1;
 	}
 }

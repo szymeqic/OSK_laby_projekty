@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\sicia\\Source\\Repos\\szymeqic\\OSK_laby_projekty\\OSK_proj_1\\OSK_proj_1.csproj": {}
+    "C:\\Users\\Win11\\Source\\Repos\\szymeqic\\OSK_laby_projekty\\OSK_proj_1\\OSK_proj_1.csproj": {}
   },
   "projects": {
-    "C:\\Users\\sicia\\Source\\Repos\\szymeqic\\OSK_laby_projekty\\OSK_proj_1\\OSK_proj_1.csproj": {
+    "C:\\Users\\Win11\\Source\\Repos\\szymeqic\\OSK_laby_projekty\\OSK_proj_1\\OSK_proj_1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\sicia\\Source\\Repos\\szymeqic\\OSK_laby_projekty\\OSK_proj_1\\OSK_proj_1.csproj",
+        "projectUniqueName": "C:\\Users\\Win11\\Source\\Repos\\szymeqic\\OSK_laby_projekty\\OSK_proj_1\\OSK_proj_1.csproj",
         "projectName": "OSK_proj_1",
-        "projectPath": "C:\\Users\\sicia\\Source\\Repos\\szymeqic\\OSK_laby_projekty\\OSK_proj_1\\OSK_proj_1.csproj",
-        "packagesPath": "C:\\Users\\sicia\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\sicia\\Source\\Repos\\szymeqic\\OSK_laby_projekty\\OSK_proj_1\\obj\\",
+        "projectPath": "C:\\Users\\Win11\\Source\\Repos\\szymeqic\\OSK_laby_projekty\\OSK_proj_1\\OSK_proj_1.csproj",
+        "packagesPath": "C:\\Users\\Win11\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Win11\\Source\\Repos\\szymeqic\\OSK_laby_projekty\\OSK_proj_1\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\sicia\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Win11\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

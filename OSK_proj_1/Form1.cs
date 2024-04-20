@@ -4,497 +4,524 @@ using System.Text;
 
 namespace OSK_proj_1
 {
-	public partial class Form1 : Form
-	{
-		public Form1()
-		{
-			InitializeComponent();
-		}
-
-		private void Form1_Load(object sender, EventArgs e)
-		{
-			//init
-			this.stan_kafli = new int[42];
-			for (int i = 0; i < 42; i++)
-				this.stan_kafli[i] = 0;
-
-			this.zmien_gracza(1);
-			this.button2.Text = "Reset";
-			this.button1.Text = "Zamknij";
-			this.label3.Text = "Nikt nie wygra³";
-
-			this.interwal = 10;
-			this.interwal = 1000 / this.interwal;
-
-			this.czas_1 = this.czas_2 = 60 * interwal; // 100 - bo co 10 milisekund sprawdzamy czas
-			this.label4.Text = "Gracz 1: " + Convert.ToString(this.czas_1 / interwal) + " sekund";
-			this.label5.Text = "Gracz 2: " + Convert.ToString(this.czas_2 / interwal) + " sekund";
-
-			this.token_1 = Properties.Resources.cat_weed;
-			this.token_2 = Properties.Resources.hot_dog;
-			this.token_tlo = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
-			this.BackgroundImage = this.tlo = Properties.Resources.sarmatia;
-
-			this.pictureBox43.BackgroundImage = this.token_1;
-			this.pictureBox44.BackgroundImage = this.token_2;
-
-			this.progressBar1.Maximum = this.czas_1;
-			this.progressBar1.Minimum = 0;
+    public partial class Form1 : Form
+    {
+        public Form1()
+        {
+            InitializeComponent();
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            //init
+            this.stan_kafli = new int[42];
+            for (int i = 0; i < 42; i++)
+                this.stan_kafli[i] = 0;
+
+            this.zmien_gracza(1);
+            this.button2.Text = "Reset";
+            this.button1.Text = "Zamknij";
+            this.label3.Text = "Rozpocznij grê";
+
+            this.interwal = 10;
+            this.interwal = 1000 / this.interwal;
+
+            this.czas_1 = this.czas_2 = 60 * interwal; // 100 - bo co 10 milisekund sprawdzamy czas
+            this.label4.Text = "Gracz 1: " + Convert.ToString(this.czas_1 / interwal) + " sekund";
+            this.label5.Text = "Gracz 2: " + Convert.ToString(this.czas_2 / interwal) + " sekund";
+
+            this.token_1 = Properties.Resources.cat_weed;
+            this.token_2 = Properties.Resources.hot_dog;
+            this.token_tlo = Properties.Resources._2013_07_23_uksztaltowanie_terenu_wielkopolska;
+            this.BackgroundImage = this.tlo = Properties.Resources.sarmatia;
+
+            this.pictureBox43.BackgroundImage = this.token_1;
+            this.pictureBox44.BackgroundImage = this.token_2;
+
+            this.progressBar1.Maximum = this.czas_1;
+            this.progressBar1.Minimum = 0;
 
-			this.progressBar2.Maximum = this.czas_2;
-			this.progressBar2.Minimum = 0;
-		}
+            this.progressBar2.Maximum = this.czas_2;
+            this.progressBar2.Minimum = 0;
 
-		private void button1_Click(object sender, EventArgs e)
-		{
-			this.Close();
-		}
+            this.checkBox1.Enabled = false;
 
-		public void reset(object sender, EventArgs e)
-		{
-			for (int i = 0; i < 42; i++)
-			{
-				this.stan_kafli[i] = 0;
-				num_na_zdj(i).BackgroundImage = this.token_tlo;
-				zmien_gracza(1);
+            this.timers_stop();
+        }
 
-			}
-			this.label3.Text = "Nikt nie wygra³";
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
 
-			this.czas_1 = this.czas_2 = 60 * this.interwal;
-			this.progressBar1.Value = 0;
-			this.progressBar2.Value = 0;
-			MessageBox.Show("Gra zosta³a zresetowana");
+        public void reset(object sender, EventArgs e)
+        {
+            for (int i = 0; i < 42; i++)
+            {
+                this.stan_kafli[i] = 0;
+                num_na_zdj(i).BackgroundImage = this.token_tlo;
+                zmien_gracza(1);
 
-			this.label4.Text = "Gracz 1: " + Convert.ToString(this.czas_1 / interwal) + " sekund";
-			this.label5.Text = "Gracz 2: " + Convert.ToString(this.czas_2 / interwal) + " sekund";
-			if (!pauza)
-			{
-				this.timer1.Start();
-				this.timer2.Start();
-			}
-		}
+            }
+            this.label3.Text = "Nikt nie wygra³";
 
-		private void zmien_gracza(int gracz)
+            this.czas_1 = this.czas_2 = 60 * this.interwal;
+            this.progressBar1.Value = 0;
+            this.progressBar2.Value = 0;
+            this.koniec_gry = false;
+            MessageBox.Show("Gra zosta³a zresetowana");
 
-		{
-			this.akt_gracz = gracz;
-			this.label2.Text = "Aktualny gracz: " + Convert.ToString(this.akt_gracz);
+            this.label4.Text = "Gracz 1: " + Convert.ToString(this.czas_1 / interwal) + " sekund";
+            this.label5.Text = "Gracz 2: " + Convert.ToString(this.czas_2 / interwal) + " sekund";
 
-		}
+            this.start_gry = false;
+            this.button3.Enabled = true;
+            this.checkBox1.Enabled = false;
+            this.timers_stop();
+           // if (!pauza && start_gry)
+           // {
+           //     this.timer1.Start();
+           //     this.timer2.Start();
+           // }
+        }
 
-		private PictureBox num_na_zdj(int num)
-		{
-			switch (num)
-			{
-				case 0:
-					return this.pictureBox1;
+        private void zmien_gracza(int gracz)
 
-				case 1:
-					return this.pictureBox2;
+        {
+            this.akt_gracz = gracz;
+            this.label2.Text = "Aktualny gracz: " + Convert.ToString(this.akt_gracz);
 
-				case 2:
-					return this.pictureBox3;
+        }
 
-				case 3:
-					return this.pictureBox4;
+        private PictureBox num_na_zdj(int num)
+        {
+            switch (num)
+            {
+                case 0:
+                    return this.pictureBox1;
 
-				case 4:
-					return this.pictureBox5;
+                case 1:
+                    return this.pictureBox2;
 
-				case 5:
-					return this.pictureBox6;
+                case 2:
+                    return this.pictureBox3;
 
-				case 6:
-					return this.pictureBox7;
+                case 3:
+                    return this.pictureBox4;
 
-				case 7:
-					return this.pictureBox8;
+                case 4:
+                    return this.pictureBox5;
 
-				case 8:
-					return this.pictureBox9;
+                case 5:
+                    return this.pictureBox6;
 
-				case 9:
-					return this.pictureBox10;
+                case 6:
+                    return this.pictureBox7;
 
-				case 10:
-					return this.pictureBox11;
+                case 7:
+                    return this.pictureBox8;
 
-				case 11:
-					return this.pictureBox12;
+                case 8:
+                    return this.pictureBox9;
 
-				case 12:
-					return this.pictureBox13;
+                case 9:
+                    return this.pictureBox10;
 
-				case 13:
-					return this.pictureBox14;
+                case 10:
+                    return this.pictureBox11;
 
-				case 14:
-					return this.pictureBox15;
+                case 11:
+                    return this.pictureBox12;
 
-				case 15:
-					return this.pictureBox16;
+                case 12:
+                    return this.pictureBox13;
 
-				case 16:
-					return this.pictureBox17;
+                case 13:
+                    return this.pictureBox14;
 
-				case 17:
-					return this.pictureBox18;
+                case 14:
+                    return this.pictureBox15;
 
-				case 18:
-					return this.pictureBox19;
+                case 15:
+                    return this.pictureBox16;
 
-				case 19:
-					return this.pictureBox20;
+                case 16:
+                    return this.pictureBox17;
 
-				case 20:
-					return this.pictureBox21;
+                case 17:
+                    return this.pictureBox18;
 
-				case 21:
-					return this.pictureBox22;
+                case 18:
+                    return this.pictureBox19;
 
-				case 22:
-					return this.pictureBox23;
+                case 19:
+                    return this.pictureBox20;
 
-				case 23:
-					return this.pictureBox24;
+                case 20:
+                    return this.pictureBox21;
 
-				case 24:
-					return this.pictureBox25;
+                case 21:
+                    return this.pictureBox22;
 
-				case 25:
-					return this.pictureBox26;
+                case 22:
+                    return this.pictureBox23;
 
-				case 26:
-					return this.pictureBox27;
+                case 23:
+                    return this.pictureBox24;
 
-				case 27:
-					return this.pictureBox28;
+                case 24:
+                    return this.pictureBox25;
 
-				case 28:
-					return this.pictureBox29;
+                case 25:
+                    return this.pictureBox26;
 
-				case 29:
-					return this.pictureBox30;
+                case 26:
+                    return this.pictureBox27;
 
-				case 30:
-					return this.pictureBox31;
+                case 27:
+                    return this.pictureBox28;
 
-				case 31:
-					return this.pictureBox32;
+                case 28:
+                    return this.pictureBox29;
 
-				case 32:
-					return this.pictureBox33;
+                case 29:
+                    return this.pictureBox30;
 
-				case 33:
-					return this.pictureBox34;
+                case 30:
+                    return this.pictureBox31;
 
-				case 34:
-					return this.pictureBox35;
+                case 31:
+                    return this.pictureBox32;
 
-				case 35:
-					return this.pictureBox36;
+                case 32:
+                    return this.pictureBox33;
 
-				case 36:
-					return this.pictureBox37;
+                case 33:
+                    return this.pictureBox34;
 
-				case 37:
-					return this.pictureBox38;
+                case 34:
+                    return this.pictureBox35;
 
-				case 38:
-					return this.pictureBox39;
+                case 35:
+                    return this.pictureBox36;
 
-				case 39:
-					return this.pictureBox40;
+                case 36:
+                    return this.pictureBox37;
 
-				case 40:
-					return this.pictureBox41;
+                case 37:
+                    return this.pictureBox38;
 
-				case 41:
-					return this.pictureBox42;
+                case 38:
+                    return this.pictureBox39;
 
-				default:
-					return null;
-			}
-		}
-
-		public void timers_stop()
-		{
-			this.timer1.Stop();
-			this.timer2.Stop();
-		}
-
-		private void pictureBox_Click(object sender, EventArgs e)
-		{
-			if (!pauza)
-			{
-				//funkcja gugu
-				PictureBox kafelek = (PictureBox)sender;
-				string tekst = kafelek.Name;
-				//this.label1.Text = tekst;
-
-				if (Czy_mozna_polozyc(kafelek))
-				{
-					int num = zdj_na_num(kafelek); // indeks w tablicy zdj kliknietego
-					num %= 7;
-					while (this.stan_kafli[num] != 0)
-						num += 7;
-
-					if (this.akt_gracz == 1)
-					{
-						num_na_zdj(num).BackgroundImage = this.token_1;
-						this.akt_gracz = 2;
-						this.stan_kafli[num] = 1;
-						if (wygrana() != 0)
-						{
-							this.label3.Text = "Zwyciê¿y³ gracz 1";
-							//this.okno_wygrana = new Form2(1);
-							//this.okno_wygrana.ShowDialog();
-							MessageBox.Show("Zwyciê¿y³ gracz 1");
-							timers_stop();
-						}
-						zmien_gracza(2);
-					}
-
-					else if (this.akt_gracz == 2)
-					{
-						num_na_zdj(num).BackgroundImage = this.token_2;
-						this.stan_kafli[num] = 2;
-						if (wygrana() != 0)
-						{
-							this.label3.Text = "Zwyciê¿y³ gracz 2";
-							//this.okno_wygrana = new Form2(2);
-							//this.okno_wygrana.ShowDialog();
-							MessageBox.Show("Zwyciê¿y³ gracz 2");
-							this.timers_stop();
-						}
-						zmien_gracza(1);
+                case 39:
+                    return this.pictureBox40;
 
-					}
+                case 40:
+                    return this.pictureBox41;
 
-				}
-				return;
-			}
-		}
+                case 41:
+                    return this.pictureBox42;
 
-		private bool Czy_mozna_polozyc(PictureBox kafel)
-		{
+                default:
+                    return null;
+            }
+        }
 
-			int kol = (zdj_na_num(kafel)) % 7;
-			if (this.stan_kafli[35 + kol] == 0) // pusty najwy¿szy kafelek
-			{
-				return true;
-			}
-
-			else return false;
-		}
-
-		private int zdj_na_num(PictureBox zdj)
-		{
-
-			string temp = zdj.Name[10..];
-			return Convert.ToInt32(temp) - 1;
-		}
-
-		private int wygrana()
-		{
-
-			//Warunek w poziomie
-			for (int wiersz = 0; wiersz < 5; wiersz++)
-			{
-
-				for (int i = 7 * wiersz; i < 7 * wiersz + 4; i++)
-				{
-					if (this.stan_kafli[i] == this.stan_kafli[i + 1] && this.stan_kafli[i + 1] == this.stan_kafli[i + 2]
-						&& this.stan_kafli[+2] == this.stan_kafli[i + 3] && this.stan_kafli[i] != 0)
-					{
-						return this.stan_kafli[i];
-					}
-				}
-			}
-
-			// Warunek w pionie
-			for (int kol = 0; kol < 7; kol++)
-			{
-				for (int i = 0; i < 7 * 3; i += 7)
-				{
-					if (this.stan_kafli[kol + i] == this.stan_kafli[kol + i + 7] && this.stan_kafli[kol + i + 7] == this.stan_kafli[kol + i + 14]
-						&& this.stan_kafli[kol + i + 14] == this.stan_kafli[kol + i + 21] && this.stan_kafli[kol + i] != 0)
-					{
-						return this.stan_kafli[kol + i];
-					}
-				}
-			}
-
-			// Warunek po skosie
-
-			for (int i = 0; i < 4; i++)
-				for (int j = 0; j < 7 * 3; j += 7)
-				{
-					//prawe skosy
-
-					if (this.stan_kafli[i + j] == this.stan_kafli[i + 1 + j + 7] && this.stan_kafli[i + 1 + j + 7] == this.stan_kafli[i + 2 + j + 14]
-						&& this.stan_kafli[i + 2 + j + 14] == this.stan_kafli[i + 3 + j + 21] && this.stan_kafli[i + j] != 0)
-						return this.stan_kafli[i + j];
-
-					//lewe skosy
-
-					if (this.stan_kafli[6 - i + j] == this.stan_kafli[6 - i - 1 + j + 7] && this.stan_kafli[6 - i - 1 + j + 7] == this.stan_kafli[6 - i - 2 + j + 14]
-						&& this.stan_kafli[6 - i - 2 + j + 14] == this.stan_kafli[6 - i - 3 + j + 21] && this.stan_kafli[6 - i + j] != 0)
-						return this.stan_kafli[i + j];
-				}
-
-
-			return 0;
-		}
-
-		private void pictureBox_MouseHover(object sender, EventArgs e)
-		{
-
-			PictureBox kafelek = (PictureBox)sender;
-			//hover
-			if (!Czy_mozna_polozyc(kafelek))
-				return;
-
-			int num = zdj_na_num(kafelek);
-			num %= 7;
-			while (this.stan_kafli[num] != 0)
-				num += 7;
-
-			kafelek = num_na_zdj(num);
-
-			if (this.akt_gracz == 1)
-				kafelek.BackgroundImage = this.token_1;
-
-
-			else if (this.akt_gracz == 2)
-				kafelek.BackgroundImage = this.token_2;
-
-			return;
-		}
-		private void pictureBox_MouseLeave(object sender, EventArgs e)
-		{
-
-			//hover
-			for (int i = 0; i < 42; i++)
-			{
-				if (this.stan_kafli[i] == 0 && num_na_zdj(i).BackgroundImage != this.token_tlo)
-					num_na_zdj(i).BackgroundImage = this.token_tlo;
-			}
-			return;
-		}
-
-		private void timer1_Tick(object sender, EventArgs e)
-		{
-			//timer gracza 1
-			if (this.akt_gracz != 1)
-				return;
-
-			this.czas_1--;
-			this.label4.Text = "Gracz 1: " + Convert.ToString(this.czas_1 / interwal) + " sekund";
-			this.progressBar1.Increment(1);
-			if (this.czas_1 == 0)
-			{
-				timers_stop();
-				this.label3.Text = "Niedoczas gracza 1 - wygra³ gracz 2!";
-				MessageBox.Show("Niedoczas gracza 1 - wygra³ gracz 2!");
-			}
-			
-
-		}
-
-		private void timer2_Tick(object sender, EventArgs e)
-		{
-			if (this.akt_gracz == 2)
-			{
-				this.czas_2--;
-				this.label5.Text = "Gracz 2: " + Convert.ToString(this.czas_2 / interwal) + " sekund";
-				this.progressBar2.Increment(1);
-				if (this.czas_2 == 0)
-				{
-					this.label3.Text = "Niedoczas gracza 2 - wygra³ gracz 1!";
-					timers_stop();
-					MessageBox.Show("Niedoczas gracza 2 - wygra³ gracz 1!");
-				}
-			}
-		}
-
-		private void aktualizuj_plansze()
-		{
-			this.BackgroundImage = this.tlo;
-			this.pictureBox43.BackgroundImage = this.token_1;
-			this.pictureBox44.BackgroundImage = this.token_2;
-			for (int i = 0; i < 42; i++)
-			{
-				switch (this.stan_kafli[i])
-				{
-					case 0:
-						num_na_zdj(i).BackgroundImage = this.token_tlo;
-						break;
-
-					case 1:
-						num_na_zdj(i).BackgroundImage = this.token_1;
-						break;
-
-					case 2:
-						num_na_zdj(i).BackgroundImage = this.token_2;
-						break;
-
-					default:
-						break;
-
-				}
-			}
-			return;
-		}
-
-		private void kkToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			this.token_1 = Properties.Resources.solid_justynian;
-			this.token_2 = Properties.Resources.Denar_Boleslawa;
-			this.tlo = Properties.Resources.roze_heliogabala;
-			this.token_tlo = Properties.Resources.nefretete;
-
-			aktualizuj_plansze();
-		}
-
-		private void zakoñczToolStripMenuItem_Click(object sender, EventArgs e)
-		{
-			this.Close();
-		}
-
-		private void progressBar1_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void groupBox1_Enter(object sender, EventArgs e)
-		{
-
-		}
-
-		private void button3_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void checkBox1_CheckedChanged(object sender, EventArgs e)
-		{
-			if (pauza)
-			{
-				this.timer1.Start();
-				this.timer2.Start();
-				this.label6.Text = "Gra trwa";
-				this.label6.ForeColor = Color.Green;
-				pauza = false;
-			}
-			else
-			{
-				this.timers_stop();
-				this.label6.ForeColor = Color.Red;
-				this.label6.Text = "Gra wstrzymana";
-				pauza = true;
-			}
-		}
-	}
+        public void timers_stop()
+        {
+            this.timer1.Stop();
+            this.timer2.Stop();
+        }
+
+        private void pictureBox_Click(object sender, EventArgs e)
+        {
+            if (!pauza && !koniec_gry && start_gry)
+            {
+                //funkcja gugu
+                PictureBox kafelek = (PictureBox)sender;
+                string tekst = kafelek.Name;
+                //this.label1.Text = tekst;
+
+                if (Czy_mozna_polozyc(kafelek))
+                {
+                    int num = zdj_na_num(kafelek); // indeks w tablicy zdj kliknietego
+                    num %= 7;
+                    while (this.stan_kafli[num] != 0)
+                        num += 7;
+
+                    if (this.akt_gracz == 1)
+                    {
+                        num_na_zdj(num).BackgroundImage = this.token_1;
+                        this.akt_gracz = 2;
+                        this.stan_kafli[num] = 1;
+                        if (wygrana() != 0)
+                        {
+                            this.label3.Text = "Zwyciê¿y³ gracz 1";
+                            //this.okno_wygrana = new Form2(1);
+                            //this.okno_wygrana.ShowDialog();
+                            this.koniec_gry = true;
+                            MessageBox.Show("Zwyciê¿y³ gracz 1");
+                            timers_stop();
+                        }
+                        zmien_gracza(2);
+                    }
+
+                    else if (this.akt_gracz == 2)
+                    {
+                        num_na_zdj(num).BackgroundImage = this.token_2;
+                        this.stan_kafli[num] = 2;
+                        if (wygrana() != 0)
+                        {
+                            this.label3.Text = "Zwyciê¿y³ gracz 2";
+                            //this.okno_wygrana = new Form2(2);
+                            //this.okno_wygrana.ShowDialog();
+                            this.koniec_gry = true;
+                            MessageBox.Show("Zwyciê¿y³ gracz 2");
+                            this.timers_stop();
+                        }
+                        zmien_gracza(1);
+
+                    }
+
+                }
+                return;
+            }
+        }
+
+        private bool Czy_mozna_polozyc(PictureBox kafel)
+        {
+
+            int kol = (zdj_na_num(kafel)) % 7;
+            if (this.stan_kafli[35 + kol] == 0) // pusty najwy¿szy kafelek
+            {
+                return true;
+            }
+
+            else return false;
+        }
+
+        private int zdj_na_num(PictureBox zdj)
+        {
+
+            string temp = zdj.Name[10..];
+            return Convert.ToInt32(temp) - 1;
+        }
+
+        private int wygrana()
+        {
+
+            //Warunek w poziomie
+            for (int wiersz = 0; wiersz < 5; wiersz++)
+            {
+
+                for (int i = 7 * wiersz; i < 7 * wiersz + 4; i++)
+                {
+                    if (this.stan_kafli[i] == this.stan_kafli[i + 1] && this.stan_kafli[i + 1] == this.stan_kafli[i + 2]
+                        && this.stan_kafli[+2] == this.stan_kafli[i + 3] && this.stan_kafli[i] != 0)
+                    {
+                        return this.stan_kafli[i];
+                    }
+                }
+            }
+
+            // Warunek w pionie
+            for (int kol = 0; kol < 7; kol++)
+            {
+                for (int i = 0; i < 7 * 3; i += 7)
+                {
+                    if (this.stan_kafli[kol + i] == this.stan_kafli[kol + i + 7] && this.stan_kafli[kol + i + 7] == this.stan_kafli[kol + i + 14]
+                        && this.stan_kafli[kol + i + 14] == this.stan_kafli[kol + i + 21] && this.stan_kafli[kol + i] != 0)
+                    {
+                        return this.stan_kafli[kol + i];
+                    }
+                }
+            }
+
+            // Warunek po skosie
+
+            for (int i = 0; i < 4; i++)
+                for (int j = 0; j < 7 * 3; j += 7)
+                {
+                    //prawe skosy
+
+                    if (this.stan_kafli[i + j] == this.stan_kafli[i + 1 + j + 7] && this.stan_kafli[i + 1 + j + 7] == this.stan_kafli[i + 2 + j + 14]
+                        && this.stan_kafli[i + 2 + j + 14] == this.stan_kafli[i + 3 + j + 21] && this.stan_kafli[i + j] != 0)
+                        return this.stan_kafli[i + j];
+
+                    //lewe skosy
+
+                    if (this.stan_kafli[6 - i + j] == this.stan_kafli[6 - i - 1 + j + 7] && this.stan_kafli[6 - i - 1 + j + 7] == this.stan_kafli[6 - i - 2 + j + 14]
+                        && this.stan_kafli[6 - i - 2 + j + 14] == this.stan_kafli[6 - i - 3 + j + 21] && this.stan_kafli[6 - i + j] != 0)
+                        return this.stan_kafli[i + j];
+                }
+
+
+            return 0;
+        }
+
+        private void pictureBox_MouseHover(object sender, EventArgs e)
+        {
+
+            PictureBox kafelek = (PictureBox)sender;
+            //hover
+            if (!Czy_mozna_polozyc(kafelek))
+                return;
+
+            int num = zdj_na_num(kafelek);
+            num %= 7;
+            while (this.stan_kafli[num] != 0)
+                num += 7;
+
+            kafelek = num_na_zdj(num);
+
+            if (this.akt_gracz == 1)
+                kafelek.BackgroundImage = this.token_1;
+
+
+            else if (this.akt_gracz == 2)
+                kafelek.BackgroundImage = this.token_2;
+
+            return;
+        }
+        private void pictureBox_MouseLeave(object sender, EventArgs e)
+        {
+
+            //hover
+            for (int i = 0; i < 42; i++)
+            {
+                if (this.stan_kafli[i] == 0 && num_na_zdj(i).BackgroundImage != this.token_tlo)
+                    num_na_zdj(i).BackgroundImage = this.token_tlo;
+            }
+            return;
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            //timer gracza 1
+            if (this.akt_gracz != 1)
+                return;
+
+            this.czas_1--;
+            this.label4.Text = "Gracz 1: " + Convert.ToString(this.czas_1 / interwal) + " sekund";
+            this.progressBar1.Increment(1);
+            if (this.czas_1 == 0)
+            {
+                timers_stop();
+                this.label3.Text = "Niedoczas gracza 1 - wygra³ gracz 2!";
+                MessageBox.Show("Niedoczas gracza 1 - wygra³ gracz 2!");
+                this.koniec_gry = true;
+            }
+
+
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            if (this.akt_gracz == 2)
+            {
+                this.czas_2--;
+                this.label5.Text = "Gracz 2: " + Convert.ToString(this.czas_2 / interwal) + " sekund";
+                this.progressBar2.Increment(1);
+                if (this.czas_2 == 0)
+                {
+                    this.label3.Text = "Niedoczas gracza 2 - wygra³ gracz 1!";
+                    timers_stop();
+                    MessageBox.Show("Niedoczas gracza 2 - wygra³ gracz 1!");
+                    this.koniec_gry = true;
+                }
+            }
+        }
+
+        private void aktualizuj_plansze()
+        {
+            this.BackgroundImage = this.tlo;
+            this.pictureBox43.BackgroundImage = this.token_1;
+            this.pictureBox44.BackgroundImage = this.token_2;
+            for (int i = 0; i < 42; i++)
+            {
+                switch (this.stan_kafli[i])
+                {
+                    case 0:
+                        num_na_zdj(i).BackgroundImage = this.token_tlo;
+                        break;
+
+                    case 1:
+                        num_na_zdj(i).BackgroundImage = this.token_1;
+                        break;
+
+                    case 2:
+                        num_na_zdj(i).BackgroundImage = this.token_2;
+                        break;
+
+                    default:
+                        break;
+
+                }
+            }
+            return;
+        }
+
+        private void kkToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.token_1 = Properties.Resources.solid_justynian;
+            this.token_2 = Properties.Resources.Denar_Boleslawa;
+            this.tlo = Properties.Resources.roze_heliogabala;
+            this.token_tlo = Properties.Resources.nefretete;
+
+            aktualizuj_plansze();
+        }
+
+        private void zakoñczToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void progressBar1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+            if (start_gry)
+            {
+                if (pauza)
+                {
+                    this.timer1.Start();
+                    this.timer2.Start();
+                    this.label6.Text = "Gra trwa";
+                    this.label6.ForeColor = Color.Green;
+                    pauza = false;
+                }
+                else
+                {
+                    this.timers_stop();
+                    this.label6.ForeColor = Color.Red;
+                    this.label6.Text = "Gra wstrzymana";
+                    pauza = true;
+                }
+            }
+        }
+
+        private void button3_Click_1(object sender, EventArgs e)
+        {
+            this.start_gry = true;
+            this.button3.Enabled = false;
+            this.checkBox1.Enabled = true;
+            this.timer1.Start();
+            this.timer2.Start();
+            this.label3.Text = "Nikt nie wygra³";
+        }
+    }
 }

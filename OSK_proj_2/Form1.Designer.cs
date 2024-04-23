@@ -10,8 +10,10 @@
         System.Diagnostics.Stopwatch stoper;
         private double dlug_przerwy;
         private Random los;
+        private Test3 test3;
+		System.Media.SoundPlayer audio;
 
-        public Form2 okno;
+		public Form2 okno;
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 

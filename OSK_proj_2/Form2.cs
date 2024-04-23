@@ -72,7 +72,7 @@ namespace OSK_proj_2
                 this.label2.Text = Convert.ToString(this.stoper.Elapsed.Milliseconds) + " ms";
                 this.zadany_klawisz++;
                 this.audio.Stop();
-                this.label1.Text = "Usłyszysz dźwięk cymbałów. Kliknij przycisk 'G' jak najszybciej.";
+                this.label1.Text = "Usłyszysz dźwięk skrzypiec. Kliknij przycisk 'L' jak najszybciej.";
                 this.audio.Stream = Resources.skrzypce;
                 this.audio.LoadAsync();
                 this.dlug_przerwy = 1 + 3 * los.NextDouble();
@@ -83,7 +83,7 @@ namespace OSK_proj_2
                 this.stoper.Stop();
                 this.label2.Text = Convert.ToString(this.stoper.Elapsed.Milliseconds) + " ms";
                 this.audio.Stop();
-                this.label1.Text = "gugi";
+                this.label1.Text = "Koniec";
                 this.test = false;
             }
         }

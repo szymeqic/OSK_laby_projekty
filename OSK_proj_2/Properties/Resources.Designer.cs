@@ -101,6 +101,15 @@ namespace OSK_proj_2.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.IO.UnmanagedMemoryStream podobny do zasobu System.IO.MemoryStream.
         /// </summary>
+        internal static System.IO.UnmanagedMemoryStream hamowanie {
+            get {
+                return ResourceManager.GetStream("hamowanie", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.IO.UnmanagedMemoryStream podobny do zasobu System.IO.MemoryStream.
+        /// </summary>
         internal static System.IO.UnmanagedMemoryStream skrzypce {
             get {
                 return ResourceManager.GetStream("skrzypce", resourceCulture);

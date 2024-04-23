@@ -1,3 +1,5 @@
+using OSK_proj_2.Properties;
+
 namespace OSK_proj_2
 {
     public partial class Form1 : Form
@@ -11,7 +13,9 @@ namespace OSK_proj_2
         {
 
             this.okno = new Form2();
+            this.test3 = new Test3();
             this.okno.Show();
+            this.test3.Show();
             this._przerwa = pauza;
             this._wynik = 0;
             this.test = false;
@@ -19,6 +23,7 @@ namespace OSK_proj_2
             this.los = new Random();
             this.dlug_przerwy = 0.5 + los.NextDouble() * 4.5;
             this.stoper = new System.Diagnostics.Stopwatch();
+            this.audio = new System.Media.SoundPlayer(Resources.hamowanie);
 
         }
 
@@ -54,6 +59,7 @@ namespace OSK_proj_2
                 this.timer1.Stop();
                 this.dlug_przerwy = 0;
                 this.button1.Text = "HAMUJJUJ";
+                this.audio.Play();
             }
         }
     }

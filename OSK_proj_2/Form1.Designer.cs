@@ -7,6 +7,11 @@
         private int _przerwa, _wynik;
         private bool test;
         private const int pauza = 150;
+        System.Diagnostics.Stopwatch stoper;
+        private double dlug_przerwy;
+        private Random los;
+
+        public Form2 okno;
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 

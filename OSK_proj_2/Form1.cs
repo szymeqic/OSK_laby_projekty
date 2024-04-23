@@ -9,11 +9,17 @@ namespace OSK_proj_2
 
         private void Form1_Load(object sender, EventArgs e)
         {
-             
+
+            this.okno = new Form2();
+            this.okno.Show();
             this._przerwa = pauza;
             this._wynik = 0;
             this.test = false;
             this.button1.Text = "Zacznij test";
+            this.los = new Random();
+            this.dlug_przerwy = 0.5 + los.NextDouble() * 4.5;
+            this.stoper = new System.Diagnostics.Stopwatch();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -21,40 +27,33 @@ namespace OSK_proj_2
             if (!this.test)
             {
                 this.label1.Text = "Pocz¹tek testu";
+                this.button1.Text = "Czekaj....";
+                this.pictureBox1.Visible = false;
+                this.timer1.Start();
+                this.stoper.Start();
                 this.test = true;
                 return;
             }
-            if (this._przerwa <= 0)
-            {
-                this.test = false;
-                this.label1.Text = "Twój wynik:" + Convert.ToString(10*this._wynik) + " ms";
-                this._przerwa = pauza;
-                this._wynik = 0;
-                if (this._wynik > 30)
-                    this.button1.Text = "No i po dzieciaku";
-                else
-                    this.button1.Text = "brawo ";
+
+            if (this.dlug_przerwy ==0) {
+                this.stoper.Stop();
+                this.timer1.Start();
+                this.button1.Text = "Spróbuj ponownie";
+                this.label1.Text ="twój czas: " + Convert.ToString(this.stoper.Elapsed.TotalMilliseconds) + " ms";
+                this.dlug_przerwy = 0.5 + los.NextDouble() * 4.5;
+                this.test = false; return;
             }
 
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (this.test)
-            {
-                this._przerwa--;
-                //this.label2.Text = Convert.ToString(this._przerwa);
-            }
-
-            if (this._przerwa == 0)
-            {
-                this.label1.Text = "JAZDA";
-                this.pictureBox1.Visible=true;
-                this.button1.Text = "HAMUJJJJ!!!!";
-            }
-
-            if(this._przerwa<=0) {
-                this._wynik++;          
+            if (this.test && (Convert.ToDouble(this.stoper.Elapsed.TotalSeconds) >= this.dlug_przerwy)) {
+                this.pictureBox1.Visible = true;
+                this.stoper.Restart();
+                this.timer1.Stop();
+                this.dlug_przerwy = 0;
+                this.button1.Text = "HAMUJJUJ";
             }
         }
     }

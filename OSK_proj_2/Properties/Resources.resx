@@ -124,4 +124,16 @@
   <data name="dziecko" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\dziecko.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="beben" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\beben.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="bonk" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\bonk.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="filharmonia_szczecisnka" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\filharmonia_szczecisnka.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="skrzypce" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\skrzypce.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
 </root>

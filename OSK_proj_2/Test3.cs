@@ -1,4 +1,5 @@
-﻿using System;
+﻿using OSK_proj_2.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -27,6 +28,12 @@ namespace OSK_proj_2
 			this.test = false;
 			this.blokada = false;
 			this.wtrakcie = false;
+			
+			for (int i = 1; i < 49; i++)
+			{
+				PictureBox p = Wybierz_obrazek(i);
+				p.BackgroundImageLayout = ImageLayout.Stretch;
+			}
 		}
 
 		void ustaw_napisy()
@@ -44,7 +51,7 @@ namespace OSK_proj_2
 			for (int i = 1; i < 49; i++)
 			{
 				pole = Wybierz_obrazek(i);
-				pole.BackColor = SystemColors.Control;
+				pole.Visible = false;
 			}
 		}
 
@@ -75,7 +82,8 @@ namespace OSK_proj_2
 			int los = this.los.Next(1, 48);
 			pole = Wybierz_obrazek(los);
 			wybrane = pole;
-			pole.BackColor = Color.Red;
+			pole.BackgroundImage = Resources.krecik;
+			pole.Visible = true;
 		}
 
 		private void koniec_testu()

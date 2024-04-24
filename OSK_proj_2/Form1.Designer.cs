@@ -10,7 +10,6 @@
         System.Diagnostics.Stopwatch stoper;
         private double dlug_przerwy;
         private Random los;
-        private Test3 test3;
 		System.Media.SoundPlayer audio;
 
 		public Form2 okno;
@@ -51,18 +50,20 @@
             pictureBox1.BackgroundImage = Properties.Resources.dziecko;
             pictureBox1.BackgroundImageLayout = ImageLayout.Stretch;
             pictureBox1.Cursor = Cursors.SizeAll;
-            pictureBox1.Location = new Point(372, 76);
+            pictureBox1.Location = new Point(691, 162);
+            pictureBox1.Margin = new Padding(6);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(195, 172);
+            pictureBox1.Size = new Size(362, 367);
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
             pictureBox1.Visible = false;
             // 
             // button1
             // 
-            button1.Location = new Point(713, 259);
+            button1.Location = new Point(1324, 553);
+            button1.Margin = new Padding(6);
             button1.Name = "button1";
-            button1.Size = new Size(150, 56);
+            button1.Size = new Size(279, 119);
             button1.TabIndex = 1;
             button1.Text = "button1";
             button1.UseVisualStyleBackColor = true;
@@ -72,11 +73,13 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Regular, GraphicsUnit.Point, 238);
-            label1.Location = new Point(732, 143);
+            label1.Location = new Point(1359, 305);
+            label1.Margin = new Padding(6, 0, 6, 0);
             label1.Name = "label1";
-            label1.Size = new Size(90, 30);
+            label1.Size = new Size(182, 57);
             label1.TabIndex = 2;
             label1.Text = "bimbom";
+            label1.Click += label1_Click;
             // 
             // timer1
             // 
@@ -86,16 +89,17 @@
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackgroundImage = Properties.Resources.tlo;
             BackgroundImageLayout = ImageLayout.Stretch;
-            ClientSize = new Size(1096, 617);
+            ClientSize = new Size(2035, 1316);
             Controls.Add(label1);
             Controls.Add(button1);
             Controls.Add(pictureBox1);
+            Margin = new Padding(6);
             Name = "Form1";
-            Text = "Form1";
+            Text = "Test reakcji";
             Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);

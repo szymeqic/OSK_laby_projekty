@@ -108,6 +108,26 @@ namespace OSK_proj_2.Properties {
         }
         
         /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap krecik {
+            get {
+                object obj = ResourceManager.GetObject("krecik", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap krzyzowka {
+            get {
+                object obj = ResourceManager.GetObject("krzyzowka", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.IO.UnmanagedMemoryStream podobny do zasobu System.IO.MemoryStream.
         /// </summary>
         internal static System.IO.UnmanagedMemoryStream skrzypce {
@@ -122,6 +142,16 @@ namespace OSK_proj_2.Properties {
         internal static System.Drawing.Bitmap tlo {
             get {
                 object obj = ResourceManager.GetObject("tlo", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap trawa {
+            get {
+                object obj = ResourceManager.GetObject("trawa", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

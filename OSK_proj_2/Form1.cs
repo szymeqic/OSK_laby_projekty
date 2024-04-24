@@ -11,11 +11,6 @@ namespace OSK_proj_2
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
-            this.okno = new Form2();
-            this.test3 = new Test3();
-            this.okno.Show();
-            this.test3.Show();
             this._przerwa = pauza;
             this._wynik = 0;
             this.test = false;
@@ -40,11 +35,12 @@ namespace OSK_proj_2
                 return;
             }
 
-            if (this.dlug_przerwy ==0) {
+            if (this.dlug_przerwy == 0)
+            {
                 this.stoper.Stop();
                 this.timer1.Start();
                 this.button1.Text = "Spróbuj ponownie";
-                this.label1.Text ="twój czas: " + Convert.ToString(this.stoper.Elapsed.TotalMilliseconds) + " ms";
+                this.label1.Text = "twój czas: " + Convert.ToString(this.stoper.Elapsed.TotalMilliseconds) + " ms";
                 this.dlug_przerwy = 0.5 + los.NextDouble() * 4.5;
                 this.test = false; return;
             }
@@ -53,7 +49,8 @@ namespace OSK_proj_2
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            if (this.test && (Convert.ToDouble(this.stoper.Elapsed.TotalSeconds) >= this.dlug_przerwy)) {
+            if (this.test && (Convert.ToDouble(this.stoper.Elapsed.TotalSeconds) >= this.dlug_przerwy))
+            {
                 this.pictureBox1.Visible = true;
                 this.stoper.Restart();
                 this.timer1.Stop();
@@ -61,6 +58,11 @@ namespace OSK_proj_2
                 this.button1.Text = "HAMUJJUJ";
                 this.audio.Play();
             }
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

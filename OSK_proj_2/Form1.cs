@@ -20,6 +20,7 @@ namespace OSK_proj_2
             this.stoper = new System.Diagnostics.Stopwatch();
             this.audio = new System.Media.SoundPlayer(Resources.hamowanie);
 
+
         }
 
         private void button1_Click(object sender, EventArgs e)

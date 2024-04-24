@@ -29,11 +29,6 @@ namespace OSK_proj_2
 			this.blokada = false;
 			this.wtrakcie = false;
 			
-			for (int i = 1; i < 49; i++)
-			{
-				PictureBox p = Wybierz_obrazek(i);
-				p.BackgroundImageLayout = ImageLayout.Stretch;
-			}
 		}
 
 		void ustaw_napisy()
@@ -291,11 +286,6 @@ namespace OSK_proj_2
 				this.label3.Text = "Nietrafione";
 				this.label3.ForeColor = Color.Red;
 			}
-		}
-
-		private void Form2_Load(object sender, EventArgs e)
-		{
-
 		}
 
 		private void label2_Click(object sender, EventArgs e)

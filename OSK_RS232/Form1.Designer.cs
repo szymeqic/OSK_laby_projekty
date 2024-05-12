@@ -8,6 +8,7 @@
 		char[] bufor_nadajnik;
 		string bufor_nadajnik_bin;
 		private System.ComponentModel.IContainer components = null;
+		bool bit_parzystości;
 
 		/// <summary>
 		///  Clean up any resources being used.
@@ -102,6 +103,7 @@
 			checkBox2.TabIndex = 5;
 			checkBox2.Text = "Bit parzystości";
 			checkBox2.UseVisualStyleBackColor = true;
+			checkBox2.CheckedChanged += checkBox2_CheckedChanged;
 			// 
 			// label2
 			// 

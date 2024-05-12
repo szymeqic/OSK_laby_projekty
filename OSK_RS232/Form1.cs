@@ -35,27 +35,47 @@ namespace OSK_RS232
 				this.richTextBox1.SelectionColor = Color.White;
 				this.richTextBox1.SelectionBackColor = Color.Green;
 				this.richTextBox1.AppendText("0");
+				this.bufor_nadajnik_bin += "0"; // bit startu
+
 				// Bajt danych
 				this.richTextBox1.SelectionColor = Color.White;
 				this.richTextBox1.SelectionBackColor = Color.Gray;
 				this.richTextBox1.AppendText(bin);
+				this.bufor_nadajnik_bin += bin;
+
 				//Bit parzystoœci
 				if (bit_parzystoœci)
 				{
-					this.richTextBox1.SelectionColor = Color.White;
-					this.richTextBox1.SelectionBackColor = Color.Orange;
-					this.richTextBox1.AppendText("1");
+					int zera = 0;
+					foreach (char letter in bin)
+					{
+						if (letter == '0')
+						{
+							zera++;
+						}
+					}
+					if (zera % 2 == 0)
+					{
+						this.richTextBox1.SelectionColor = Color.White;
+						this.richTextBox1.SelectionBackColor = Color.Orange;
+						this.richTextBox1.AppendText("1");
+						this.bufor_nadajnik_bin += "1";
+					}
+					else
+					{
+						this.richTextBox1.SelectionColor = Color.White;
+						this.richTextBox1.SelectionBackColor = Color.Blue;
+						this.richTextBox1.AppendText("0");
+						this.bufor_nadajnik_bin += "0";
+					}
 				}
 				// Bit stopu
 				this.richTextBox1.SelectionColor = Color.White;
 				this.richTextBox1.SelectionBackColor = Color.Red;
 				this.richTextBox1.AppendText("1");
-
-				this.bufor_nadajnik_bin += "0"; // bit startu
-				this.bufor_nadajnik_bin += bin;
 				this.bufor_nadajnik_bin += "1"; // bit stopu
 			}
-			//this.richTextBox1.Text = bufor_nadajnik_bin;
+			this.textBox3.Text = bufor_nadajnik_bin;
 		}
 
 		private void checkBox2_CheckedChanged(object sender, EventArgs e)

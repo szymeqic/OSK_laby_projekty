@@ -1,3 +1,5 @@
+using System.Collections;
+
 namespace OSK_RS232
 {
 	public partial class Form1 : Form
@@ -75,12 +77,11 @@ namespace OSK_RS232
 				this.richTextBox1.AppendText("1");
 				this.bufor_nadajnik_bin += "1"; // bit stopu
 			}
-			this.textBox3.Text = bufor_nadajnik_bin;
 		}
 
 		private void checkBox2_CheckedChanged(object sender, EventArgs e)
 		{
-			if(this.bit_parzystoœci == false)
+			if (this.bit_parzystoœci == false)
 			{
 				bit_parzystoœci = true;
 			}
@@ -88,6 +89,25 @@ namespace OSK_RS232
 			{
 				bit_parzystoœci = false;
 			}
+		}
+
+		private void button2_Click(object sender, EventArgs e)
+		{
+			this.textBox3.Text = bufor_nadajnik_bin;
+		}
+
+		private void button4_Click(object sender, EventArgs e)
+		{
+			this.bufor_odbiornik = this.textBox3.Text.ToCharArray();
+			for (int i = 0; i < bufor_odbiornik.Length; i++)
+			{
+				if(bit_parzystoœci == false)
+				{
+					bufor_odbiornik_bin += bufor_nadajnik_bin[i];
+				}
+			}
+			string text = Convert.ToString(bufor_odbiornik_bin);
+			this.textBox4.Text = text;
 		}
 	}
 }

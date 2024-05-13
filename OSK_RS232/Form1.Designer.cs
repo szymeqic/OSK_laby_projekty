@@ -6,7 +6,10 @@
 		///  Required designer variable.
 		/// </summary>
 		char[] bufor_nadajnik;
+		char[] bufor_odbiornik;
+		char[] bufor_odbiornik_buf;
 		string bufor_nadajnik_bin;
+		string bufor_odbiornik_bin;
 		private System.ComponentModel.IContainer components = null;
 		bool bit_parzystości;
 
@@ -41,6 +44,7 @@
 			checkBox1 = new CheckBox();
 			textBox1 = new TextBox();
 			groupBox2 = new GroupBox();
+			button4 = new Button();
 			checkBox3 = new CheckBox();
 			textBox4 = new TextBox();
 			label4 = new Label();
@@ -83,6 +87,7 @@
 			button2.TabIndex = 7;
 			button2.Text = "Wyślij";
 			button2.UseVisualStyleBackColor = true;
+			button2.Click += button2_Click;
 			// 
 			// button1
 			// 
@@ -144,6 +149,7 @@
 			// 
 			// groupBox2
 			// 
+			groupBox2.Controls.Add(button4);
 			groupBox2.Controls.Add(checkBox3);
 			groupBox2.Controls.Add(textBox4);
 			groupBox2.Controls.Add(label4);
@@ -155,6 +161,16 @@
 			groupBox2.TabIndex = 1;
 			groupBox2.TabStop = false;
 			groupBox2.Text = "ODBIORNIK";
+			// 
+			// button4
+			// 
+			button4.Location = new Point(0, 81);
+			button4.Name = "button4";
+			button4.Size = new Size(770, 23);
+			button4.TabIndex = 9;
+			button4.Text = "Dekoduj";
+			button4.UseVisualStyleBackColor = true;
+			button4.Click += button4_Click;
 			// 
 			// checkBox3
 			// 
@@ -194,9 +210,9 @@
 			// 
 			// textBox3
 			// 
-			textBox3.Location = new Point(6, 52);
+			textBox3.Location = new Point(0, 52);
 			textBox3.Name = "textBox3";
-			textBox3.Size = new Size(764, 23);
+			textBox3.Size = new Size(770, 23);
 			textBox3.TabIndex = 6;
 			// 
 			// Form1
@@ -233,5 +249,6 @@
 		private Button button1;
 		private Button button2;
 		private RichTextBox richTextBox1;
+		private Button button4;
 	}
 }

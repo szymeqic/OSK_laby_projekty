@@ -6,12 +6,12 @@
 		///  Required designer variable.
 		/// </summary>
 		char[] bufor_nadajnik;
-		char[] bufor_odbiornik;
+		string bufor_odbiornik;
 		char[] bufor_odbiornik_buf;
 		string bufor_nadajnik_bin;
 		string bufor_odbiornik_bin;
 		private System.ComponentModel.IContainer components = null;
-		bool bit_parzystości;
+		bool bit_parzystosci;
 
 		/// <summary>
 		///  Clean up any resources being used.
@@ -78,6 +78,7 @@
 			richTextBox1.Size = new Size(764, 54);
 			richTextBox1.TabIndex = 9;
 			richTextBox1.Text = "";
+			richTextBox1.TextChanged += richTextBox1_TextChanged;
 			// 
 			// button2
 			// 

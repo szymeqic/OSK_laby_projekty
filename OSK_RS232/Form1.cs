@@ -7,7 +7,7 @@ namespace OSK_RS232
 		public Form1()
 		{
 			InitializeComponent();
-			bit_parzystoœci = false;
+			bit_parzystosci = false;
 		}
 
 		private void textBox1_TextChanged(object sender, EventArgs e)
@@ -46,7 +46,7 @@ namespace OSK_RS232
 				this.bufor_nadajnik_bin += bin;
 
 				//Bit parzystoœci
-				if (bit_parzystoœci)
+				if (bit_parzystosci)
 				{
 					int zera = 0;
 					foreach (char letter in bin)
@@ -81,13 +81,13 @@ namespace OSK_RS232
 
 		private void checkBox2_CheckedChanged(object sender, EventArgs e)
 		{
-			if (this.bit_parzystoœci == false)
+			if (this.bit_parzystosci == false)
 			{
-				bit_parzystoœci = true;
+				bit_parzystosci = true;
 			}
 			else
 			{
-				bit_parzystoœci = false;
+				bit_parzystosci = false;
 			}
 		}
 
@@ -98,16 +98,56 @@ namespace OSK_RS232
 
 		private void button4_Click(object sender, EventArgs e)
 		{
-			this.bufor_odbiornik = this.textBox3.Text.ToCharArray();
-			for (int i = 0; i < bufor_odbiornik.Length; i++)
+			bufor_odbiornik_bin = textBox3.Text;
+			bufor_odbiornik = null;
+
+			int dlugosc = bit_parzystosci ? 11 : 10;
+
+			// Przetwórz pakiet po pakiecie
+			for (int i = 0; i < bufor_odbiornik_bin.Length; i += dlugosc)
 			{
-				if(bit_parzystoœci == false)
+				string pakiet = bufor_odbiornik_bin.Substring(i, dlugosc);
+				string znak = pakiet.Substring(1, 8); // Wydobycie znaku
+				if (bit_parzystosci)
 				{
-					bufor_odbiornik_bin += bufor_nadajnik_bin[i];
+					char pakiet_bit_parzystosci = pakiet.ToCharArray()[9]; // pobranie bitu parzystoœci
+
+
+					int zera = 0; // sprawdzanie poprawnoœci bajtu
+					foreach (char bit in znak)
+					{
+						if (bit == '0')
+						{
+							zera++;
+						}
+					}
+
+					if ((zera % 2 == 0 && pakiet_bit_parzystosci == '1') || (zera % 2 == 1 && pakiet_bit_parzystosci == '0'))
+					{
+						bufor_odbiornik += ((char)Convert.ToByte(znak, 2));
+					}
+					else
+					{
+						bufor_odbiornik += ((char)Convert.ToByte('#'));
+					}
+				}
+				else
+				{
+					bufor_odbiornik += ((char)Convert.ToByte(znak, 2));
 				}
 			}
-			string text = Convert.ToString(bufor_odbiornik_bin);
+			string text = bufor_odbiornik;
 			this.textBox4.Text = text;
+		}
+
+		private void button3_Click(object sender, EventArgs e)
+		{
+			bufor_nadajnik_bin = richTextBox1.Text;
+		}
+
+		private void richTextBox1_TextChanged(object sender, EventArgs e)
+		{
+			bufor_nadajnik_bin = richTextBox1.Text;
 		}
 	}
 }

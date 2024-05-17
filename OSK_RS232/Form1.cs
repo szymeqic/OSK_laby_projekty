@@ -10,22 +10,7 @@ namespace OSK_RS232
 			bit_parzystosci = false;
 		}
 
-		private void textBox1_TextChanged(object sender, EventArgs e)
-		{
-
-		}
-
-		private void label3_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void label1_Click(object sender, EventArgs e)
-		{
-
-		}
-
-		private void button1_Click(object sender, EventArgs e)
+		void koduj()
 		{
 			this.bufor_nadajnik_bin = null;
 			this.richTextBox1.Clear();
@@ -75,8 +60,28 @@ namespace OSK_RS232
 				this.richTextBox1.SelectionColor = Color.White;
 				this.richTextBox1.SelectionBackColor = Color.Red;
 				this.richTextBox1.AppendText("1");
-				this.bufor_nadajnik_bin += "1"; // bit stopu
+				//this.bufor_nadajnik_bin += "1"; // bit stopu ale nie wiem czemu nie mo¿na go dodawaæ ://
 			}
+		}
+
+		private void textBox1_TextChanged(object sender, EventArgs e)
+		{
+			koduj();	
+		}
+
+		private void label3_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void label1_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void button1_Click(object sender, EventArgs e)
+		{
+			koduj();
 		}
 
 		private void checkBox2_CheckedChanged(object sender, EventArgs e)
@@ -93,7 +98,7 @@ namespace OSK_RS232
 
 		private void button2_Click(object sender, EventArgs e)
 		{
-			this.textBox3.Text = bufor_nadajnik_bin;
+			textBox3.Text = bufor_nadajnik_bin;
 		}
 
 		private void button4_Click(object sender, EventArgs e)
@@ -138,11 +143,6 @@ namespace OSK_RS232
 			}
 			string text = bufor_odbiornik;
 			this.textBox4.Text = text;
-		}
-
-		private void button3_Click(object sender, EventArgs e)
-		{
-			bufor_nadajnik_bin = richTextBox1.Text;
 		}
 
 		private void richTextBox1_TextChanged(object sender, EventArgs e)

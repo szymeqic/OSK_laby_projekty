@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Runtime.Versioning;
+using OSK_RS232.Properties;
 
 namespace OSK_RS232
 {
@@ -8,13 +10,40 @@ namespace OSK_RS232
 		{
 			InitializeComponent();
 			bit_parzystosci = false;
+			grubianstwa_tx = false;
+			grubianstwa_rx = false;
+		}
+
+		string filtr_grubianst(string tekst)
+		{
+			string tekst_buf = tekst;
+			string[] wulgaryzmy = Resources.wulgaryzmy.Split("\n");
+			foreach (var slowo in wulgaryzmy)
+			{
+
+				string zamiana = new string('x', slowo.Length);
+				//if (zamiana.Length == 0)
+				//{
+				//	zamiana = "x";
+				//}
+				tekst_buf = tekst_buf.Replace(slowo.Trim(), zamiana);
+			}
+			return tekst_buf;
 		}
 
 		void koduj()
 		{
 			this.bufor_nadajnik_bin = null;
 			this.richTextBox1.Clear();
-			this.bufor_nadajnik = this.textBox1.Text.ToCharArray();
+			if (grubianstwa_tx)
+			{
+				this.bufor_nadajnik = filtr_grubianst(textBox1.Text).ToCharArray();
+			}
+			else
+			{
+				this.bufor_nadajnik = this.textBox1.Text.ToCharArray();
+			}
+
 			for (int i = 0; i < bufor_nadajnik.Length; i++)
 			{
 				string bin = Convert.ToString(bufor_nadajnik[i], 2).PadLeft(8, '0');
@@ -66,7 +95,7 @@ namespace OSK_RS232
 
 		private void textBox1_TextChanged(object sender, EventArgs e)
 		{
-			koduj();	
+			koduj();
 		}
 
 		private void label3_Click(object sender, EventArgs e)
@@ -141,13 +170,43 @@ namespace OSK_RS232
 					bufor_odbiornik += ((char)Convert.ToByte(znak, 2));
 				}
 			}
-			string text = bufor_odbiornik;
-			this.textBox4.Text = text;
+			if (grubianstwa_rx)
+			{
+				this.textBox4.Text = filtr_grubianst(bufor_odbiornik);
+			}
+			else
+			{
+				this.textBox4.Text = bufor_odbiornik;
+			}
 		}
 
 		private void richTextBox1_TextChanged(object sender, EventArgs e)
 		{
 			bufor_nadajnik_bin = richTextBox1.Text;
+		}
+
+		private void checkBox1_CheckedChanged(object sender, EventArgs e)
+		{
+			if (this.grubianstwa_tx == false)
+			{
+				grubianstwa_tx = true;
+			}
+			else
+			{
+				grubianstwa_tx = false;
+			}
+		}
+
+		private void checkBox3_CheckedChanged(object sender, EventArgs e)
+		{
+			if (this.grubianstwa_rx == false)
+			{
+				grubianstwa_rx= true;
+			}
+			else
+			{
+				grubianstwa_rx = false;
+			}
 		}
 	}
 }

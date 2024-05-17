@@ -12,6 +12,8 @@
 		string bufor_odbiornik_bin;
 		private System.ComponentModel.IContainer components = null;
 		bool bit_parzystosci;
+		bool grubianstwa_tx;
+		bool grubianstwa_rx;
 
 		/// <summary>
 		///  Clean up any resources being used.
@@ -139,6 +141,7 @@
 			checkBox1.TabIndex = 1;
 			checkBox1.Text = "Filtr grubiaństw";
 			checkBox1.UseVisualStyleBackColor = true;
+			checkBox1.CheckedChanged += checkBox1_CheckedChanged;
 			// 
 			// textBox1
 			// 
@@ -182,6 +185,7 @@
 			checkBox3.TabIndex = 6;
 			checkBox3.Text = "Filtr grubiaństw";
 			checkBox3.UseVisualStyleBackColor = true;
+			checkBox3.CheckedChanged += checkBox3_CheckedChanged;
 			// 
 			// textBox4
 			// 

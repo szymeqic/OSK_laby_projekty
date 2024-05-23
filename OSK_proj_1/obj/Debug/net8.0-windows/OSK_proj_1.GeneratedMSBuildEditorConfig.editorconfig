@@ -14,6 +14,10 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = OSK_proj_1
+<<<<<<< HEAD
 build_property.ProjectDir = C:\Users\VM\Source\Repos\szymeqic\OSK_laby_projekty\OSK_proj_1\
+=======
+build_property.ProjectDir = E:\studia\osk\OSK_laby_projekty\OSK_proj_1\
+>>>>>>> 166e715b4b4bf4da647c5342341611ace6ad3904
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 

@@ -98,5 +98,20 @@
   <ItemGroup>
     <None Include="Resources\The_Eye_alone.jpg" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cezar.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\cezar2.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\goffyahh.wav" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\panorama.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\goofy2.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

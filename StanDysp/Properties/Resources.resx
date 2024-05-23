@@ -121,6 +121,21 @@
   <data name="black_man_screaming" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\black-man-screaming.gif;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="cezar" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cezar.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="cezar2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\cezar2.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="goffyahh" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\goffyahh.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="goofy2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\goofy2.wav;System.IO.MemoryStream, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </data>
+  <data name="panorama" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\panorama.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="The_Eye_alone" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\The_Eye_alone.jpg;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

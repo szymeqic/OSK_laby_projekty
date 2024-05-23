@@ -21,7 +21,7 @@ namespace OSK_RS232
 			foreach (var slowo in wulgaryzmy)
 			{
 
-				string zamiana = new string('x', slowo.Length);
+				string zamiana = new string('x', slowo.Trim().Length);
 				//if (zamiana.Length == 0)
 				//{
 				//	zamiana = "x";

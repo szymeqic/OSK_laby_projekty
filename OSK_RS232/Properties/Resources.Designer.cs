@@ -61,7 +61,9 @@ namespace OSK_RS232.Properties {
         }
         
         /// <summary>
-        /// Wyszukuje zlokalizowany ciąg podobny do ciągu chuj
+        /// Wyszukuje zlokalizowany ciąg podobny do ciągu jablko
+        ///chuj
+        ///dupa
         ///chuja
         ///chujach
         ///chujami
@@ -112,8 +114,7 @@ namespace OSK_RS232.Properties {
         ///dojebało
         ///dojebałoby
         ///dojebały
-        ///dojebałyby
-        ///doj [obcięto pozostałą część ciągu]&quot;;.
+        ///d [obcięto pozostałą część ciągu]&quot;;.
         /// </summary>
         internal static string wulgaryzmy {
             get {

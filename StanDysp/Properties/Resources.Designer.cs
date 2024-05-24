@@ -73,6 +73,16 @@ namespace StanDysp.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap blok {
+            get {
+                object obj = ResourceManager.GetObject("blok", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap cezar {
             get {
                 object obj = ResourceManager.GetObject("cezar", resourceCulture);
@@ -105,6 +115,16 @@ namespace StanDysp.Properties {
         internal static System.IO.UnmanagedMemoryStream goofy2 {
             get {
                 return ResourceManager.GetStream("goofy2", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap kolumnna {
+            get {
+                object obj = ResourceManager.GetObject("kolumnna", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
             }
         }
         

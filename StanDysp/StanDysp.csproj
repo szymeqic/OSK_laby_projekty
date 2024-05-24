@@ -113,5 +113,11 @@
   <ItemGroup>
     <None Include="Resources\goofy2.wav" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\kolumnna.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\blok.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -30,6 +30,14 @@ namespace StanDysp
             this.button3.Enabled = false;
             this.licznik_cios = 0;
             this.licznik_port = 0;
+            this.szansa_cios = 0.7; //70% szansy na niepowodzenie ciosania
+            this.szansa_wzg = 0.8;
+            this.szansa_port = 0.7; // 30% szans na atak piratów
+
+            //this.kasa = new VerticalProgressBar();
+            //this.kasa.ForeColor = System.Drawing.Color.Gold;
+            //this.kasa.Size = new System.Drawing.Size(200, 12);
+            //this.kasa.Location = new System.Drawing.Point(30, 120);
         }
 
         private ProgressBar num_na_suwak(int num)
@@ -101,6 +109,61 @@ namespace StanDysp
             }
         }
 
+        private void wydarzenie()
+        {
+            double temp = 0;
+            double los = 0;
+
+            switch (this.aktProces) {
+
+                default:
+                    return;
+
+                case 1:
+                    temp =1 -(99 + 1-this.szansa_cios) / 100; // pojednyczne wydarzenie, tak żeby
+                    los = this.losulosu.NextDouble();       //sumarycznie wyszła szansa
+
+                    ///DZIAŁA BABYYYY
+                    if (los <= temp)
+                    {
+                        this.timer1.Stop();
+                        MessageBox.Show("Bunt kamieniarzy!");
+                        this.aktProces = 0;
+                        this.pulk.Enabled = true;
+                    }
+
+                    return;
+
+                case 2:
+                    temp = 1 - (99 + 1-this.szansa_wzg) / 100; 
+                    los = this.losulosu.NextDouble();       
+
+                 
+                    if (los <= temp)
+                    {
+                        this.timer1.Stop();
+                        MessageBox.Show("Awaria liny!");
+                        this.aktProces = 0;
+                        this.lina.Enabled = true;
+                    }
+                    return;
+
+                case 3:
+                    temp = 1 - (99 + 1 - this.szansa_port) / 100; 
+                    los = this.losulosu.NextDouble();       
+
+                   
+                    if (los <= temp)
+                    {
+                        this.timer1.Stop();
+                        MessageBox.Show("Atak floty piratów!");
+                        this.aktProces = 0;
+                        this.galery.Enabled = true;
+                    }
+
+                    return;
+           }
+        }
 
         private void Form2_FormClosed(object sender, FormClosedEventArgs e)
         {
@@ -163,7 +226,13 @@ namespace StanDysp
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
+            if (this.aktProces == 0)
+                return;
+            wydarzenie();
             ProgressBar temp = num_na_suwak(this.aktProces);
+
+            if (temp == null)
+                return;
             temp.PerformStep();
 
             if (temp.Value != temp.Maximum) {
@@ -181,7 +250,8 @@ namespace StanDysp
                     {
                         zwieksz_ilosc(1);
                         wyswietl_bloki();
-                        this.button1.Enabled = true;
+                        if(this.licznik_cios<5)
+                            this.button1.Enabled = true;
                         this.button2.Enabled = true;
                         //this.audio.Play();
                         this.audio.Stream = Resources.goofy2;
@@ -194,7 +264,8 @@ namespace StanDysp
                 case 2: {
                         zwieksz_ilosc(2);
                         wyswietl_bloki();
-                        this.button2.Enabled = true;
+                        if(this.licznik_port<5)
+                            this.button2.Enabled = true;
                         this.button3.Enabled = true;
                         //this.audio.Play();
                         this.audio.Stream = Resources.goffyahh;
@@ -207,7 +278,8 @@ namespace StanDysp
                 case 3: {
                         zwieksz_ilosc(3);
                         wyswietl_bloki();
-                        this.button3.Enabled = true;
+                        if(this.licznik_port>0)
+                            this.button3.Enabled = true;
                         //this.audio.Play();
                         this.audio.Stream = Resources.goffyahh;
                         this.audio.LoadAsync();
@@ -227,6 +299,10 @@ namespace StanDysp
             this.timer1.Enabled = true;
             this.aktProces = 1; // 1 - ciosanie bloku
             this.button1.Enabled = false;
+
+            if (this.licznik_port > 0)
+                this.button3.Enabled = true;
+
         }
 
         private void button2_Click(object sender, EventArgs e)
@@ -235,6 +311,9 @@ namespace StanDysp
             this.aktProces = 2; // 1 - ciosanie bloku
             this.button2.Enabled = false;
             this.button1.Enabled = true;
+
+            if (this.licznik_port > 0)
+                this.button3.Enabled = true;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -243,6 +322,30 @@ namespace StanDysp
             this.aktProces = 3; // 1 - ciosanie bloku
             this.button3.Enabled = false;
             this.button2.Enabled = true;
+        }
+
+        private void pulk_Click(object sender, EventArgs e)
+        {
+            this.pulk.Enabled = false;
+            this.aktProces = 1;
+            this.timer1.Start();
+            return;
+        }
+
+        private void lina_Click(object sender, EventArgs e)
+        {
+            this.lina.Enabled = false;
+            this.aktProces = 2;
+            this.timer1.Start();
+            return;
+        }
+
+        private void galery_Click(object sender, EventArgs e)
+        {
+            this.galery.Enabled = false;
+            this.aktProces = 3;
+            this.timer1.Start();
+            return;
         }
     }
 }

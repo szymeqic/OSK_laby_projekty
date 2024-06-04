@@ -7,6 +7,7 @@
         string login;
         string hasło;
         Form2 okno_dysp;
+        char hasl_znak;
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
@@ -62,7 +63,7 @@
             // 
             this.textBox2.Location = new System.Drawing.Point(346, 226);
             this.textBox2.Name = "textBox2";
-            this.textBox2.PasswordChar = '卐';
+            this.textBox2.PasswordChar = '☢';
             this.textBox2.Size = new System.Drawing.Size(170, 20);
             this.textBox2.TabIndex = 2;
             // 

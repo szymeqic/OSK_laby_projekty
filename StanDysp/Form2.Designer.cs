@@ -1,7 +1,20 @@
 ﻿using System;
+using System.Windows.Forms;
 
 namespace StanDysp
 {
+    public class VerticalProgressBar : ProgressBar
+    {
+        protected override CreateParams CreateParams
+        {
+            get
+            {
+                CreateParams cp = base.CreateParams;
+                cp.Style |= 0x04;
+                return cp;
+            }
+        }
+    }
     partial class Form2
     {
         /// <summary>
@@ -11,6 +24,8 @@ namespace StanDysp
         private Random losulosu;
         private System.Media.SoundPlayer audio;
         private int licznik_cios, licznik_port;
+        private double szansa_cios, szansa_port, szansa_wzg;
+        private VerticalProgressBar kasa;
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
@@ -57,6 +72,9 @@ namespace StanDysp
             this.pictureBox8 = new System.Windows.Forms.PictureBox();
             this.pictureBox9 = new System.Windows.Forms.PictureBox();
             this.pictureBox10 = new System.Windows.Forms.PictureBox();
+            this.pulk = new System.Windows.Forms.Button();
+            this.lina = new System.Windows.Forms.Button();
+            this.galery = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
@@ -71,6 +89,7 @@ namespace StanDysp
             // 
             // progressBar1
             // 
+            this.progressBar1.ForeColor = System.Drawing.Color.Goldenrod;
             this.progressBar1.Location = new System.Drawing.Point(33, 70);
             this.progressBar1.Name = "progressBar1";
             this.progressBar1.Size = new System.Drawing.Size(284, 23);
@@ -99,6 +118,7 @@ namespace StanDysp
             // 
             // progressBar2
             // 
+            this.progressBar2.ForeColor = System.Drawing.Color.Chartreuse;
             this.progressBar2.Location = new System.Drawing.Point(33, 166);
             this.progressBar2.Name = "progressBar2";
             this.progressBar2.Size = new System.Drawing.Size(284, 23);
@@ -117,6 +137,7 @@ namespace StanDysp
             // 
             // progressBar3
             // 
+            this.progressBar3.ForeColor = System.Drawing.Color.Turquoise;
             this.progressBar3.Location = new System.Drawing.Point(33, 259);
             this.progressBar3.Name = "progressBar3";
             this.progressBar3.Size = new System.Drawing.Size(284, 23);
@@ -161,7 +182,7 @@ namespace StanDysp
             // 
             this.pictureBox1.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox1.BackgroundImage")));
             this.pictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox1.Location = new System.Drawing.Point(493, 49);
+            this.pictureBox1.Location = new System.Drawing.Point(603, 49);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(46, 50);
             this.pictureBox1.TabIndex = 9;
@@ -172,7 +193,7 @@ namespace StanDysp
             // 
             this.pictureBox2.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox2.BackgroundImage")));
             this.pictureBox2.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox2.Location = new System.Drawing.Point(545, 49);
+            this.pictureBox2.Location = new System.Drawing.Point(655, 49);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(46, 50);
             this.pictureBox2.TabIndex = 10;
@@ -183,7 +204,7 @@ namespace StanDysp
             // 
             this.pictureBox3.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox3.BackgroundImage")));
             this.pictureBox3.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox3.Location = new System.Drawing.Point(597, 49);
+            this.pictureBox3.Location = new System.Drawing.Point(707, 49);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(46, 50);
             this.pictureBox3.TabIndex = 11;
@@ -194,7 +215,7 @@ namespace StanDysp
             // 
             this.pictureBox4.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox4.BackgroundImage")));
             this.pictureBox4.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox4.Location = new System.Drawing.Point(649, 49);
+            this.pictureBox4.Location = new System.Drawing.Point(759, 49);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(46, 50);
             this.pictureBox4.TabIndex = 12;
@@ -205,7 +226,7 @@ namespace StanDysp
             // 
             this.pictureBox5.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox5.BackgroundImage")));
             this.pictureBox5.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox5.Location = new System.Drawing.Point(701, 49);
+            this.pictureBox5.Location = new System.Drawing.Point(811, 49);
             this.pictureBox5.Name = "pictureBox5";
             this.pictureBox5.Size = new System.Drawing.Size(46, 50);
             this.pictureBox5.TabIndex = 13;
@@ -216,7 +237,7 @@ namespace StanDysp
             // 
             this.pictureBox6.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox6.BackgroundImage")));
             this.pictureBox6.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox6.Location = new System.Drawing.Point(493, 144);
+            this.pictureBox6.Location = new System.Drawing.Point(603, 232);
             this.pictureBox6.Name = "pictureBox6";
             this.pictureBox6.Size = new System.Drawing.Size(46, 50);
             this.pictureBox6.TabIndex = 18;
@@ -227,7 +248,7 @@ namespace StanDysp
             // 
             this.pictureBox7.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox7.BackgroundImage")));
             this.pictureBox7.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox7.Location = new System.Drawing.Point(545, 144);
+            this.pictureBox7.Location = new System.Drawing.Point(655, 232);
             this.pictureBox7.Name = "pictureBox7";
             this.pictureBox7.Size = new System.Drawing.Size(46, 50);
             this.pictureBox7.TabIndex = 17;
@@ -238,7 +259,7 @@ namespace StanDysp
             // 
             this.pictureBox8.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox8.BackgroundImage")));
             this.pictureBox8.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox8.Location = new System.Drawing.Point(597, 144);
+            this.pictureBox8.Location = new System.Drawing.Point(707, 232);
             this.pictureBox8.Name = "pictureBox8";
             this.pictureBox8.Size = new System.Drawing.Size(46, 50);
             this.pictureBox8.TabIndex = 16;
@@ -249,7 +270,7 @@ namespace StanDysp
             // 
             this.pictureBox9.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox9.BackgroundImage")));
             this.pictureBox9.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox9.Location = new System.Drawing.Point(649, 144);
+            this.pictureBox9.Location = new System.Drawing.Point(759, 232);
             this.pictureBox9.Name = "pictureBox9";
             this.pictureBox9.Size = new System.Drawing.Size(46, 50);
             this.pictureBox9.TabIndex = 15;
@@ -260,12 +281,45 @@ namespace StanDysp
             // 
             this.pictureBox10.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("pictureBox10.BackgroundImage")));
             this.pictureBox10.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.pictureBox10.Location = new System.Drawing.Point(701, 144);
+            this.pictureBox10.Location = new System.Drawing.Point(811, 232);
             this.pictureBox10.Name = "pictureBox10";
             this.pictureBox10.Size = new System.Drawing.Size(46, 50);
             this.pictureBox10.TabIndex = 14;
             this.pictureBox10.TabStop = false;
             this.pictureBox10.Visible = false;
+            // 
+            // pulk
+            // 
+            this.pulk.Enabled = false;
+            this.pulk.Location = new System.Drawing.Point(498, 54);
+            this.pulk.Name = "pulk";
+            this.pulk.Size = new System.Drawing.Size(75, 39);
+            this.pulk.TabIndex = 19;
+            this.pulk.Text = "Wyślij pułk karny";
+            this.pulk.UseVisualStyleBackColor = true;
+            this.pulk.Click += new System.EventHandler(this.pulk_Click);
+            // 
+            // lina
+            // 
+            this.lina.Enabled = false;
+            this.lina.Location = new System.Drawing.Point(498, 155);
+            this.lina.Name = "lina";
+            this.lina.Size = new System.Drawing.Size(75, 34);
+            this.lina.TabIndex = 20;
+            this.lina.Text = "Dostarcz nową linę";
+            this.lina.UseVisualStyleBackColor = true;
+            this.lina.Click += new System.EventHandler(this.lina_Click);
+            // 
+            // galery
+            // 
+            this.galery.Enabled = false;
+            this.galery.Location = new System.Drawing.Point(498, 245);
+            this.galery.Name = "galery";
+            this.galery.Size = new System.Drawing.Size(75, 37);
+            this.galery.TabIndex = 21;
+            this.galery.Text = "Przywołaj galery";
+            this.galery.UseVisualStyleBackColor = true;
+            this.galery.Click += new System.EventHandler(this.galery_Click);
             // 
             // Form2
             // 
@@ -273,7 +327,10 @@ namespace StanDysp
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = global::StanDysp.Properties.Resources.panorama;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.ClientSize = new System.Drawing.Size(750, 356);
+            this.ClientSize = new System.Drawing.Size(869, 321);
+            this.Controls.Add(this.galery);
+            this.Controls.Add(this.lina);
+            this.Controls.Add(this.pulk);
             this.Controls.Add(this.pictureBox6);
             this.Controls.Add(this.pictureBox7);
             this.Controls.Add(this.pictureBox8);
@@ -334,5 +391,8 @@ namespace StanDysp
         private System.Windows.Forms.PictureBox pictureBox8;
         private System.Windows.Forms.PictureBox pictureBox9;
         private System.Windows.Forms.PictureBox pictureBox10;
+        private System.Windows.Forms.Button pulk;
+        private System.Windows.Forms.Button lina;
+        private System.Windows.Forms.Button galery;
     }
 }

@@ -21,6 +21,9 @@ namespace StanDysp
         {
             this.login = "admin";
             this.hasło = "admin";
+            this.hasl_znak = '☢';
+            this.button1.Select();
+
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -50,7 +53,7 @@ namespace StanDysp
 
         private void pictureBox1_MouseLeave(object sender, EventArgs e)
         {
-            this.textBox2.PasswordChar = '卐';
+            this.textBox2.PasswordChar = this.hasl_znak;
             this.pictureBox1.BackgroundImage = Properties.Resources.zamk_oko;
 
         }

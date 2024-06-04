@@ -170,7 +170,7 @@
             // labelArg2
             // 
             this.labelArg2.AutoSize = true;
-            this.labelArg2.Location = new System.Drawing.Point(596, 126);
+            this.labelArg2.Location = new System.Drawing.Point(567, 126);
             this.labelArg2.Name = "labelArg2";
             this.labelArg2.Size = new System.Drawing.Size(61, 13);
             this.labelArg2.TabIndex = 15;
@@ -179,9 +179,9 @@
             // comboArg2
             // 
             this.comboArg2.FormattingEnabled = true;
-            this.comboArg2.Location = new System.Drawing.Point(560, 145);
+            this.comboArg2.Location = new System.Drawing.Point(519, 145);
             this.comboArg2.Name = "comboArg2";
-            this.comboArg2.Size = new System.Drawing.Size(121, 21);
+            this.comboArg2.Size = new System.Drawing.Size(162, 21);
             this.comboArg2.TabIndex = 14;
             // 
             // button_teraz

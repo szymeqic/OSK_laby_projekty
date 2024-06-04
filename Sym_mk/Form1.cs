@@ -27,6 +27,8 @@ namespace Sym_mk
                     return this.textBox_cx;
                 case "DX":
                     return this.textBox_dx;
+                case "Argument natychmiastowy":
+                    return this.textBox_arg;
                 default:
                     return null;                 
             }
@@ -91,6 +93,7 @@ namespace Sym_mk
                 return;
 
                 case "ADD":
+
                     nazwa_na_rejestr(arg1).Text = Convert.ToString(temp1 + temp2);
                     return;
 

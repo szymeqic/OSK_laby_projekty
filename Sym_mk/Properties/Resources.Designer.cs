@@ -61,6 +61,16 @@ namespace Sym_mk.Properties {
         }
         
         /// <summary>
+        ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap monkey {
+            get {
+                object obj = ResourceManager.GetObject("monkey", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Icon podobny do zasobu (Ikona).
         /// </summary>
         internal static System.Drawing.Icon trollface {

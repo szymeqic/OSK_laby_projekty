@@ -81,10 +81,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\trollface_1.ico" />
+    <None Include="Properties\trollface.ico" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Properties\trollface.ico" />
+    <None Include="Properties\monkey.jpg" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

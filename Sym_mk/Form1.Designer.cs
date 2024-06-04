@@ -1,4 +1,7 @@
-﻿namespace Sym_mk
+﻿using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+
+namespace Sym_mk
 {
     partial class Sym_mk
     {
@@ -7,6 +10,7 @@
         /// </summary>
         private System.ComponentModel.IContainer components = null;
         private int wielkosc_rej;
+        private Queue<rozkaz> program;
         /// <summary>
         /// Wyczyść wszystkie używane zasoby.
         /// </summary>
@@ -46,6 +50,10 @@
             this.labelArg2 = new System.Windows.Forms.Label();
             this.comboArg2 = new System.Windows.Forms.ComboBox();
             this.button_teraz = new System.Windows.Forms.Button();
+            this.program_label = new System.Windows.Forms.Label();
+            this.prog_label = new System.Windows.Forms.Label();
+            this.button_zakolejkuj = new System.Windows.Forms.Button();
+            this.button_krok = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox_ax
@@ -54,6 +62,7 @@
             this.textBox_ax.Name = "textBox_ax";
             this.textBox_ax.Size = new System.Drawing.Size(100, 20);
             this.textBox_ax.TabIndex = 0;
+            this.textBox_ax.Text = "0";
             this.textBox_ax.TextChanged += new System.EventHandler(this.nasycenie);
             // 
             // label_ax
@@ -80,6 +89,7 @@
             this.textBox_bx.Name = "textBox_bx";
             this.textBox_bx.Size = new System.Drawing.Size(100, 20);
             this.textBox_bx.TabIndex = 2;
+            this.textBox_bx.Text = "0";
             this.textBox_bx.TextChanged += new System.EventHandler(this.nasycenie);
             // 
             // label_cx
@@ -97,6 +107,7 @@
             this.textBox_cx.Name = "textBox_cx";
             this.textBox_cx.Size = new System.Drawing.Size(100, 20);
             this.textBox_cx.TabIndex = 4;
+            this.textBox_cx.Text = "0";
             this.textBox_cx.TextChanged += new System.EventHandler(this.nasycenie);
             // 
             // label_dx
@@ -114,6 +125,7 @@
             this.textBox_dx.Name = "textBox_dx";
             this.textBox_dx.Size = new System.Drawing.Size(100, 20);
             this.textBox_dx.TabIndex = 6;
+            this.textBox_dx.Text = "0";
             this.textBox_dx.TextChanged += new System.EventHandler(this.nasycenie);
             // 
             // label_arg
@@ -131,6 +143,7 @@
             this.textBox_arg.Name = "textBox_arg";
             this.textBox_arg.Size = new System.Drawing.Size(100, 20);
             this.textBox_arg.TabIndex = 8;
+            this.textBox_arg.Text = "0";
             this.textBox_arg.TextChanged += new System.EventHandler(this.nasycenie);
             // 
             // comboRozkaz
@@ -140,6 +153,7 @@
             this.comboRozkaz.Name = "comboRozkaz";
             this.comboRozkaz.Size = new System.Drawing.Size(121, 21);
             this.comboRozkaz.TabIndex = 10;
+            this.comboRozkaz.Text = "MOV";
             // 
             // labelRozkaz
             // 
@@ -166,6 +180,7 @@
             this.comboArg1.Name = "comboArg1";
             this.comboArg1.Size = new System.Drawing.Size(121, 21);
             this.comboArg1.TabIndex = 12;
+            this.comboArg1.Text = "AX";
             // 
             // labelArg2
             // 
@@ -183,6 +198,7 @@
             this.comboArg2.Name = "comboArg2";
             this.comboArg2.Size = new System.Drawing.Size(162, 21);
             this.comboArg2.TabIndex = 14;
+            this.comboArg2.Text = "BX";
             // 
             // button_teraz
             // 
@@ -194,11 +210,53 @@
             this.button_teraz.UseVisualStyleBackColor = true;
             this.button_teraz.Click += new System.EventHandler(this.button_teraz_Click);
             // 
+            // program_label
+            // 
+            this.program_label.AutoSize = true;
+            this.program_label.Location = new System.Drawing.Point(606, 202);
+            this.program_label.Name = "program_label";
+            this.program_label.Size = new System.Drawing.Size(49, 13);
+            this.program_label.TabIndex = 17;
+            this.program_label.Text = "Program:";
+            // 
+            // prog_label
+            // 
+            this.prog_label.Location = new System.Drawing.Point(531, 229);
+            this.prog_label.Name = "prog_label";
+            this.prog_label.Size = new System.Drawing.Size(215, 212);
+            this.prog_label.TabIndex = 18;
+            // 
+            // button_zakolejkuj
+            // 
+            this.button_zakolejkuj.Location = new System.Drawing.Point(44, 269);
+            this.button_zakolejkuj.Name = "button_zakolejkuj";
+            this.button_zakolejkuj.Size = new System.Drawing.Size(120, 30);
+            this.button_zakolejkuj.TabIndex = 19;
+            this.button_zakolejkuj.Text = "Zakolejkuj instrukcję";
+            this.button_zakolejkuj.UseVisualStyleBackColor = true;
+            this.button_zakolejkuj.Click += new System.EventHandler(this.button_zakolejkuj_Click);
+            // 
+            // button_krok
+            // 
+            this.button_krok.Location = new System.Drawing.Point(44, 323);
+            this.button_krok.Name = "button_krok";
+            this.button_krok.Size = new System.Drawing.Size(120, 37);
+            this.button_krok.TabIndex = 20;
+            this.button_krok.Text = "Wykonaj krok programu";
+            this.button_krok.UseVisualStyleBackColor = true;
+            this.button_krok.Click += new System.EventHandler(this.button_krok_Click);
+            // 
             // Sym_mk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackgroundImage = global::Sym_mk.Properties.Resources.monkey;
+            this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button_krok);
+            this.Controls.Add(this.button_zakolejkuj);
+            this.Controls.Add(this.prog_label);
+            this.Controls.Add(this.program_label);
             this.Controls.Add(this.button_teraz);
             this.Controls.Add(this.labelArg2);
             this.Controls.Add(this.comboArg2);
@@ -244,6 +302,10 @@
         private System.Windows.Forms.Label labelArg2;
         private System.Windows.Forms.ComboBox comboArg2;
         private System.Windows.Forms.Button button_teraz;
+        private System.Windows.Forms.Label program_label;
+        private System.Windows.Forms.Label prog_label;
+        private System.Windows.Forms.Button button_zakolejkuj;
+        private System.Windows.Forms.Button button_krok;
     }
 }
 

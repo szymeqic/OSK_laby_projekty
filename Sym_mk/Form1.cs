@@ -76,10 +76,10 @@ namespace Sym_mk
             {
                 temp = Convert.ToUInt64(box.Text);
             }
-            catch (System.FormatException)  // ewentualnie do usunięcia
-            {
-                MessageBox.Show("NIE MA");
-            }
+            //catch (System.FormatException)  // ewentualnie do usunięcia
+            //{
+            //    MessageBox.Show("NIE MA");
+            //}
 
             catch { }
 
@@ -181,6 +181,14 @@ namespace Sym_mk
             nasycenie(this.textBox_dx, null);
             nasycenie(this.textBox_arg, null);
 
+        }
+
+        private void button_calosc_Click(object sender, EventArgs e)
+        {
+            while(this.program.Count > 0)           
+               wykonaj_rozkaz(this.program.Dequeue());
+                         
+            drukuj_program();
         }
     }
 }

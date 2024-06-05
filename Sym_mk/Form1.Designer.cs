@@ -60,6 +60,7 @@ namespace Sym_mk
             this.radioButton_16 = new System.Windows.Forms.RadioButton();
             this.radioButton_32 = new System.Windows.Forms.RadioButton();
             this.label_rozmiar = new System.Windows.Forms.Label();
+            this.button_calosc = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox_ax
@@ -321,6 +322,16 @@ namespace Sym_mk
             this.label_rozmiar.TabIndex = 25;
             this.label_rozmiar.Text = "Rozmiar rejestru:";
             // 
+            // button_calosc
+            // 
+            this.button_calosc.Location = new System.Drawing.Point(33, 395);
+            this.button_calosc.Name = "button_calosc";
+            this.button_calosc.Size = new System.Drawing.Size(120, 42);
+            this.button_calosc.TabIndex = 26;
+            this.button_calosc.Text = "Wykonaj całość programu";
+            this.button_calosc.UseVisualStyleBackColor = true;
+            this.button_calosc.Click += new System.EventHandler(this.button_calosc_Click);
+            // 
             // Sym_mk
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -328,6 +339,7 @@ namespace Sym_mk
             this.BackgroundImage = global::Sym_mk.Properties.Resources.monkey;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button_calosc);
             this.Controls.Add(this.label_rozmiar);
             this.Controls.Add(this.radioButton_32);
             this.Controls.Add(this.radioButton_16);
@@ -391,6 +403,7 @@ namespace Sym_mk
         private System.Windows.Forms.RadioButton radioButton_16;
         private System.Windows.Forms.RadioButton radioButton_32;
         private System.Windows.Forms.Label label_rozmiar;
+        private System.Windows.Forms.Button button_calosc;
     }
 }
 

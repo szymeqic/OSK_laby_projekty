@@ -172,6 +172,7 @@ namespace StanDysp
         }
 
         private void zwieksz_ilosc(int proc) {
+
             switch (proc)
             {
                 default:
@@ -273,7 +274,11 @@ namespace StanDysp
                         this.BackgroundImage = Resources.cezar2;
                         MessageBox.Show("Zakończono transport bloku");
                         this.BackgroundImage = Resources.panorama;
+
+                        if (this.licznik_cios == 0)
+                            this.button2.Enabled = false;
                         break;
+
                     }
                 case 3: {
                         zwieksz_ilosc(3);
@@ -286,6 +291,7 @@ namespace StanDysp
                         this.BackgroundImage = Resources.cezar2;
                         MessageBox.Show("Flota dopłynęła do Puteoli");
                         this.BackgroundImage = Resources.panorama;
+                        this.button3.Enabled = false;
                         break;
                     }
                 
@@ -310,7 +316,8 @@ namespace StanDysp
             this.timer1.Enabled = true;
             this.aktProces = 2; // 1 - ciosanie bloku
             this.button2.Enabled = false;
-            this.button1.Enabled = true;
+            if(this.pulk.Enabled ==false)
+                this.button1.Enabled = true;
 
             if (this.licznik_port > 0)
                 this.button3.Enabled = true;
@@ -320,8 +327,10 @@ namespace StanDysp
         {
             this.timer1.Enabled = true;
             this.aktProces = 3; // 1 - ciosanie bloku
-            this.button3.Enabled = false;
-            this.button2.Enabled = true;
+            if(this.lina.Enabled ==false)
+                this.button3.Enabled = false;
+            if(this.licznik_cios>0)
+                this.button2.Enabled = true;
         }
 
         private void pulk_Click(object sender, EventArgs e)

@@ -71,10 +71,10 @@ namespace Sym_mk
         public void nasycenie(object sender, EventArgs e)
         {
             TextBox box = (TextBox)sender;
-            int temp = 0;
+            UInt64 temp = 0;
             try
             {
-                temp = Convert.ToInt32(box.Text);
+                temp = Convert.ToUInt64(box.Text);
             }
             catch (System.FormatException)  // ewentualnie do usunięcia
             {
@@ -83,7 +83,7 @@ namespace Sym_mk
 
             catch { }
 
-            temp = temp > 255 ? 255 : (temp < 0 ? 0 : temp);
+            temp = temp > this.wielkosc_rej ? this.wielkosc_rej : (temp < 0 ? 0 : temp);
 
             box.Text = Convert.ToString(temp);
             return;
@@ -93,12 +93,12 @@ namespace Sym_mk
         private void wykonaj_rozkaz(rozkaz roz)
         {
 
-            int temp1 = Convert.ToInt32(nazwa_na_rejestr(roz.arg1).Text);
-            int temp2 = 0;
+            UInt64 temp1 = Convert.ToUInt64(nazwa_na_rejestr(roz.arg1).Text);
+            UInt64 temp2 = 0;
             if (roz.arg2 == "AX" || roz.arg2 == "BX" || roz.arg2 == "CX" || roz.arg2 == "DX")
-                temp2 = Convert.ToInt32(nazwa_na_rejestr(roz.arg2).Text);
+                temp2 = Convert.ToUInt64(nazwa_na_rejestr(roz.arg2).Text);
             else
-                temp2 = Convert.ToInt32(roz.arg2);
+                temp2 = Convert.ToUInt64(roz.arg2);
             switch (roz.roz)
             {
                 case "MOV":
@@ -134,10 +134,7 @@ namespace Sym_mk
         {
             rozkaz rozTemp = pobierz_rozkaz();
             this.program.Enqueue(rozTemp);
-            if(this.program.Count<10)
-                this.prog_label.Text +=$"{this.program.Count} :     " + rozTemp.ToString();
-            else
-                this.prog_label.Text += $"{this.program.Count} :   " + rozTemp.ToString();
+            drukuj_program();
         }
 
         private rozkaz pobierz_rozkaz() {
@@ -153,6 +150,36 @@ namespace Sym_mk
 
         private void button_krok_Click(object sender, EventArgs e)
         {
+            if (this.program.Count == 0)
+                return;
+            wykonaj_rozkaz(this.program.Dequeue());
+            drukuj_program();
+        }
+
+        private void drukuj_program()
+        {
+            string prog = "";
+            string numery = "";
+            int i = 1;
+            foreach (var roz in this.program)
+            {
+                prog +="  " + roz.ToString();
+                numery += $"{i++}:\n";               
+            }
+            this.prog_label.Text = prog;
+            this.prog_numery.Text = numery;
+            return;
+        }
+
+        private void radioButton_CheckedChanged(object sender, EventArgs e)
+        {
+            double num =Convert.ToDouble(((RadioButton)sender).TabIndex - 21);
+            this.wielkosc_rej =Convert.ToUInt64(Math.Pow(2, 8 * (Math.Pow(2,(num-1))))-1);
+            nasycenie(this.textBox_ax, null);
+            nasycenie(this.textBox_bx, null);
+            nasycenie(this.textBox_cx, null);
+            nasycenie(this.textBox_dx, null);
+            nasycenie(this.textBox_arg, null);
 
         }
     }

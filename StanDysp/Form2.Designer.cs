@@ -92,7 +92,7 @@ namespace StanDysp
             this.progressBar1.ForeColor = System.Drawing.Color.Goldenrod;
             this.progressBar1.Location = new System.Drawing.Point(33, 70);
             this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(284, 23);
+            this.progressBar1.Size = new System.Drawing.Size(249, 23);
             this.progressBar1.Step = 2;
             this.progressBar1.TabIndex = 0;
             // 
@@ -121,7 +121,7 @@ namespace StanDysp
             this.progressBar2.ForeColor = System.Drawing.Color.Chartreuse;
             this.progressBar2.Location = new System.Drawing.Point(33, 166);
             this.progressBar2.Name = "progressBar2";
-            this.progressBar2.Size = new System.Drawing.Size(284, 23);
+            this.progressBar2.Size = new System.Drawing.Size(249, 23);
             this.progressBar2.Step = 2;
             this.progressBar2.TabIndex = 2;
             // 
@@ -140,7 +140,7 @@ namespace StanDysp
             this.progressBar3.ForeColor = System.Drawing.Color.Turquoise;
             this.progressBar3.Location = new System.Drawing.Point(33, 259);
             this.progressBar3.Name = "progressBar3";
-            this.progressBar3.Size = new System.Drawing.Size(284, 23);
+            this.progressBar3.Size = new System.Drawing.Size(249, 23);
             this.progressBar3.Step = 2;
             this.progressBar3.TabIndex = 4;
             // 

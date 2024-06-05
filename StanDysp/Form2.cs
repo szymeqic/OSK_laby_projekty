@@ -254,8 +254,8 @@ namespace StanDysp
                         if(this.licznik_cios<5)
                             this.button1.Enabled = true;
                         this.button2.Enabled = true;
-                        //this.audio.Play();
-                        this.audio.Stream = Resources.goofy2;
+                        this.audio.Play();
+                        this.audio.Stream = Resources.goffyahh; // Resources.goofy2
                         this.audio.LoadAsync();
                         this.BackgroundImage = Resources.cezar2;
                         MessageBox.Show("Zakończono ciosanie porfiru");
@@ -268,7 +268,7 @@ namespace StanDysp
                         if(this.licznik_port<5)
                             this.button2.Enabled = true;
                         this.button3.Enabled = true;
-                        //this.audio.Play();
+                        this.audio.Play();
                         this.audio.Stream = Resources.goffyahh;
                         this.audio.LoadAsync();
                         this.BackgroundImage = Resources.cezar2;
@@ -285,7 +285,7 @@ namespace StanDysp
                         wyswietl_bloki();
                         if(this.licznik_port>0)
                             this.button3.Enabled = true;
-                        //this.audio.Play();
+                        this.audio.Play();
                         this.audio.Stream = Resources.goffyahh;
                         this.audio.LoadAsync();
                         this.BackgroundImage = Resources.cezar2;
@@ -319,8 +319,7 @@ namespace StanDysp
             if(this.pulk.Enabled ==false)
                 this.button1.Enabled = true;
 
-            if (this.licznik_port > 0)
-                this.button3.Enabled = true;
+             this.button3.Enabled = this.licznik_port > 0;
         }
 
         private void button3_Click(object sender, EventArgs e)
@@ -329,8 +328,8 @@ namespace StanDysp
             this.aktProces = 3; // 1 - ciosanie bloku
             if(this.lina.Enabled ==false)
                 this.button3.Enabled = false;
-            if(this.licznik_cios>0)
-                this.button2.Enabled = true;
+
+            this.button2.Enabled = this.licznik_cios > 0;
         }
 
         private void pulk_Click(object sender, EventArgs e)
@@ -352,6 +351,7 @@ namespace StanDysp
         private void galery_Click(object sender, EventArgs e)
         {
             this.galery.Enabled = false;
+
             this.aktProces = 3;
             this.timer1.Start();
             return;

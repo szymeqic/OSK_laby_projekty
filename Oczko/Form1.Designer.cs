@@ -1,4 +1,8 @@
-﻿namespace Oczko
+﻿using System;
+using System.Collections;
+using System.Windows.Forms;
+
+namespace Oczko
 {
     partial class Form1
     {
@@ -7,6 +11,7 @@
         /// </summary>
         private System.ComponentModel.IContainer components = null;
         public talia talia;
+        public int ilosc_gracz, ilosc_dealer;
 
         /// <summary>
         /// Wyczyść wszystkie używane zasoby.
@@ -31,23 +36,58 @@
         {
             this.textbox_spisKart = new System.Windows.Forms.TextBox();
             this.button_pobierzKarte = new System.Windows.Forms.Button();
-            this.picture_karta1 = new System.Windows.Forms.PictureBox();
-            ((System.ComponentModel.ISupportInitialize)(this.picture_karta1)).BeginInit();
+            this.dealer_karta9_pic = new System.Windows.Forms.PictureBox();
+            this.dealer_karta8_pic = new System.Windows.Forms.PictureBox();
+            this.dealer_karta7_pic = new System.Windows.Forms.PictureBox();
+            this.dealer_karta6_pic = new System.Windows.Forms.PictureBox();
+            this.dealer_karta5_pic = new System.Windows.Forms.PictureBox();
+            this.dealer_karta4_pic = new System.Windows.Forms.PictureBox();
+            this.dealer_karta3_pic = new System.Windows.Forms.PictureBox();
+            this.dealer_karta2_pic = new System.Windows.Forms.PictureBox();
+            this.dealer_karta1_pic = new System.Windows.Forms.PictureBox();
+            this.gracz_karta1_pic = new System.Windows.Forms.PictureBox();
+            this.gracz_karta2_pic = new System.Windows.Forms.PictureBox();
+            this.gracz_karta3_pic = new System.Windows.Forms.PictureBox();
+            this.gracz_karta4_pic = new System.Windows.Forms.PictureBox();
+            this.gracz_karta5_pic = new System.Windows.Forms.PictureBox();
+            this.gracz_karta6_pic = new System.Windows.Forms.PictureBox();
+            this.gracz_karta7_pic = new System.Windows.Forms.PictureBox();
+            this.gracz_karta8_pic = new System.Windows.Forms.PictureBox();
+            this.gracz_karta9_pic = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.dealer_karta9_pic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dealer_karta8_pic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dealer_karta7_pic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dealer_karta6_pic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dealer_karta5_pic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dealer_karta4_pic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dealer_karta3_pic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dealer_karta2_pic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dealer_karta1_pic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gracz_karta1_pic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gracz_karta2_pic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gracz_karta3_pic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gracz_karta4_pic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gracz_karta5_pic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gracz_karta6_pic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gracz_karta7_pic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gracz_karta8_pic)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gracz_karta9_pic)).BeginInit();
             this.SuspendLayout();
             // 
             // textbox_spisKart
             // 
             this.textbox_spisKart.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textbox_spisKart.Location = new System.Drawing.Point(681, 305);
+            this.textbox_spisKart.Location = new System.Drawing.Point(687, 305);
             this.textbox_spisKart.Multiline = true;
             this.textbox_spisKart.Name = "textbox_spisKart";
+            this.textbox_spisKart.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textbox_spisKart.Size = new System.Drawing.Size(114, 169);
             this.textbox_spisKart.TabIndex = 0;
             // 
             // button_pobierzKarte
             // 
             this.button_pobierzKarte.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.button_pobierzKarte.Location = new System.Drawing.Point(307, 316);
+            this.button_pobierzKarte.Location = new System.Drawing.Point(705, 229);
             this.button_pobierzKarte.Name = "button_pobierzKarte";
             this.button_pobierzKarte.Size = new System.Drawing.Size(75, 48);
             this.button_pobierzKarte.TabIndex = 1;
@@ -55,15 +95,203 @@
             this.button_pobierzKarte.UseVisualStyleBackColor = true;
             this.button_pobierzKarte.Click += new System.EventHandler(this.button_pobierzKarte_Click);
             // 
-            // picture_karta1
+            // dealer_karta9_pic
             // 
-            this.picture_karta1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.picture_karta1.Location = new System.Drawing.Point(541, 296);
-            this.picture_karta1.Name = "picture_karta1";
-            this.picture_karta1.Size = new System.Drawing.Size(110, 169);
-            this.picture_karta1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picture_karta1.TabIndex = 2;
-            this.picture_karta1.TabStop = false;
+            this.dealer_karta9_pic.BackColor = System.Drawing.SystemColors.Control;
+            this.dealer_karta9_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.dealer_karta9_pic.Location = new System.Drawing.Point(31, 23);
+            this.dealer_karta9_pic.Name = "dealer_karta9_pic";
+            this.dealer_karta9_pic.Size = new System.Drawing.Size(100, 146);
+            this.dealer_karta9_pic.TabIndex = 3;
+            this.dealer_karta9_pic.TabStop = false;
+            this.dealer_karta9_pic.Visible = false;
+            // 
+            // dealer_karta8_pic
+            // 
+            this.dealer_karta8_pic.BackColor = System.Drawing.SystemColors.Control;
+            this.dealer_karta8_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.dealer_karta8_pic.Location = new System.Drawing.Point(66, 23);
+            this.dealer_karta8_pic.Name = "dealer_karta8_pic";
+            this.dealer_karta8_pic.Size = new System.Drawing.Size(100, 146);
+            this.dealer_karta8_pic.TabIndex = 4;
+            this.dealer_karta8_pic.TabStop = false;
+            this.dealer_karta8_pic.Visible = false;
+            // 
+            // dealer_karta7_pic
+            // 
+            this.dealer_karta7_pic.BackColor = System.Drawing.SystemColors.Control;
+            this.dealer_karta7_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.dealer_karta7_pic.Location = new System.Drawing.Point(101, 23);
+            this.dealer_karta7_pic.Name = "dealer_karta7_pic";
+            this.dealer_karta7_pic.Size = new System.Drawing.Size(100, 146);
+            this.dealer_karta7_pic.TabIndex = 5;
+            this.dealer_karta7_pic.TabStop = false;
+            this.dealer_karta7_pic.Visible = false;
+            // 
+            // dealer_karta6_pic
+            // 
+            this.dealer_karta6_pic.BackColor = System.Drawing.SystemColors.Control;
+            this.dealer_karta6_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.dealer_karta6_pic.Location = new System.Drawing.Point(137, 23);
+            this.dealer_karta6_pic.Name = "dealer_karta6_pic";
+            this.dealer_karta6_pic.Size = new System.Drawing.Size(100, 146);
+            this.dealer_karta6_pic.TabIndex = 6;
+            this.dealer_karta6_pic.TabStop = false;
+            this.dealer_karta6_pic.Visible = false;
+            // 
+            // dealer_karta5_pic
+            // 
+            this.dealer_karta5_pic.BackColor = System.Drawing.SystemColors.Control;
+            this.dealer_karta5_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.dealer_karta5_pic.Location = new System.Drawing.Point(172, 23);
+            this.dealer_karta5_pic.Name = "dealer_karta5_pic";
+            this.dealer_karta5_pic.Size = new System.Drawing.Size(100, 146);
+            this.dealer_karta5_pic.TabIndex = 11;
+            this.dealer_karta5_pic.TabStop = false;
+            this.dealer_karta5_pic.Visible = false;
+            // 
+            // dealer_karta4_pic
+            // 
+            this.dealer_karta4_pic.BackColor = System.Drawing.SystemColors.Control;
+            this.dealer_karta4_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.dealer_karta4_pic.Location = new System.Drawing.Point(207, 23);
+            this.dealer_karta4_pic.Name = "dealer_karta4_pic";
+            this.dealer_karta4_pic.Size = new System.Drawing.Size(100, 145);
+            this.dealer_karta4_pic.TabIndex = 12;
+            this.dealer_karta4_pic.TabStop = false;
+            this.dealer_karta4_pic.Visible = false;
+            // 
+            // dealer_karta3_pic
+            // 
+            this.dealer_karta3_pic.BackColor = System.Drawing.SystemColors.Control;
+            this.dealer_karta3_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.dealer_karta3_pic.Location = new System.Drawing.Point(243, 24);
+            this.dealer_karta3_pic.Name = "dealer_karta3_pic";
+            this.dealer_karta3_pic.Size = new System.Drawing.Size(100, 145);
+            this.dealer_karta3_pic.TabIndex = 13;
+            this.dealer_karta3_pic.TabStop = false;
+            this.dealer_karta3_pic.Visible = false;
+            // 
+            // dealer_karta2_pic
+            // 
+            this.dealer_karta2_pic.BackColor = System.Drawing.SystemColors.Control;
+            this.dealer_karta2_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.dealer_karta2_pic.Location = new System.Drawing.Point(278, 23);
+            this.dealer_karta2_pic.Name = "dealer_karta2_pic";
+            this.dealer_karta2_pic.Size = new System.Drawing.Size(100, 146);
+            this.dealer_karta2_pic.TabIndex = 14;
+            this.dealer_karta2_pic.TabStop = false;
+            this.dealer_karta2_pic.Visible = false;
+            // 
+            // dealer_karta1_pic
+            // 
+            this.dealer_karta1_pic.BackColor = System.Drawing.SystemColors.Control;
+            this.dealer_karta1_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.dealer_karta1_pic.Location = new System.Drawing.Point(313, 23);
+            this.dealer_karta1_pic.Name = "dealer_karta1_pic";
+            this.dealer_karta1_pic.Size = new System.Drawing.Size(100, 146);
+            this.dealer_karta1_pic.TabIndex = 15;
+            this.dealer_karta1_pic.TabStop = false;
+            this.dealer_karta1_pic.Visible = false;
+            // 
+            // gracz_karta1_pic
+            // 
+            this.gracz_karta1_pic.BackColor = System.Drawing.SystemColors.Control;
+            this.gracz_karta1_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.gracz_karta1_pic.Location = new System.Drawing.Point(469, 304);
+            this.gracz_karta1_pic.Name = "gracz_karta1_pic";
+            this.gracz_karta1_pic.Size = new System.Drawing.Size(100, 170);
+            this.gracz_karta1_pic.TabIndex = 24;
+            this.gracz_karta1_pic.TabStop = false;
+            this.gracz_karta1_pic.Visible = false;
+            // 
+            // gracz_karta2_pic
+            // 
+            this.gracz_karta2_pic.BackColor = System.Drawing.SystemColors.Control;
+            this.gracz_karta2_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.gracz_karta2_pic.Location = new System.Drawing.Point(434, 304);
+            this.gracz_karta2_pic.Name = "gracz_karta2_pic";
+            this.gracz_karta2_pic.Size = new System.Drawing.Size(100, 170);
+            this.gracz_karta2_pic.TabIndex = 23;
+            this.gracz_karta2_pic.TabStop = false;
+            this.gracz_karta2_pic.Visible = false;
+            // 
+            // gracz_karta3_pic
+            // 
+            this.gracz_karta3_pic.BackColor = System.Drawing.SystemColors.Control;
+            this.gracz_karta3_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.gracz_karta3_pic.Location = new System.Drawing.Point(399, 305);
+            this.gracz_karta3_pic.Name = "gracz_karta3_pic";
+            this.gracz_karta3_pic.Size = new System.Drawing.Size(100, 169);
+            this.gracz_karta3_pic.TabIndex = 22;
+            this.gracz_karta3_pic.TabStop = false;
+            this.gracz_karta3_pic.Visible = false;
+            // 
+            // gracz_karta4_pic
+            // 
+            this.gracz_karta4_pic.BackColor = System.Drawing.SystemColors.Control;
+            this.gracz_karta4_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.gracz_karta4_pic.Location = new System.Drawing.Point(363, 304);
+            this.gracz_karta4_pic.Name = "gracz_karta4_pic";
+            this.gracz_karta4_pic.Size = new System.Drawing.Size(100, 169);
+            this.gracz_karta4_pic.TabIndex = 21;
+            this.gracz_karta4_pic.TabStop = false;
+            this.gracz_karta4_pic.Visible = false;
+            // 
+            // gracz_karta5_pic
+            // 
+            this.gracz_karta5_pic.BackColor = System.Drawing.SystemColors.Control;
+            this.gracz_karta5_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.gracz_karta5_pic.Location = new System.Drawing.Point(328, 304);
+            this.gracz_karta5_pic.Name = "gracz_karta5_pic";
+            this.gracz_karta5_pic.Size = new System.Drawing.Size(100, 170);
+            this.gracz_karta5_pic.TabIndex = 20;
+            this.gracz_karta5_pic.TabStop = false;
+            this.gracz_karta5_pic.Visible = false;
+            // 
+            // gracz_karta6_pic
+            // 
+            this.gracz_karta6_pic.BackColor = System.Drawing.SystemColors.Control;
+            this.gracz_karta6_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.gracz_karta6_pic.Location = new System.Drawing.Point(293, 304);
+            this.gracz_karta6_pic.Name = "gracz_karta6_pic";
+            this.gracz_karta6_pic.Size = new System.Drawing.Size(100, 170);
+            this.gracz_karta6_pic.TabIndex = 19;
+            this.gracz_karta6_pic.TabStop = false;
+            this.gracz_karta6_pic.Visible = false;
+            // 
+            // gracz_karta7_pic
+            // 
+            this.gracz_karta7_pic.BackColor = System.Drawing.SystemColors.Control;
+            this.gracz_karta7_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.gracz_karta7_pic.Location = new System.Drawing.Point(257, 304);
+            this.gracz_karta7_pic.Name = "gracz_karta7_pic";
+            this.gracz_karta7_pic.Size = new System.Drawing.Size(100, 170);
+            this.gracz_karta7_pic.TabIndex = 18;
+            this.gracz_karta7_pic.TabStop = false;
+            this.gracz_karta7_pic.Visible = false;
+            // 
+            // gracz_karta8_pic
+            // 
+            this.gracz_karta8_pic.BackColor = System.Drawing.SystemColors.Control;
+            this.gracz_karta8_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.gracz_karta8_pic.Location = new System.Drawing.Point(222, 304);
+            this.gracz_karta8_pic.Name = "gracz_karta8_pic";
+            this.gracz_karta8_pic.Size = new System.Drawing.Size(100, 170);
+            this.gracz_karta8_pic.TabIndex = 17;
+            this.gracz_karta8_pic.TabStop = false;
+            this.gracz_karta8_pic.Visible = false;
+            // 
+            // gracz_karta9_pic
+            // 
+            this.gracz_karta9_pic.BackColor = System.Drawing.SystemColors.Control;
+            this.gracz_karta9_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.gracz_karta9_pic.Location = new System.Drawing.Point(187, 304);
+            this.gracz_karta9_pic.Name = "gracz_karta9_pic";
+            this.gracz_karta9_pic.Size = new System.Drawing.Size(100, 170);
+            this.gracz_karta9_pic.TabIndex = 16;
+            this.gracz_karta9_pic.TabStop = false;
+            this.gracz_karta9_pic.Visible = false;
             // 
             // Form1
             // 
@@ -72,14 +300,48 @@
             this.BackgroundImage = global::Oczko.Properties.Resources.Blackjack_table_seats;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(907, 505);
-            this.Controls.Add(this.picture_karta1);
+            this.Controls.Add(this.gracz_karta1_pic);
+            this.Controls.Add(this.gracz_karta2_pic);
+            this.Controls.Add(this.gracz_karta3_pic);
+            this.Controls.Add(this.gracz_karta4_pic);
+            this.Controls.Add(this.gracz_karta5_pic);
+            this.Controls.Add(this.gracz_karta6_pic);
+            this.Controls.Add(this.gracz_karta7_pic);
+            this.Controls.Add(this.gracz_karta8_pic);
+            this.Controls.Add(this.gracz_karta9_pic);
+            this.Controls.Add(this.dealer_karta1_pic);
+            this.Controls.Add(this.dealer_karta2_pic);
+            this.Controls.Add(this.dealer_karta3_pic);
+            this.Controls.Add(this.dealer_karta4_pic);
+            this.Controls.Add(this.dealer_karta5_pic);
+            this.Controls.Add(this.dealer_karta6_pic);
+            this.Controls.Add(this.dealer_karta7_pic);
+            this.Controls.Add(this.dealer_karta8_pic);
+            this.Controls.Add(this.dealer_karta9_pic);
             this.Controls.Add(this.button_pobierzKarte);
             this.Controls.Add(this.textbox_spisKart);
             this.DoubleBuffered = true;
             this.Name = "Form1";
             this.Text = "Oczko";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.picture_karta1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dealer_karta9_pic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dealer_karta8_pic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dealer_karta7_pic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dealer_karta6_pic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dealer_karta5_pic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dealer_karta4_pic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dealer_karta3_pic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dealer_karta2_pic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.dealer_karta1_pic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gracz_karta1_pic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gracz_karta2_pic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gracz_karta3_pic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gracz_karta4_pic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gracz_karta5_pic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gracz_karta6_pic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gracz_karta7_pic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gracz_karta8_pic)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.gracz_karta9_pic)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -89,7 +351,24 @@
 
         private System.Windows.Forms.TextBox textbox_spisKart;
         private System.Windows.Forms.Button button_pobierzKarte;
-        private System.Windows.Forms.PictureBox picture_karta1;
+        private PictureBox dealer_karta9_pic;
+        private PictureBox dealer_karta8_pic;
+        private PictureBox dealer_karta7_pic;
+        private PictureBox dealer_karta6_pic;
+        private PictureBox dealer_karta5_pic;
+        private PictureBox dealer_karta4_pic;
+        private PictureBox dealer_karta3_pic;
+        private PictureBox dealer_karta2_pic;
+        private PictureBox dealer_karta1_pic;
+        private PictureBox gracz_karta1_pic;
+        private PictureBox gracz_karta2_pic;
+        private PictureBox gracz_karta3_pic;
+        private PictureBox gracz_karta4_pic;
+        private PictureBox gracz_karta5_pic;
+        private PictureBox gracz_karta6_pic;
+        private PictureBox gracz_karta7_pic;
+        private PictureBox gracz_karta8_pic;
+        private PictureBox gracz_karta9_pic;
     }
 }
 

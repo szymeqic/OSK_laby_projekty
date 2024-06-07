@@ -73,9 +73,9 @@ namespace Oczko.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap ambasadorowie1 {
+        internal static System.Drawing.Bitmap Blackjack_table_seats {
             get {
-                object obj = ResourceManager.GetObject("ambasadorowie1", resourceCulture);
+                object obj = ResourceManager.GetObject("Blackjack_table_seats", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -83,9 +83,9 @@ namespace Oczko.Properties {
         /// <summary>
         ///   Wyszukuje zlokalizowany zasób typu System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap Blackjack_table_seats {
+        internal static System.Drawing.Bitmap Rewers {
             get {
-                object obj = ResourceManager.GetObject("Blackjack_table_seats", resourceCulture);
+                object obj = ResourceManager.GetObject("Rewers", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

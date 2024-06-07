@@ -83,18 +83,9 @@ namespace Oczko
 
         private void button_pobierzKarte_Click(object sender, EventArgs e)
         {
-            if (this.ilosc_gracz++ >= 9)
-                return;
 
-
-            karta temp = this.talia.pobierz();
-            this.textbox_spisKart.Text += temp.ToString()+System.Environment.NewLine;
-
-            PictureBox temp_zdj = num_na_karte( 'g');
-            this.reka_gracz.Add(temp);
-            temp_zdj.BackgroundImage = temp.zdj;
-            temp_zdj.Visible = true;
-            karta_dealer();
+            karta_gracz();
+            this.textbox_spisKart.Text += this.reka_gracz[this.reka_gracz.Count()-1].ToString()+System.Environment.NewLine;
             licz_pkt();
         }
 
@@ -106,6 +97,18 @@ namespace Oczko
             karta temp = this.talia.pobierz();
             PictureBox temp_zdj = num_na_karte( 'd');
             this.reka_dealer.Add(temp);
+            temp_zdj.BackgroundImage = temp.zdj;
+            temp_zdj.Visible = true;
+
+        }
+
+        private void karta_gracz() {
+            if (this.ilosc_gracz++ >= 9)
+                return;
+
+            karta temp = this.talia.pobierz();
+            PictureBox temp_zdj = num_na_karte('g');
+            this.reka_gracz.Add(temp);
             temp_zdj.BackgroundImage = temp.zdj;
             temp_zdj.Visible = true;
 
@@ -168,6 +171,21 @@ namespace Oczko
 
             }
             return null;
+        }
+
+
+        private void button_stand_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button_start_Click(object sender, EventArgs e)
+        {
+            karta_dealer();
+            this.dealer_karta1_pic.BackgroundImage = Properties.Resources.Rewers;
+            karta_dealer();
+            karta_gracz();
+            karta_gracz();
         }
     }
 

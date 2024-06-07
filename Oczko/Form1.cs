@@ -59,7 +59,26 @@ namespace Oczko
             this.reka_gracz = new List<karta>();
             this.ilosc_dealer = 0;
             this.ilosc_gracz = 0;
+            this.talia.tasuj();
             
+        }
+
+        private void licz_pkt()
+        {
+            int sum_krupier = 0;
+            int sum_gracz = 0;
+            for(int i=0; i<this.reka_dealer.Count(); i++)
+            {
+                sum_krupier += this.reka_dealer[i].wartosc();
+            }
+            for (int i = 0; i < this.reka_gracz.Count(); i++)
+            {
+                sum_gracz += this.reka_gracz[i].wartosc();
+            }
+
+            this.label_pkt_gracza.Text = $"Ilość punktów na ręce gracza: {sum_gracz}";
+            this.label_pkt_krupier.Text = $"Ilość punktów na ręce krupiera: {sum_krupier}";
+
         }
 
         private void button_pobierzKarte_Click(object sender, EventArgs e)
@@ -72,10 +91,11 @@ namespace Oczko
             this.textbox_spisKart.Text += temp.ToString()+System.Environment.NewLine;
 
             PictureBox temp_zdj = num_na_karte( 'g');
-            this.reka_gracz.Append(temp);
+            this.reka_gracz.Add(temp);
             temp_zdj.BackgroundImage = temp.zdj;
             temp_zdj.Visible = true;
             karta_dealer();
+            licz_pkt();
         }
 
         private void karta_dealer()
@@ -85,7 +105,7 @@ namespace Oczko
             
             karta temp = this.talia.pobierz();
             PictureBox temp_zdj = num_na_karte( 'd');
-            this.reka_dealer.Append(temp);
+            this.reka_dealer.Add(temp);
             temp_zdj.BackgroundImage = temp.zdj;
             temp_zdj.Visible = true;
 
@@ -202,6 +222,15 @@ namespace Oczko
         public Figura figura { get; }
 
         public Image zdj { get; }
+
+        public int wartosc()
+        {
+            if (this.figura == Figura.As)
+                return 11;
+            else if (this.figura < (Figura)11)
+                return (int)this.figura;
+            else return 10;
+        }
 
         public override string ToString()
         {

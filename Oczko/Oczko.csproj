@@ -257,5 +257,8 @@
   <ItemGroup>
     <None Include="Properties\karty\10_of_diamonds1.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Properties\ambasadorowie.jpg" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -54,6 +54,8 @@ namespace Oczko
             this.gracz_karta7_pic = new System.Windows.Forms.PictureBox();
             this.gracz_karta8_pic = new System.Windows.Forms.PictureBox();
             this.gracz_karta9_pic = new System.Windows.Forms.PictureBox();
+            this.label_pkt_gracza = new System.Windows.Forms.Label();
+            this.label_pkt_krupier = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dealer_karta9_pic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dealer_karta8_pic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dealer_karta7_pic)).BeginInit();
@@ -99,7 +101,7 @@ namespace Oczko
             // 
             this.dealer_karta9_pic.BackColor = System.Drawing.SystemColors.Control;
             this.dealer_karta9_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.dealer_karta9_pic.Location = new System.Drawing.Point(31, 23);
+            this.dealer_karta9_pic.Location = new System.Drawing.Point(293, 12);
             this.dealer_karta9_pic.Name = "dealer_karta9_pic";
             this.dealer_karta9_pic.Size = new System.Drawing.Size(100, 146);
             this.dealer_karta9_pic.TabIndex = 3;
@@ -110,7 +112,7 @@ namespace Oczko
             // 
             this.dealer_karta8_pic.BackColor = System.Drawing.SystemColors.Control;
             this.dealer_karta8_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.dealer_karta8_pic.Location = new System.Drawing.Point(66, 23);
+            this.dealer_karta8_pic.Location = new System.Drawing.Point(328, 12);
             this.dealer_karta8_pic.Name = "dealer_karta8_pic";
             this.dealer_karta8_pic.Size = new System.Drawing.Size(100, 146);
             this.dealer_karta8_pic.TabIndex = 4;
@@ -121,7 +123,7 @@ namespace Oczko
             // 
             this.dealer_karta7_pic.BackColor = System.Drawing.SystemColors.Control;
             this.dealer_karta7_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.dealer_karta7_pic.Location = new System.Drawing.Point(101, 23);
+            this.dealer_karta7_pic.Location = new System.Drawing.Point(363, 12);
             this.dealer_karta7_pic.Name = "dealer_karta7_pic";
             this.dealer_karta7_pic.Size = new System.Drawing.Size(100, 146);
             this.dealer_karta7_pic.TabIndex = 5;
@@ -132,7 +134,7 @@ namespace Oczko
             // 
             this.dealer_karta6_pic.BackColor = System.Drawing.SystemColors.Control;
             this.dealer_karta6_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.dealer_karta6_pic.Location = new System.Drawing.Point(137, 23);
+            this.dealer_karta6_pic.Location = new System.Drawing.Point(399, 12);
             this.dealer_karta6_pic.Name = "dealer_karta6_pic";
             this.dealer_karta6_pic.Size = new System.Drawing.Size(100, 146);
             this.dealer_karta6_pic.TabIndex = 6;
@@ -143,7 +145,7 @@ namespace Oczko
             // 
             this.dealer_karta5_pic.BackColor = System.Drawing.SystemColors.Control;
             this.dealer_karta5_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.dealer_karta5_pic.Location = new System.Drawing.Point(172, 23);
+            this.dealer_karta5_pic.Location = new System.Drawing.Point(434, 12);
             this.dealer_karta5_pic.Name = "dealer_karta5_pic";
             this.dealer_karta5_pic.Size = new System.Drawing.Size(100, 146);
             this.dealer_karta5_pic.TabIndex = 11;
@@ -154,7 +156,7 @@ namespace Oczko
             // 
             this.dealer_karta4_pic.BackColor = System.Drawing.SystemColors.Control;
             this.dealer_karta4_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.dealer_karta4_pic.Location = new System.Drawing.Point(207, 23);
+            this.dealer_karta4_pic.Location = new System.Drawing.Point(469, 12);
             this.dealer_karta4_pic.Name = "dealer_karta4_pic";
             this.dealer_karta4_pic.Size = new System.Drawing.Size(100, 145);
             this.dealer_karta4_pic.TabIndex = 12;
@@ -165,7 +167,7 @@ namespace Oczko
             // 
             this.dealer_karta3_pic.BackColor = System.Drawing.SystemColors.Control;
             this.dealer_karta3_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.dealer_karta3_pic.Location = new System.Drawing.Point(243, 24);
+            this.dealer_karta3_pic.Location = new System.Drawing.Point(505, 13);
             this.dealer_karta3_pic.Name = "dealer_karta3_pic";
             this.dealer_karta3_pic.Size = new System.Drawing.Size(100, 145);
             this.dealer_karta3_pic.TabIndex = 13;
@@ -176,7 +178,7 @@ namespace Oczko
             // 
             this.dealer_karta2_pic.BackColor = System.Drawing.SystemColors.Control;
             this.dealer_karta2_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.dealer_karta2_pic.Location = new System.Drawing.Point(278, 23);
+            this.dealer_karta2_pic.Location = new System.Drawing.Point(540, 12);
             this.dealer_karta2_pic.Name = "dealer_karta2_pic";
             this.dealer_karta2_pic.Size = new System.Drawing.Size(100, 146);
             this.dealer_karta2_pic.TabIndex = 14;
@@ -187,7 +189,7 @@ namespace Oczko
             // 
             this.dealer_karta1_pic.BackColor = System.Drawing.SystemColors.Control;
             this.dealer_karta1_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.dealer_karta1_pic.Location = new System.Drawing.Point(313, 23);
+            this.dealer_karta1_pic.Location = new System.Drawing.Point(575, 12);
             this.dealer_karta1_pic.Name = "dealer_karta1_pic";
             this.dealer_karta1_pic.Size = new System.Drawing.Size(100, 146);
             this.dealer_karta1_pic.TabIndex = 15;
@@ -198,7 +200,7 @@ namespace Oczko
             // 
             this.gracz_karta1_pic.BackColor = System.Drawing.SystemColors.Control;
             this.gracz_karta1_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.gracz_karta1_pic.Location = new System.Drawing.Point(469, 304);
+            this.gracz_karta1_pic.Location = new System.Drawing.Point(539, 303);
             this.gracz_karta1_pic.Name = "gracz_karta1_pic";
             this.gracz_karta1_pic.Size = new System.Drawing.Size(100, 170);
             this.gracz_karta1_pic.TabIndex = 24;
@@ -209,7 +211,7 @@ namespace Oczko
             // 
             this.gracz_karta2_pic.BackColor = System.Drawing.SystemColors.Control;
             this.gracz_karta2_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.gracz_karta2_pic.Location = new System.Drawing.Point(434, 304);
+            this.gracz_karta2_pic.Location = new System.Drawing.Point(504, 303);
             this.gracz_karta2_pic.Name = "gracz_karta2_pic";
             this.gracz_karta2_pic.Size = new System.Drawing.Size(100, 170);
             this.gracz_karta2_pic.TabIndex = 23;
@@ -220,7 +222,7 @@ namespace Oczko
             // 
             this.gracz_karta3_pic.BackColor = System.Drawing.SystemColors.Control;
             this.gracz_karta3_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.gracz_karta3_pic.Location = new System.Drawing.Point(399, 305);
+            this.gracz_karta3_pic.Location = new System.Drawing.Point(469, 304);
             this.gracz_karta3_pic.Name = "gracz_karta3_pic";
             this.gracz_karta3_pic.Size = new System.Drawing.Size(100, 169);
             this.gracz_karta3_pic.TabIndex = 22;
@@ -231,7 +233,7 @@ namespace Oczko
             // 
             this.gracz_karta4_pic.BackColor = System.Drawing.SystemColors.Control;
             this.gracz_karta4_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.gracz_karta4_pic.Location = new System.Drawing.Point(363, 304);
+            this.gracz_karta4_pic.Location = new System.Drawing.Point(433, 303);
             this.gracz_karta4_pic.Name = "gracz_karta4_pic";
             this.gracz_karta4_pic.Size = new System.Drawing.Size(100, 169);
             this.gracz_karta4_pic.TabIndex = 21;
@@ -242,7 +244,7 @@ namespace Oczko
             // 
             this.gracz_karta5_pic.BackColor = System.Drawing.SystemColors.Control;
             this.gracz_karta5_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.gracz_karta5_pic.Location = new System.Drawing.Point(328, 304);
+            this.gracz_karta5_pic.Location = new System.Drawing.Point(398, 303);
             this.gracz_karta5_pic.Name = "gracz_karta5_pic";
             this.gracz_karta5_pic.Size = new System.Drawing.Size(100, 170);
             this.gracz_karta5_pic.TabIndex = 20;
@@ -253,7 +255,7 @@ namespace Oczko
             // 
             this.gracz_karta6_pic.BackColor = System.Drawing.SystemColors.Control;
             this.gracz_karta6_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.gracz_karta6_pic.Location = new System.Drawing.Point(293, 304);
+            this.gracz_karta6_pic.Location = new System.Drawing.Point(363, 303);
             this.gracz_karta6_pic.Name = "gracz_karta6_pic";
             this.gracz_karta6_pic.Size = new System.Drawing.Size(100, 170);
             this.gracz_karta6_pic.TabIndex = 19;
@@ -264,7 +266,7 @@ namespace Oczko
             // 
             this.gracz_karta7_pic.BackColor = System.Drawing.SystemColors.Control;
             this.gracz_karta7_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.gracz_karta7_pic.Location = new System.Drawing.Point(257, 304);
+            this.gracz_karta7_pic.Location = new System.Drawing.Point(327, 303);
             this.gracz_karta7_pic.Name = "gracz_karta7_pic";
             this.gracz_karta7_pic.Size = new System.Drawing.Size(100, 170);
             this.gracz_karta7_pic.TabIndex = 18;
@@ -275,7 +277,7 @@ namespace Oczko
             // 
             this.gracz_karta8_pic.BackColor = System.Drawing.SystemColors.Control;
             this.gracz_karta8_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.gracz_karta8_pic.Location = new System.Drawing.Point(222, 304);
+            this.gracz_karta8_pic.Location = new System.Drawing.Point(292, 303);
             this.gracz_karta8_pic.Name = "gracz_karta8_pic";
             this.gracz_karta8_pic.Size = new System.Drawing.Size(100, 170);
             this.gracz_karta8_pic.TabIndex = 17;
@@ -286,20 +288,42 @@ namespace Oczko
             // 
             this.gracz_karta9_pic.BackColor = System.Drawing.SystemColors.Control;
             this.gracz_karta9_pic.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.gracz_karta9_pic.Location = new System.Drawing.Point(187, 304);
+            this.gracz_karta9_pic.Location = new System.Drawing.Point(257, 303);
             this.gracz_karta9_pic.Name = "gracz_karta9_pic";
             this.gracz_karta9_pic.Size = new System.Drawing.Size(100, 170);
             this.gracz_karta9_pic.TabIndex = 16;
             this.gracz_karta9_pic.TabStop = false;
             this.gracz_karta9_pic.Visible = false;
             // 
+            // label_pkt_gracza
+            // 
+            this.label_pkt_gracza.AutoSize = true;
+            this.label_pkt_gracza.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label_pkt_gracza.Location = new System.Drawing.Point(384, 277);
+            this.label_pkt_gracza.Name = "label_pkt_gracza";
+            this.label_pkt_gracza.Size = new System.Drawing.Size(205, 18);
+            this.label_pkt_gracza.TabIndex = 25;
+            this.label_pkt_gracza.Text = "Ilość punktów na ręku gracza:";
+            // 
+            // label_pkt_krupier
+            // 
+            this.label_pkt_krupier.AutoSize = true;
+            this.label_pkt_krupier.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label_pkt_krupier.Location = new System.Drawing.Point(384, 179);
+            this.label_pkt_krupier.Name = "label_pkt_krupier";
+            this.label_pkt_krupier.Size = new System.Drawing.Size(213, 18);
+            this.label_pkt_krupier.TabIndex = 26;
+            this.label_pkt_krupier.Text = "Ilość punktów na ręku krupiera:";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackgroundImage = global::Oczko.Properties.Resources.Blackjack_table_seats;
+            this.BackgroundImage = global::Oczko.Properties.Resources.ambasadorowie;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(907, 505);
+            this.Controls.Add(this.label_pkt_krupier);
+            this.Controls.Add(this.label_pkt_gracza);
             this.Controls.Add(this.gracz_karta1_pic);
             this.Controls.Add(this.gracz_karta2_pic);
             this.Controls.Add(this.gracz_karta3_pic);
@@ -369,6 +393,8 @@ namespace Oczko
         private PictureBox gracz_karta7_pic;
         private PictureBox gracz_karta8_pic;
         private PictureBox gracz_karta9_pic;
+        private Label label_pkt_gracza;
+        private Label label_pkt_krupier;
     }
 }
 

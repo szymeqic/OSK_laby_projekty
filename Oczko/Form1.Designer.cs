@@ -11,7 +11,8 @@ namespace Oczko
         /// </summary>
         private System.ComponentModel.IContainer components = null;
         public talia talia;
-        public int ilosc_gracz, ilosc_dealer;
+        public int ilosc_gracz, ilosc_dealer, sum_gracz,sum_krupier;
+        public bool czy_rozrywka;
 
         /// <summary>
         /// Wyczyść wszystkie używane zasoby.
@@ -94,6 +95,7 @@ namespace Oczko
             // button_pobierzKarte
             // 
             this.button_pobierzKarte.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button_pobierzKarte.Enabled = false;
             this.button_pobierzKarte.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button_pobierzKarte.Location = new System.Drawing.Point(21, 337);
             this.button_pobierzKarte.Name = "button_pobierzKarte";
@@ -334,6 +336,7 @@ namespace Oczko
             // button_stand
             // 
             this.button_stand.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button_stand.Enabled = false;
             this.button_stand.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button_stand.Location = new System.Drawing.Point(21, 446);
             this.button_stand.Name = "button_stand";
@@ -346,6 +349,7 @@ namespace Oczko
             // button_ubez
             // 
             this.button_ubez.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button_ubez.Enabled = false;
             this.button_ubez.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button_ubez.Location = new System.Drawing.Point(227, 337);
             this.button_ubez.Name = "button_ubez";
@@ -357,6 +361,7 @@ namespace Oczko
             // button_dd
             // 
             this.button_dd.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.button_dd.Enabled = false;
             this.button_dd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button_dd.Location = new System.Drawing.Point(227, 446);
             this.button_dd.Name = "button_dd";

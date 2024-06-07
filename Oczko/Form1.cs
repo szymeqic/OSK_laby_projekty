@@ -60,24 +60,36 @@ namespace Oczko
             this.ilosc_dealer = 0;
             this.ilosc_gracz = 0;
             this.talia.tasuj();
+            this.sum_krupier = 0;
+            this.sum_gracz = 0;
+            this.czy_rozrywka = false;
             
         }
 
-        private void licz_pkt()
+        private void licz_pkt(bool koniec)
         {
-            int sum_krupier = 0;
-            int sum_gracz = 0;
+            this.sum_krupier = this.sum_gracz = 0;
             for(int i=0; i<this.reka_dealer.Count(); i++)
             {
-                sum_krupier += this.reka_dealer[i].wartosc();
+                this.sum_krupier += this.reka_dealer[i].wartosc();
             }
             for (int i = 0; i < this.reka_gracz.Count(); i++)
             {
-                sum_gracz += this.reka_gracz[i].wartosc();
+                this.sum_gracz += this.reka_gracz[i].wartosc();
             }
 
-            this.label_pkt_gracza.Text = $"Ilość punktów na ręce gracza: {sum_gracz}";
-            this.label_pkt_krupier.Text = $"Ilość punktów na ręce krupiera: {sum_krupier}";
+            if (this.reka_gracz.Exists(karta => karta.figura == Figura.As))
+                if (this.sum_gracz > 21)
+                    this.sum_gracz -= 10;  // As może mieć 1 pkt albo 11
+
+            if (this.reka_dealer.Exists(karta => karta.figura == Figura.As))
+                if (this.sum_krupier > 21)
+                    this.sum_krupier -= 10;
+
+
+            this.label_pkt_gracza.Text = $"Ilość punktów na ręce gracza: {this.sum_gracz}";
+            if(koniec)
+                this.label_pkt_krupier.Text = $"Ilość punktów na ręce krupiera: {this.sum_krupier}";
 
         }
 
@@ -86,7 +98,7 @@ namespace Oczko
 
             karta_gracz();
             this.textbox_spisKart.Text += this.reka_gracz[this.reka_gracz.Count()-1].ToString()+System.Environment.NewLine;
-            licz_pkt();
+            licz_pkt(false);
         }
 
         private void karta_dealer()
@@ -95,7 +107,7 @@ namespace Oczko
                 return;
             
             karta temp = this.talia.pobierz();
-            PictureBox temp_zdj = num_na_karte( 'd');
+            PictureBox temp_zdj = num_na_karte(this.ilosc_dealer, 'd');
             this.reka_dealer.Add(temp);
             temp_zdj.BackgroundImage = temp.zdj;
             temp_zdj.Visible = true;
@@ -107,19 +119,19 @@ namespace Oczko
                 return;
 
             karta temp = this.talia.pobierz();
-            PictureBox temp_zdj = num_na_karte('g');
+            PictureBox temp_zdj = num_na_karte(this.ilosc_gracz,'g');
             this.reka_gracz.Add(temp);
             temp_zdj.BackgroundImage = temp.zdj;
             temp_zdj.Visible = true;
 
         }
 
-        public PictureBox num_na_karte(char gracz)
+        public PictureBox num_na_karte(int num,char gracz)
         {
 
             if(gracz == 'g') // Gracz
             {
-                switch(this.ilosc_gracz)
+                switch(num)
                 {
                     default:
                         return null;
@@ -145,7 +157,7 @@ namespace Oczko
                 }
             } else if (gracz == 'd')
             {
-                switch (this.ilosc_dealer)
+                switch (num)
                 {
                     default:
                         return null;
@@ -176,16 +188,74 @@ namespace Oczko
 
         private void button_stand_Click(object sender, EventArgs e)
         {
+            while (this.sum_krupier < 17)
+            {
+                karta_dealer();
+                licz_pkt(false);
+            }
+            this.dealer_karta1_pic.BackgroundImage = this.reka_dealer[0].zdj;
+            licz_pkt(true);
 
+            /// Warunki wygranej
+
+            koniec_rundy(this.sum_krupier == 21 || this.sum_gracz > 21 || (this.sum_krupier < 21 && (this.sum_gracz < this.sum_krupier)));
+                
+        }
+
+        private void koniec_rundy(bool krupier)
+        {
+            start_reset(false);
+            if (krupier) {
+                MessageBox.Show("Wygrana krupiera!");
+            }
+
+            else
+            {
+                MessageBox.Show("Wygrana gracza!");
+            }
         }
 
         private void button_start_Click(object sender, EventArgs e)
         {
+            start_reset(true);
             karta_dealer();
             this.dealer_karta1_pic.BackgroundImage = Properties.Resources.Rewers;
             karta_dealer();
             karta_gracz();
             karta_gracz();
+            licz_pkt(false);
+        }
+
+        private void start_reset(bool st) {
+
+
+            this.talia.odrzucone.AddRange(this.reka_gracz);
+            this.talia.odrzucone.AddRange(this.reka_dealer);
+
+            this.reka_dealer.Clear();
+            this.reka_gracz.Clear();
+
+            this.button_start.Visible = !st;
+
+            this.textbox_spisKart.Text = "";
+
+            if (st)         
+                for (int i = 1; i < 10; i++)
+                {
+                    num_na_karte(i, 'd').BackgroundImage = null;
+                    num_na_karte(i, 'd').Visible = false;
+                    num_na_karte(i, 'g').BackgroundImage = null;
+                    num_na_karte(i, 'g').Visible = false;
+                }
+            
+
+            this.ilosc_gracz = this.ilosc_dealer = 0;
+
+            this.button_pobierzKarte.Enabled = st;
+            this.button_stand.Enabled = st;
+            this.button_start.Enabled = !st;
+            this.button_ubez.Enabled = st;
+            this.button_dd.Enabled = st;
         }
     }
 

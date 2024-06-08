@@ -62,7 +62,9 @@ namespace Oczko
             this.talia.tasuj();
             this.sum_krupier = 0;
             this.sum_gracz = 0;
-            this.czy_rozrywka = false;
+            this.czy_ubez = false;
+            this.kasa = 50;
+            this.zaklad = 0;
             
         }
 
@@ -97,7 +99,7 @@ namespace Oczko
         {
 
             karta_gracz();
-            this.textbox_spisKart.Text += this.reka_gracz[this.reka_gracz.Count()-1].ToString()+System.Environment.NewLine;
+            this.textbox_rejestr.Text += this.reka_gracz[this.reka_gracz.Count()-1].ToString()+System.Environment.NewLine;
             licz_pkt(false);
         }
 
@@ -123,6 +125,7 @@ namespace Oczko
             this.reka_gracz.Add(temp);
             temp_zdj.BackgroundImage = temp.zdj;
             temp_zdj.Visible = true;
+            aktualizuj_rejestr($"Karta gracza: {temp.ToString()}");
 
         }
 
@@ -186,8 +189,14 @@ namespace Oczko
         }
 
 
+        public void aktualizuj_rejestr(string tekst)
+        {
+            this.textbox_rejestr.Text += tekst + System.Environment.NewLine;
+        }
+
         private void button_stand_Click(object sender, EventArgs e)
         {
+            aktualizuj_rejestr("Stand");
             while (this.sum_krupier < 17)
             {
                 karta_dealer();
@@ -204,26 +213,26 @@ namespace Oczko
 
         private void koniec_rundy(bool krupier)
         {
-            start_reset(false);
+
             if (krupier) {
                 MessageBox.Show("Wygrana krupiera!");
+                aktualizuj_rejestr("Koniec rundy - wygana krupiera");
+                this.label_kasa.Text = $"Twoje pieniądze: {this.kasa}";
             }
 
             else
             {
-                MessageBox.Show("Wygrana gracza!");
+                MessageBox.Show($"Wygrana gracza!\nTwoja wygrana: {this.zaklad*2}");
+                aktualizuj_rejestr("Koniec rundy - wygana gracza");
+                this.kasa += this.zaklad * 2;
+                this.label_kasa.Text = $"Twoje pieniądze: {this.kasa}";
             }
+            start_reset(false);
         }
 
         private void button_start_Click(object sender, EventArgs e)
         {
             start_reset(true);
-            karta_dealer();
-            this.dealer_karta1_pic.BackgroundImage = Properties.Resources.Rewers;
-            karta_dealer();
-            karta_gracz();
-            karta_gracz();
-            licz_pkt(false);
         }
 
         private void start_reset(bool st) {
@@ -237,9 +246,13 @@ namespace Oczko
 
             this.button_start.Visible = !st;
 
-            this.textbox_spisKart.Text = "";
+            this.textbox_rejestr.Text = "";
 
-            if (st)         
+            this.label_pkt_krupier.Text = "Ilość punktów na ręku krupiera: ";
+            this.label_pkt_gracza.Text = "Ilość punktów na ręku gracza: ";
+
+            if (st)
+            {
                 for (int i = 1; i < 10; i++)
                 {
                     num_na_karte(i, 'd').BackgroundImage = null;
@@ -247,17 +260,83 @@ namespace Oczko
                     num_na_karte(i, 'g').BackgroundImage = null;
                     num_na_karte(i, 'g').Visible = false;
                 }
+                zaklady_przyciski(true);
+            }
             
-
             this.ilosc_gracz = this.ilosc_dealer = 0;
+        }
 
-            this.button_pobierzKarte.Enabled = st;
-            this.button_stand.Enabled = st;
-            this.button_start.Enabled = !st;
-            this.button_ubez.Enabled = st;
-            this.button_dd.Enabled = st;
+        private void buttonkasa_Click(object sender, EventArgs e)
+        {
+            Button temp = (Button)sender;
+            if(temp == this.buttonkasa_2)            
+                this.zaklad = 2;
+            else if (temp == this.buttonkasa_5)
+                this.zaklad = 5;
+            else if (temp == this.buttonkasa_10)
+                this.zaklad = 10;
+            zaklady_przyciski(false);
+            this.kasa -= this.zaklad;
+            this.label_kasa.Text = $"Twoje pieniądze: {this.kasa}";
+            aktualizuj_rejestr($"Zakład - {this.zaklad}");
+
+            karta_dealer();
+            this.dealer_karta1_pic.BackgroundImage = Properties.Resources.Rewers;
+            karta_dealer();
+            karta_gracz();
+            karta_gracz();
+            licz_pkt(false);
+            if (this.reka_dealer[1].figura == Figura.As)
+                this.button_ubez.Enabled = true;
+
+        }
+
+        private void zaklady_przyciski(bool flaga)
+        {
+
+            this.buttonkasa_10.Visible = flaga;
+            this.buttonkasa_10.Enabled = flaga;
+            this.buttonkasa_2.Visible = flaga;
+            this.buttonkasa_2.Enabled = flaga;
+            this.buttonkasa_5.Visible = flaga;
+            this.buttonkasa_5.Enabled = flaga;
+
+            this.label_zaklad.Visible = flaga;
+
+            this.button_pobierzKarte.Enabled = !flaga;
+            this.button_stand.Enabled = !flaga;
+            this.button_ubez.Enabled = false; //nie ma błędu
+            this.button_dd.Enabled = !flaga;
+
+        }
+
+        private void button_dd_Click(object sender, EventArgs e)
+        {
+            this.kasa -= this.zaklad;
+            this.zaklad *= 2;
+            this.label_kasa.Text = $"Twoje pieniądze: {this.kasa}";
+            karta_gracz();
+            this.button_stand.PerformClick();
+            aktualizuj_rejestr("Podwojenie stawki");
+        }
+
+        private void button_ubez_Click(object sender, EventArgs e)
+        {
+            this.kasa -= this.zaklad / 2;
+            this.czy_ubez = true;
+            this.button_ubez.Enabled = false;
+
+            if(this.sum_krupier==21)
+                this.kasa+= this.zaklad*3/2;
+
+            this.dealer_karta1_pic.BackgroundImage = this.reka_dealer[0].zdj;
+            licz_pkt(true);
+
+            koniec_rundy(this.sum_krupier == 21 || (this.sum_krupier < 21 && (this.sum_gracz < this.sum_krupier)));
+            aktualizuj_rejestr("Ubezpieczenie");
         }
     }
+
 
     public class talia
     {

@@ -12,8 +12,10 @@ namespace Oczko
         private System.ComponentModel.IContainer components = null;
         public talia talia;
         public int ilosc_gracz, ilosc_dealer, sum_gracz,sum_krupier;
-        public bool czy_rozrywka;
-
+        public bool czy_ubez;
+        public double kasa;
+        public double zaklad;
+        
         /// <summary>
         /// Wyczyść wszystkie używane zasoby.
         /// </summary>
@@ -35,7 +37,7 @@ namespace Oczko
         /// </summary>
         private void InitializeComponent()
         {
-            this.textbox_spisKart = new System.Windows.Forms.TextBox();
+            this.textbox_rejestr = new System.Windows.Forms.TextBox();
             this.button_pobierzKarte = new System.Windows.Forms.Button();
             this.dealer_karta9_pic = new System.Windows.Forms.PictureBox();
             this.dealer_karta8_pic = new System.Windows.Forms.PictureBox();
@@ -62,6 +64,11 @@ namespace Oczko
             this.button_ubez = new System.Windows.Forms.Button();
             this.button_dd = new System.Windows.Forms.Button();
             this.button_start = new System.Windows.Forms.Button();
+            this.label_kasa = new System.Windows.Forms.Label();
+            this.buttonkasa_2 = new System.Windows.Forms.Button();
+            this.buttonkasa_5 = new System.Windows.Forms.Button();
+            this.buttonkasa_10 = new System.Windows.Forms.Button();
+            this.label_zaklad = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dealer_karta9_pic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dealer_karta8_pic)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dealer_karta7_pic)).BeginInit();
@@ -82,15 +89,15 @@ namespace Oczko
             ((System.ComponentModel.ISupportInitialize)(this.gracz_karta9_pic)).BeginInit();
             this.SuspendLayout();
             // 
-            // textbox_spisKart
+            // textbox_rejestr
             // 
-            this.textbox_spisKart.BorderStyle = System.Windows.Forms.BorderStyle.None;
-            this.textbox_spisKart.Location = new System.Drawing.Point(836, 302);
-            this.textbox_spisKart.Multiline = true;
-            this.textbox_spisKart.Name = "textbox_spisKart";
-            this.textbox_spisKart.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textbox_spisKart.Size = new System.Drawing.Size(164, 280);
-            this.textbox_spisKart.TabIndex = 0;
+            this.textbox_rejestr.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.textbox_rejestr.Location = new System.Drawing.Point(836, 302);
+            this.textbox_rejestr.Multiline = true;
+            this.textbox_rejestr.Name = "textbox_rejestr";
+            this.textbox_rejestr.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
+            this.textbox_rejestr.Size = new System.Drawing.Size(164, 280);
+            this.textbox_rejestr.TabIndex = 0;
             // 
             // button_pobierzKarte
             // 
@@ -353,10 +360,11 @@ namespace Oczko
             this.button_ubez.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button_ubez.Location = new System.Drawing.Point(227, 337);
             this.button_ubez.Name = "button_ubez";
-            this.button_ubez.Size = new System.Drawing.Size(121, 76);
+            this.button_ubez.Size = new System.Drawing.Size(130, 76);
             this.button_ubez.TabIndex = 29;
-            this.button_ubez.Text = "Insurance ";
+            this.button_ubez.Text = "Ubezpieczenie";
             this.button_ubez.UseVisualStyleBackColor = true;
+            this.button_ubez.Click += new System.EventHandler(this.button_ubez_Click);
             // 
             // button_dd
             // 
@@ -365,10 +373,11 @@ namespace Oczko
             this.button_dd.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
             this.button_dd.Location = new System.Drawing.Point(227, 446);
             this.button_dd.Name = "button_dd";
-            this.button_dd.Size = new System.Drawing.Size(121, 76);
+            this.button_dd.Size = new System.Drawing.Size(130, 76);
             this.button_dd.TabIndex = 30;
             this.button_dd.Text = "Podwój zakład";
             this.button_dd.UseVisualStyleBackColor = true;
+            this.button_dd.Click += new System.EventHandler(this.button_dd_Click);
             // 
             // button_start
             // 
@@ -381,6 +390,66 @@ namespace Oczko
             this.button_start.UseVisualStyleBackColor = true;
             this.button_start.Click += new System.EventHandler(this.button_start_Click);
             // 
+            // label_kasa
+            // 
+            this.label_kasa.AutoSize = true;
+            this.label_kasa.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label_kasa.Location = new System.Drawing.Point(72, 90);
+            this.label_kasa.Name = "label_kasa";
+            this.label_kasa.Size = new System.Drawing.Size(179, 24);
+            this.label_kasa.TabIndex = 32;
+            this.label_kasa.Text = "Twoje pieniądze: 50";
+            // 
+            // buttonkasa_2
+            // 
+            this.buttonkasa_2.Enabled = false;
+            this.buttonkasa_2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonkasa_2.Location = new System.Drawing.Point(12, 179);
+            this.buttonkasa_2.Name = "buttonkasa_2";
+            this.buttonkasa_2.Size = new System.Drawing.Size(75, 29);
+            this.buttonkasa_2.TabIndex = 33;
+            this.buttonkasa_2.Text = "2";
+            this.buttonkasa_2.UseVisualStyleBackColor = true;
+            this.buttonkasa_2.Visible = false;
+            this.buttonkasa_2.Click += new System.EventHandler(this.buttonkasa_Click);
+            // 
+            // buttonkasa_5
+            // 
+            this.buttonkasa_5.Enabled = false;
+            this.buttonkasa_5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonkasa_5.Location = new System.Drawing.Point(119, 179);
+            this.buttonkasa_5.Name = "buttonkasa_5";
+            this.buttonkasa_5.Size = new System.Drawing.Size(75, 29);
+            this.buttonkasa_5.TabIndex = 34;
+            this.buttonkasa_5.Text = "5";
+            this.buttonkasa_5.UseVisualStyleBackColor = true;
+            this.buttonkasa_5.Visible = false;
+            this.buttonkasa_5.Click += new System.EventHandler(this.buttonkasa_Click);
+            // 
+            // buttonkasa_10
+            // 
+            this.buttonkasa_10.Enabled = false;
+            this.buttonkasa_10.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.buttonkasa_10.Location = new System.Drawing.Point(227, 179);
+            this.buttonkasa_10.Name = "buttonkasa_10";
+            this.buttonkasa_10.Size = new System.Drawing.Size(75, 29);
+            this.buttonkasa_10.TabIndex = 35;
+            this.buttonkasa_10.Text = "10";
+            this.buttonkasa_10.UseVisualStyleBackColor = true;
+            this.buttonkasa_10.Visible = false;
+            this.buttonkasa_10.Click += new System.EventHandler(this.buttonkasa_Click);
+            // 
+            // label_zaklad
+            // 
+            this.label_zaklad.AutoSize = true;
+            this.label_zaklad.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(238)));
+            this.label_zaklad.Location = new System.Drawing.Point(72, 138);
+            this.label_zaklad.Name = "label_zaklad";
+            this.label_zaklad.Size = new System.Drawing.Size(175, 20);
+            this.label_zaklad.TabIndex = 36;
+            this.label_zaklad.Text = "Wybierz kwotę zakładu:";
+            this.label_zaklad.Visible = false;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -388,6 +457,11 @@ namespace Oczko
             this.BackgroundImage = global::Oczko.Properties.Resources.ambasadorowie;
             this.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.ClientSize = new System.Drawing.Size(1025, 607);
+            this.Controls.Add(this.label_zaklad);
+            this.Controls.Add(this.buttonkasa_10);
+            this.Controls.Add(this.buttonkasa_5);
+            this.Controls.Add(this.buttonkasa_2);
+            this.Controls.Add(this.label_kasa);
             this.Controls.Add(this.button_start);
             this.Controls.Add(this.button_dd);
             this.Controls.Add(this.button_ubez);
@@ -414,7 +488,7 @@ namespace Oczko
             this.Controls.Add(this.dealer_karta8_pic);
             this.Controls.Add(this.dealer_karta9_pic);
             this.Controls.Add(this.button_pobierzKarte);
-            this.Controls.Add(this.textbox_spisKart);
+            this.Controls.Add(this.textbox_rejestr);
             this.DoubleBuffered = true;
             this.Name = "Form1";
             this.Text = "Oczko";
@@ -444,7 +518,7 @@ namespace Oczko
 
         #endregion
 
-        private System.Windows.Forms.TextBox textbox_spisKart;
+        private System.Windows.Forms.TextBox textbox_rejestr;
         private System.Windows.Forms.Button button_pobierzKarte;
         private PictureBox dealer_karta9_pic;
         private PictureBox dealer_karta8_pic;
@@ -471,6 +545,11 @@ namespace Oczko
         private Button button_ubez;
         private Button button_dd;
         private Button button_start;
+        private Label label_kasa;
+        private Button buttonkasa_2;
+        private Button buttonkasa_5;
+        private Button buttonkasa_10;
+        private Label label_zaklad;
     }
 }
 

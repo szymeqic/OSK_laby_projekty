@@ -263,5 +263,8 @@
   <ItemGroup>
     <None Include="Properties\karty\Rewers.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\muzyczka.wav" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

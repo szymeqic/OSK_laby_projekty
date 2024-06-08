@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -65,6 +66,9 @@ namespace Oczko
             this.czy_ubez = false;
             this.kasa = 50;
             this.zaklad = 0;
+            SoundPlayer muzyka = new SoundPlayer();
+            muzyka.Stream = Properties.Resources.muzyczka;
+            muzyka.PlayLooping();
             
         }
 
